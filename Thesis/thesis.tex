@@ -1,0 +1,48 @@
+\documentclass[msc,pdftex]{coppe}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath,amssymb}
+
+\makelosymbols
+\makeloabbreviations
+
+\begin{document}
+  \title{Controle de Missão do Robô DORIS}
+  \foreigntitle{DORIS Mission Control}
+  \author{Renan Salles}{de Freitas}
+  \advisor{Prof.}{Ramon}{Romankevicius}{D.Sc.}
+  \coadvisor{Prof.}{Pal}{From}{D.Sc.}
+  \examiner{Prof.}{}{D.Sc.}
+  \examiner{Prof.}{}{Ph.D.}
+  \examiner{Prof.}{}{D.Sc.}
+  \department{PEE}
+  \date{03}{2015}
+  \keyword{Controle de Missão}
+  \keyword{Rede de Petri}
+  \keyword{}
+  \maketitle
+
+  \frontmatter
+  \include{dedic}
+  \include{thanks}
+  \include{resumo}
+  \include{abstract}
+  \tableofcontents 
+  \listoffigures
+  \listoftables
+  \printlosymbols
+  \printloabbreviations
+
+  \mainmatter
+  \include{chap01}
+  \include{chap02}
+  \include{chap03}
+  \include{chap04}
+  \include{chap05}
+
+  \backmatter
+  \nocite{*}
+  \bibliographystyle{coppe-unsrt}
+  \bibliography{thesis}
+  \appendix
+  \include{appenA}
+\end{document}
