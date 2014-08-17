@@ -7,5 +7,59 @@ levantamento bibliográfico é apresentar técnicas viáveis e aplicações de
 diversos sistemas de controle de missão, e direcionar o leitor para os
 conhecimentos aplicados no controle de missão do robô DORIS, projeto que
 envolve esta dissertação.
-técnicas em diversos principais pesquisas No início dos anos 50, LANCZOS~\cite{Lan50a} desenvolveu um método para a solução de problemas de autovalor simétricos, empregando transformações similares, obtendo uma matriz da qual fosse mais simples obter seus autovalores do que a matriz original do problema. ARNOLDI \cite{Arn51a} generalizou o método, estendendo-o para problemas não simétricos.
+
+A modelagem de robôs de acordo com suas principais funcionalidades e o
+desenvolvimento de novas arquiteturas para seus controles são o âmago no estudo
+de controle de missão de robôs móveis. Em 1986, BROOKS, R.A. [1], propõe uma
+nova arquitetura, como pode ser visto na figura~\ref{BROOKS_1}. O autor
+comenta que essa decomposição conduz a uma arquitetura radicalmente diferente para sistema de
+controle de robôs móveis, com diferenças radicais em estratégias de
+implementação a nível de hardware e com grandes vantagens em robustez,
+construção e teste.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/Fig 1 - BROOKS_1.pdf}
+\caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
+\label{BROOKS_1}
+\end{figure}
+
+Os desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
+problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
+sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
+suportados pela arquitetura tradicional de um sistema de controle.
+
+Os múltiplos objetivos de robôs móveis podem:
+\begin{itemize}
+  \item Ser conflitantes: por exemplo, um robô pode estar tentando alcançar um
+  determinado ponto no espaço, porém evitando obstáculos locais.
+  \item Ter relações de prioridade: por exemplo, um robô que inspeciona trilhos
+  de trêm deve sair dos trilhos ao ouvir o sinal de um trêm chegando, mesmo se estiver
+  finalizando a operação.
+  \item Ser denpendentes: objetivos de \emph{alto nível} englobam diversos
+  objetivos de \emph{baixo nível}. No caso do exemplo acima, o robô que sai do
+  trilho para evitar o trêm deve se manter equilibrado para não cair. Outros
+  artigos mais recentes, e que serão discutidos em outras subseções, separam
+  esses objetivos em \emph{tarefas} (objetivos de \emph{alto nível}) e
+  \emph{primitivas do veículo}.
+\end{itemize}
+
+Os múltiplos sensores de um robô móvel dependem de sua aplicação, porém
+normalmente ele é provido de inúmeros sensores redundantes ou que são utilizados
+para uma mesma tarefa. Por exemplo, a utilização de encoders para odometria e
+localização, e câmeras que comparam quadros já coletados previamente também para
+localização. Os sensores podem apresentar erros ou resultados conflitantes,
+portanto a fusão da informação de múltiplos sensores, a determinação de seus
+graus de confiabilidade e onde devem ser considerados são decisões que
+o robô deve saber fazer.
+
+Um robô deve ser robusto. Quando um sensor falha, o robô deve se
+adaptar e utilizar os outros sensores que ainda funcionam para realizar as
+tarefas. Quando o ambiente sofre alterações, o robô deve ser capaz de cumprir
+determinadas funções essenciais.
+
+A extensabilidade constitui em acrescentar mais sensores e,
+portanto, aumentar a capacidade de o robô executar novas tarefas. Isso vai
+esbarrar com a limitação de processamento do robô.
+
 
