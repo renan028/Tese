@@ -6,28 +6,16 @@ científicas relacionados ao controle de missão de robôs móveis. O objetivo deste
 levantamento bibliográfico é apresentar técnicas viáveis e aplicações de
 diversos sistemas de controle de missão, e direcionar o leitor para os
 conhecimentos aplicados no controle de missão do robô DORIS, projeto que
-envolve esta dissertação.
+envolve esta dissertação. Os estudos serão apresentados de forma cronológica.
 
-A modelagem de robôs de acordo com suas principais funcionalidades e o
-desenvolvimento de novas arquiteturas para seus controles são o âmago no estudo
-de controle de missão de robôs móveis. Em 1986, BROOKS, R.A. [1], propõe uma
-nova arquitetura, como pode ser visto na figura~\ref{BROOKS_1}. O autor
-comenta que essa decomposição conduz a uma arquitetura radicalmente diferente para sistema de
-controle de robôs móveis, com diferenças radicais em estratégias de
-implementação a nível de hardware e com grandes vantagens em robustez,
-construção e teste.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\columnwidth]{figs/Fig 1 - BROOKS_1.pdf}
-\caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
-\label{BROOKS_1}
-\end{figure}
-
-Os desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
+Em 1986, um dos primeiros estudos em controle de missão foi desenvolvido por
+Rodney Brooks, em BROOKS, R.A. [1]. Este estudo é a base para diversos
+trabalhos atuais que envolvem controle de missão de robôs móveis. Os
+desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
 problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
 sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
-suportados pela arquitetura tradicional de um sistema de controle.
+suportados pela arquitetura tradicional de um sistema de controle, como será
+visto adiante.
 
 Os múltiplos objetivos de robôs móveis podem:
 \begin{itemize}
@@ -59,7 +47,145 @@ tarefas. Quando o ambiente sofre alterações, o robô deve ser capaz de cumprir
 determinadas funções essenciais.
 
 A extensabilidade constitui em acrescentar mais sensores e,
-portanto, aumentar a capacidade de o robô executar novas tarefas. Isso vai
-esbarrar com a limitação de processamento do robô.
+portanto, aumentar a capacidade do robô, este pode executar novas tarefas.
+Porém, isso vai esbarrar com a limitação de processamento do robô.
+
+A modelagem de robôs de acordo com suas principais funcionalidades e o
+desenvolvimento de novas arquiteturas para seus controles são o âmago no estudo
+de controle de missão de robôs móveis. Brooks propõe uma
+nova arquitetura, como pode ser visto na figura~\ref{BROOKS_1}. O autor
+comenta que essa decomposição conduz a uma arquitetura radicalmente diferente para sistema de
+controle de robôs móveis, com diferenças radicais em estratégias de
+implementação a nível de hardware e com grandes vantagens em robustez,
+construção e teste.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BROOKS_1.pdf}
+\caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
+\label{BROOKS_1}
+\end{figure}
+
+Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
+classes de comportamentos desejados para o robô sobre todos os ambientes que ele
+pode encontrar. As classes são:
+\begin{enumerate}
+\setcounter{enumi}{-1}
+  \item Evitar contato com objetos (estacionários ou móveis);
+  \item Vaguear sem rumo sem bater em coisas;
+  \item Explorar o ambiente vendo lugares a distância que são alcançáveis e
+  seguir rumo em sua direção;
+  \item Construir um mapa do ambiente e planejar trajetórias de um lugar para
+  outro;
+  \item Observar mudanças no ambiente;
+  \item Raciocinar sobre o ambiente em termos de objetos identificáveis e
+  realizar tarefas relacionadas a certos objetos;
+  \item Formular e executar planos que envolvam mudar o estado do ambiente como
+  desejado;
+  \item Raciocinar sobre o comportamento de objetos no ambiente e modificar
+  planos quando necessário;
+\end{enumerate}
+Vale observar que cada nível de competência inclui, como subconjunto, os
+níveis de competência anteriores.
+
+Após a decomposição na nova arquitetura, Brooks define as \emph{Camadas de
+Controle}, correspondentes a cada nível de competência. A ideia dessa abordagem
+é adicionar camadas de controle a níveis de competências superiores sem precisar
+alterar a camada do nível anterior. Inicia-se, portanto, com a camada de
+controle para o nível zero de competência, ela é testada e não será mais alterada. Depois é
+criada a camanda de nível 1, capaz de examinar os dados da camada de nível 0 e
+injetar dados nas interfaces internas do nível 0, suprimindo seu trânsito de
+dados, figura~\ref{BROOKS_2}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BROOKS_2.pdf}
+\caption{Camadas de controle de Brooks}
+\label{BROOKS_2}
+\end{figure}
+
+Os problemas apresentados por Brooks são solucionados pela nova estrutura:
+\begin{itemize}
+  \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
+  individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
+  supressão do trânsito de dados resolvem os problemas de conflito, dependência
+  e prioridade;
+  \item Múltiplos sensores: as camadas utilizam os dados dos sensores
+  independentemente, de forma que não há necessidade de se preocupar com a
+  fusão;
+  \item Robustez: além do uso inteligente de sensores, camadas de controle de
+  baixo nível continuam a funcionar quando novas camadas de alto nível são
+  adicionadas;
+  \item Extensibilidade: cada camada de controle pode possuir o seu próprio
+  processador; 
+\end{itemize}
+
+A estrutura das camadas de controle foram construídas por um conjunto de
+pequenos processadores que enviam mensagens uns para os outros. Cada processador
+é uma máquina de estado finito. A nova arquitetura e essa nova estrutura de
+camadas com eventos discretos foram a base de diversos sistemas de controle de
+missão da atualidade. A fim de melhor o entendimento desse sistema criado por
+Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
+móvel.
+
+A camada de controle nível zero deve garantir que o robô não entre em contato
+com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar se
+algo se aproximar dele ou parar se algo estiver em sua trajetória. Na
+figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BROOKS_3.pdf}
+\caption{Nível 0 de controle do sistema}
+\label{BROOKS_3}
+\end{figure}
+
+Segue pequena descrição de cada módulo:
+\begin{itemize}
+  \item Módulo \emph{Curva}: comunica-se diretamente com o robô (atuadores).
+  Recebe uma mensagem \emph{Dirigir} especificando um ângulo de giro seguido por
+  uma mensagem do módulo \emph{Avanço} com uma determinada magnitude. Isso faz
+  com que o robô realize uma curva e vá para o estado de \emph{Avanço}.
+  \item Módulo \emph{Avanço}: comando o robô a se movimentar (atuadores), mas
+  pára o robô se receber mensagem do módulo \emph{Colisão}. O robô fica inativo
+  e mensagens do encoder é enviado ao módulo \emph{Curva}, funcionando como um
+  \emph{reset}, e podendo receber novos comandos.
+  \item Módulo \emph{Sonar}: recebe um vetor de informações de sensores do robô,
+  filtra os dados e produz um mapeamento de obstáculos para o robô em
+  coordenadas polares.
+  \item Módulo \emph{Colisão}: monitora o mapa gerado pelo módulo \emph{Sonar}
+  e, se detectar um obstáculo, envia um sinal de parada. Observe que este módulo
+  funciona independentemente se o robô está em movimento ou parado.
+  \item Módulo \emph{Sentir Força}: cada obstáculo detectado é somado
+  como uma força repulsiva, gerando uma força resultante.
+  \item Módulo \emph{Fugir}: monitora a força produzida pelos obstáculos e envia
+  comandos para o módulo \emph{Curva} se a força for significante.
+\end{itemize}
+ 
+ A camada de controle nível 1, combinada a camada de controle nível 0, permite
+ que o robô vagueie sem bater em obstáculos. A figura~\ref{BROOKS_3} mostra o
+ sistema de controle aumentado pelo nível da camada 1.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BROOKS_4.pdf}
+\caption{Nível 0 e 1 de controle do sistema}
+\label{BROOKS_4}
+\end{figure}
+
+Segue pequena descrição de cada módulo:
+\begin{itemize}
+  \item Módulo \emph{Vaguear}: gera nova direção para o robô a cada 20 segundos.
+  \item Módulo \emph{Evitar}: recebe resultado da força computada pelo nível 0
+  de controle e combina com a direção desejada pelo módulo \emph{Vaguear},
+  produzindo uma nova direção desejada sem obstáculos. Esse resultado presume as
+  computações do módulo \emph{Fugir}. Vale observar que o módulo \emph{Evitar}
+  suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
+\end{itemize}
+
+
+
+
+ 
 
 
