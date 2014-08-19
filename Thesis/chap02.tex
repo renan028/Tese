@@ -184,7 +184,16 @@ Segue pequena descrição de cada módulo:
 \end{itemize}
 
 A nova arquitetura de Brooks é robusta, permite interações dinâmicas, flexível
-para integrar novas funcionalidades, e fácil para implementar e debugar.
+para integrar novas funcionalidades, fácil para implementar e debugar, além de
+associar sistemas de eventos discretos no controle de robôs autônomos.
+Antes de Brooks, em 1983, Elfes, A. [2],já havia idealizado uma arquitetura em
+módulos e controle distribuído a fim de atingir efetividade em processamento
+paralelo, flexibilidade de interação com os diversos sensores, distribuir
+capacidades de decisão e flexibilidade de expansão e modificação do sistema.
+Porém o sistema de comunicação entre módulos era centralizado
+(\emph{Blackboard}) e só realizavam uma determinada tarefa sob o comando de um
+Plano de Controle (\emph{Control Plan}), que o usuário deve explicitamente
+codificiar paralelismo, e os casos das exceções e condições inesperadas.
 
 
 
