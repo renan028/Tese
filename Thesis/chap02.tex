@@ -195,9 +195,39 @@ Porém o sistema de comunicação entre módulos era centralizado
 Plano de Controle (\emph{Control Plan}), que o usuário deve explicitamente
 codificiar paralelismo, e os casos das exceções e condições inesperadas.
 
+Em 1989, Chatila, R.G. [3], descreve uma nova arquitetura e sistema de controle
+utilizando, assim como Brooks, módulos de forma hierárquica. A arquitetura do
+robô pode ser decomposta da seguinte forma:
+\begin{itemize}
+  \item Módulos de sensores: processam as saídas dos sensores. Os dados
+  adquiridos por um sensor são processados pelo módulo de sensor e são tornados
+  disponíveis para os módulos de nível mais alto para seus próprios
+  processamentos e interpretaçõs.
+  \item Unidades funcionais: realizam uma determinada função no robô. Por
+  exemplo, localização do robô, combinando visão, odometria, laser e etc.
+  \item Processos: realiza a dinâmica de malha fechada entre percpção e ação,
+  usando unidades de função. O processo é representado por uma máquina de estado
+  finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
+  são comandos aos atuadores.
+\end{itemize}
+O sistema de controle de Chatila é composto por quatro componentes: Supervisor
+(não implementado), Módulo Executivo, Gerente de Vigilância e Módulo de
+Diagnóstico (não implementado). Os controles funcionam como um \emph{if - then},
+com diversas condições e ações predeterminadas. O módulo de vigilância é
+responsável por:
+\begin{itemize}
+  \item Indicar estados dos sensores e tomar ações de reflexo;
+  \item Indica estado operacional do robô, como nível da bateria;
+  \item Relatar plano e estado da missão que está sendo executada pelo robô;
+\end{itemize}
+O módulo executivo fucniona como um sistema operacional. Ele recebe comandos
+(missões) predefinidas pela interface e se comunica com o módulo de vigilância.
 
-
-
+Comparando-se com Brooks, Chatila apresenta uma estrutura bem rudimentar e
+lógica simples de arquitetura e controle. Apesar de utilizar a ideia de recursos
+compartilhados nos módulos de sensores, os automatos dos módulos de processo
+são bem simplificados e dependentes de um bloco central para resolver objetivos
+conflitantes.
  
 
 
