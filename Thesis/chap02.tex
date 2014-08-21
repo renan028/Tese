@@ -185,7 +185,12 @@ Segue pequena descrição de cada módulo:
 
 A nova arquitetura de Brooks é robusta, permite interações dinâmicas, flexível
 para integrar novas funcionalidades, fácil para implementar e debugar, além de
-associar sistemas de eventos discretos no controle de robôs autônomos.
+associar sistemas de eventos discretos no controle de robôs autônomos,
+utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
+State Machine}).
+Vale ressaltar que a conexão de diversas FSM's não é uma FSM e, dessa forma,
+Brooks acrescentou registradores e temporizadores em suas FSM.
+
 Antes de Brooks, em 1983, Elfes, A. [2],já havia idealizado uma arquitetura em
 módulos e controle distribuído a fim de atingir efetividade em processamento
 paralelo, flexibilidade de interação com os diversos sensores, distribuir
@@ -228,6 +233,32 @@ rudimentar e lógica simples de arquitetura e controle. Apesar de utilizar a idei
 compartilhados nos módulos de sensores, os automatos dos módulos de processo
 são bem simplificados e dependentes de um bloco central para resolver objetivos
 conflitantes.
+
+Em 1991, em uma pesquisa financiada pelo \emph{Center for Intelligent Robotic
+Systems for Space Exploration} (CIRSSE) da NASA, Wang, F.Y. [3], realizou um dos
+primeiros trabalhos usando redes de Petri como módulos básicos para sistemas de
+controle de missão, em vez de máquinas de estados finitos (Brooks).
+Alguns PNT (\emph{Petri Net Transducers}) são usados para traduzir os comandos
+gerados pelo nível de organização em algo compreensível para o nível de execução.
+
+O sistema criado por Wang, \emph{Intelligent Mobile Robot System}(IMRS), é
+baseado na teoria de inteligência hierárquica de controle, Saridis [4].
+Portanto, o IMRS possui a seguinte arquitetura, FIGURA:
+\begin{itemize}
+  \item Nível organizacional (organizador de tarefas): gera tarefas de
+  movimentação de alto nível.
+  \item Nível de coordenação: funciona como uma interface entre o nível
+  organizacional e o de execução. O nível é composto por um remetente e alguns
+  coordenadores. O remetente recebe o plano da tarefa do organizador, decompõe a
+  tarefa em ações de controlee remete aos coordenadores.Os coordenadores
+  traduzem os comandos de controle em instruções de operação e as carrega ao
+  dispositivo apropriado no nível de execução.
+  \item Nível de execução: executa a instrução proveniente do nível de
+  coordenação reporta seus resultados a ele.
+\end{itemize}
+A grande contribuição de Wang foi a utilização de redes de Petri como módulo
+básico de controle para seu sistema IMRS,já que as redes de Petri foram
+originalmente introduzidas para descrever as comunicações de FSM's.
  
 
 
