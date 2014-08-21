@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{Arn51a}
+\MakeUppercase{ Arnoldi, W.~E.}, \enquote{The principle of minimized iteration
+  in the solution of the matrix eigenvalue problem}, {\em Quart. Appl.
+  Math.\/}, v.~9, pp.~17--29, 1951.
+
+\bibitem{Lan50a}
+\MakeUppercase{ Lanczos, C.}, \enquote{An iteration method for the solution of
+  the eigenvalue problem of linear differential and integral operators}, {\em
+  J. Research Nat. Bur. Standards\/}, v.~45, pp.~255--282, 1950.
+
+\end{thebibliography}
