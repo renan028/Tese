@@ -257,8 +257,44 @@ Portanto, o IMRS possui a seguinte arquitetura, FIGURA:
   coordenação reporta seus resultados a ele.
 \end{itemize}
 A grande contribuição de Wang foi a utilização de redes de Petri como módulo
-básico de controle para seu sistema IMRS,já que as redes de Petri foram
-originalmente introduzidas para descrever as comunicações de FSM's.
- 
+básico de controle para seu sistema IMRS, já que as redes de Petri foram
+originalmente introduzidas para descrever as comunicações de FSM's,
+possibilitando flexibilidade e robustez. Além disso, é provado que redes de
+Petri são excelente ferramenta para modelagem de sistemas, sobretudo quando
+envolvem tarefas conflitantes ou simultâneas [5]. Os fundamentos teóricos sobre
+redes de Petri são abordados no capítulo 01 por serem essenciais para o
+entendimento desta dissertação.
+
+No trabalho de Wang, o nível de coordenação do IMRS é composto por um remetente
+(\emph{Dispatcher}) e três coordenadores: sistema de visão, desvio de obstáculo
+e controle de rastreamento, e planejamento de trajetórias. Com o modelo de
+redes de Petri não é possível implementar o esquema de linguagem de
+decisão para descrever a tradução de tarefas entre remetente e coordenadores.
+Portanto, os PNT (\emph{Petri Net transducer}) foram introduzidos como um
+tradutor de linguagem: $PNT = (N,\Sigma,
+\Delta, \sigma, \mu, F)$. Onde:
+\begin{itemize}
+  \item A rede de Petri $N=(P,T,I,O)$, $P$ lugares, $T$
+transições, função de entrada $I$, função de saída $O$, é o controle da
+tradução;
+\item $\mu$ é o estado inicial de $N$;
+\item $\Sigma$ é o alfabeto de entrada, representa tarefas de entradas;
+\item $\Delta$ é o alfabeto de saída, representa tarefas de saída; 
+\item $\sigma$ especifica, para uma dada tarefa de entrada, as transições em $N$
+e as subtarefas de saída que podem ser usadas na tarefa;
+\item $F$ é o estado final. Indica o fim da tradução da tarefa;
+\end{itemize}    
+
+Os quatro PNT's são combinados para realizarem a tradução de tarefas no Nível
+de Coordenação: Remetente, sistema de visão, desvio de obstáculo
+e controle de rastreamento, e planejamento de trajetórias.
+Será brevemente descrito o componente Remetente (\emph{Dispatcher}) do modelo de
+Nível de Coordenação para melhor entendimento do PNT.
+
+Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
+atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
+movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
+obstáculos e controle de rastreamento; A FIGURA mostra o modelo de rede de Petri
+para o Remetente.
 
 
