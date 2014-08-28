@@ -398,8 +398,21 @@ cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
 $\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
 $\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
 
-O parâmetro que especifica as transições para uma determinada tarefa é $\sigma$.
-Para a transição $t_{mod}$, por exemplo,
+O parâmetro que especifica as transições para uma determinada tarefa e as
+subtarefas é o $\sigma$. Para a transição $t_{mod}$, por exemplo,
 $\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
-\textrm{sendinfo}(ard_i,ptc_i)\}$, onde
+\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ é a acurácia requerida sobre
+objetos detectados em VS e $ptc$ é o tempo para a realização do processo. A rede
+de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
+caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
+Remetente (neste caso será a transição $t_{smd}$ de VS, [3]).
+
+As contribuições de Wang, em [3], foram, portanto:
+\begin{itemize}
+  \item Redes de Petri podem ser usadas como módulos básicos para sistemas de
+  controle de missão de robôs móveis.
+  \item A comunicação e conexão de módulos são eficientes entre redes de Petri.
+  \item Controle e mecanismo de comunicação para coordenação de tarefas de um
+  robô móvel podem ser realizados com redes de Petri.
+\end{itemize} 
  
