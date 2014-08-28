@@ -235,15 +235,15 @@ são bem simplificados e dependentes de um bloco central para resolver objetivos
 conflitantes.
 
 Em 1991, em uma pesquisa financiada pelo \emph{Center for Intelligent Robotic
-Systems for Space Exploration} (CIRSSE) da NASA, Wang, F.Y. [3], realizou um dos
+Systems for Space Exploration} (CIRSSE) da NASA, Saridis, F.Y. [3], realizou um dos
 primeiros trabalhos usando redes de Petri como módulos básicos para sistemas de
 controle de missão, em vez de máquinas de estados finitos (Brooks).
 Alguns PNT (\emph{Petri Net Transducers}) são usados para traduzir os comandos
 gerados pelo nível de organização em algo compreensível para o nível de execução.
 
-O sistema criado por Wang, \emph{Intelligent Mobile Robot System}(IMRS), é
-baseado na teoria de inteligência hierárquica de controle, Saridis [4].
-Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{WANG_1}:
+O sistema criado por Saridis, \emph{Intelligent Mobile Robot System}(IMRS), é
+baseado na teoria de inteligência hierárquica de controle [4].
+Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{Saridis_1}:
 \begin{itemize}
   \item Nível organizacional (organizador de tarefas): gera tarefas de
   movimentação de alto nível.
@@ -259,12 +259,12 @@ Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{WANG_1}:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\columnwidth]{figs/WANG_1.pdf}
+\includegraphics[width=1\columnwidth]{figs/SARIDIS_1.pdf}
 \caption{IMRS}
-\label{WANG_1}
+\label{Saridis_1} 
 \end{figure}
 
-A grande contribuição de Wang foi a utilização de redes de Petri como módulo
+A grande contribuição de Saridis foi a utilização de redes de Petri como módulo
 básico de controle para seu sistema IMRS, já que as redes de Petri foram
 originalmente introduzidas para descrever as comunicações de FSM's,
 possibilitando flexibilidade e robustez. Além disso, é provado que redes de
@@ -273,7 +273,7 @@ envolvem tarefas conflitantes ou simultâneas [5]. Os fundamentos teóricos sobre
 redes de Petri são abordados no capítulo 01 por serem essenciais para o
 entendimento desta dissertação.
 
-No trabalho de Wang, o nível de coordenação do IMRS é composto por um remetente
+No trabalho de Saridis, o nível de coordenação do IMRS é composto por um remetente
 (\emph{Dispatcher}) e três coordenadores: sistema de visão (VS), desvio de
 obstáculo e controle de rastreamento (OATC), e planejamento de trajetórias (PP).
 Com o modelo de redes de Petri não é possível implementar o esquema de linguagem de
@@ -302,15 +302,15 @@ Nível de Coordenação para melhor entendimento do PNT.
 Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
 atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
 movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
-obstáculos e controle de rastreamento; A figura~\ref{WANG_2} mostra o modelo
+obstáculos e controle de rastreamento; A figura~\ref{Saridis_2} mostra o modelo
 de rede de Petri para o Remetente.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\columnwidth]{figs/WANG_2.pdf}
+\includegraphics[width=1\columnwidth]{figs/SARIDIS_2.pdf}
 \caption{Estrutura do nível de coordenação com foco na rede de Petri do
 Remetente}
-\label{WANG_2}
+\label{Saridis_2}
 \end{figure}
 
 O estado inicial da rede de Petri é: $$M
@@ -407,7 +407,7 @@ de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
 caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
 Remetente (neste caso será a transição $t_{smd}$ de VS, [3]).
 
-As contribuições de Wang, em [3], foram, portanto:
+As contribuições de Saridis, em [3], foram, portanto:
 \begin{itemize}
   \item Redes de Petri podem ser usadas como módulos básicos para sistemas de
   controle de missão de robôs móveis.
@@ -415,4 +415,37 @@ As contribuições de Wang, em [3], foram, portanto:
   \item Controle e mecanismo de comunicação para coordenação de tarefas de um
   robô móvel podem ser realizados com redes de Petri.
 \end{itemize} 
- 
+
+Em 1996, Silva, V. et al [6], projetaram, desenvolveram e testaram um sistema de
+controle de missão para o MARIUS, robô autônomo submarino. \emph{A Mission
+Control System} (MCS), o conceito, aparece pela primeira vez na nomenclatura
+como um sistema que: \emph{i)} habilita o operador a definir uma missão ao
+veículo em uma linguagem de alto nível, que será traduzida em um plano de
+missão; \emph{ii)} provê ferramentas adequadas para converter um plano de missão em um
+programa de missão que pode ser verificado e executado em tempo real;
+\emph{iii)} fornece ao operador a capacidade de seguir o progresso do programa
+de missão enquanto ele é executado, e modificá-lo se necessário;
+
+O trabalho de Silva, V. [6], introduz novos e importantes conceitos chave para o
+MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do Veículo
+(\emph{Vechicle Primitive}), Procedimento de Missão (\emph{Mission Procedure})
+e Programa de Missão (\emph{Mission Program}). Além disso, a arquitetura do
+veículo, por ser um AUV, possui sistemas e interconexões
+semelhantes ao robô DORIS, estudo desta dissertação.
+
+A arquitetura do veículo DORIS teve grande influência da organização do veículo
+MARIUS descrita abaixo, FIGURA:
+\begin{itemize}
+  \item \emph{Vehicle Support System} (VSS) - Controla a distribuição de energia
+  aos hardwares instalados no veículo, monitora consumo de energia e detecta
+  falhas de hardware, podendo enviar comandos de emergência.
+  \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotação
+  dos propulsores e posição dos ailerions e lemes. Os \emph{Set Points} dos
+  atuadores são dados pelo \emph{Vehicle Guidance and Control System} e os dados
+  dos atuadores são transmitidos para o \emph{Mission Control System}.
+  \item \emph{Navigation System} (NS) - Estima posição linear e velocidade do
+  veículo, orientação e velocidade angular. O sistema funde informações do
+  \emph{Positioning System} (\emph{Long Baseline unit}) e \emph{Motion Sensor
+  Integration System}, o qual inclui diversos sensores. As saídas do NS são
+  entradas do VGCS, e enviadas ao MCS.
+\end{itemize}
