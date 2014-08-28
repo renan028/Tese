@@ -243,7 +243,7 @@ gerados pelo nível de organização em algo compreensível para o nível de execução
 
 O sistema criado por Wang, \emph{Intelligent Mobile Robot System}(IMRS), é
 baseado na teoria de inteligência hierárquica de controle, Saridis [4].
-Portanto, o IMRS possui a seguinte arquitetura, FIGURA:
+Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{WANG_1}:
 \begin{itemize}
   \item Nível organizacional (organizador de tarefas): gera tarefas de
   movimentação de alto nível.
@@ -256,6 +256,14 @@ Portanto, o IMRS possui a seguinte arquitetura, FIGURA:
   \item Nível de execução: executa a instrução proveniente do nível de
   coordenação reporta seus resultados a ele.
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/WANG_1.pdf}
+\caption{IMRS}
+\label{WANG_1}
+\end{figure}
+
 A grande contribuição de Wang foi a utilização de redes de Petri como módulo
 básico de controle para seu sistema IMRS, já que as redes de Petri foram
 originalmente introduzidas para descrever as comunicações de FSM's,
@@ -266,23 +274,23 @@ redes de Petri são abordados no capítulo 01 por serem essenciais para o
 entendimento desta dissertação.
 
 No trabalho de Wang, o nível de coordenação do IMRS é composto por um remetente
-(\emph{Dispatcher}) e três coordenadores: sistema de visão, desvio de obstáculo
-e controle de rastreamento, e planejamento de trajetórias. Com o modelo de
-redes de Petri não é possível implementar o esquema de linguagem de
+(\emph{Dispatcher}) e três coordenadores: sistema de visão (VS), desvio de
+obstáculo e controle de rastreamento (OATC), e planejamento de trajetórias (PP).
+Com o modelo de redes de Petri não é possível implementar o esquema de linguagem de
 decisão para descrever a tradução de tarefas entre remetente e coordenadores.
 Portanto, os PNT (\emph{Petri Net transducer}) foram introduzidos como um
 tradutor de linguagem: $PNT = (N,\Sigma,
 \Delta, \sigma, \mu, F)$. Onde:
 \begin{itemize}
-  \item A rede de Petri $N=(P,T,I,O)$, $P$ lugares, $T$
+	\item A rede de Petri $N=(P,T,I,O)$, $P$ lugares, $T$
 transições, função de entrada $I$, função de saída $O$, é o controle da
 tradução;
-\item $\mu$ é o estado inicial de $N$;
-\item $\Sigma$ é o alfabeto de entrada, representa tarefas de entradas;
-\item $\Delta$ é o alfabeto de saída, representa tarefas de saída; 
-\item $\sigma$ especifica, para uma dada tarefa de entrada, as transições em $N$
-e as subtarefas de saída que podem ser usadas na tarefa;
-\item $F$ é o estado final. Indica o fim da tradução da tarefa;
+	\item $\mu$ é o estado inicial de $N$;
+	\item $\Sigma$ é o alfabeto de entrada, representa tarefas de entradas;
+	\item $\Delta$ é o alfabeto de saída, representa tarefas de saída; 
+	\item $\sigma$ especifica, para uma dada tarefa de entrada, as transições em
+$N$ e as subtarefas de saída que podem ser usadas na tarefa;
+	\item $F$ é o estado final. Indica o fim da tradução da tarefa;
 \end{itemize}    
 
 Os quatro PNT's são combinados para realizarem a tradução de tarefas no Nível
@@ -294,7 +302,104 @@ Nível de Coordenação para melhor entendimento do PNT.
 Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
 atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
 movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
-obstáculos e controle de rastreamento; A FIGURA mostra o modelo de rede de Petri
-para o Remetente.
+obstáculos e controle de rastreamento; A figura~\ref{WANG_2} mostra o modelo
+de rede de Petri para o Remetente.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/WANG_2.pdf}
+\caption{Estrutura do nível de coordenação com foco na rede de Petri do
+Remetente}
+\label{WANG_2}
+\end{figure}
 
+O estado inicial da rede de Petri é: $$M
+=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
+=\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
+$$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
+O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ .
+As suas transições são:
+\begin{enumerate}
+  \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
+  do Organizador. 
+  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$  
+  O lugar $P_0$ permanece com um token, logo a transição $t_s$ ainda pode ser
+  disparada. Isso faz com que o Remetente seja capaz de executar duas tarefas
+  simultaneamente: a tarefa de movimentação (ver item 7) e o planejamento de
+  trajetórias (ver item 3).
+  \item A transição $t_{wmu}$ chama o processo de atualização do mapa 3-D. O
+  sistema de visão poderá ser iniciado (token em $I_{VS}$) e a transição
+  $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
+  visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
+  $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
+  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point},$O_{VS}$,
+  adquiri um token, habilitando a transição $t_{PP}$ do Remetente. 
+  $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
+  Vale observar as características que Brooks já utilizava em máquinas de estado
+  como inibidores, supressores e níveis de competência.
+  \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
+  $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
+  otimização. $t_{pp}$ não pode ser disparada novamente até completar um
+  ciclo de planejamento de trajetórias, graças ao \emph{Input Semaphore},
+  $IS_{PP}$.
+  $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
+  Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
+  Point},$O_{PP}$, adquiri um token, habilitando a transição $t_{ssd}$ do
+  Remetente.
+  $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
+  de trajetórias no valor inicial:
+  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_{mod}$ é disparada para o desvio de obstáculo em um
+  espaço especificado e provê acurácia e tempo requerido. O
+  sistema de visão poderá ser iniciado novamente (token em $I_{VS}$) e a
+  transição $t_{mod}$ não pode ser disparada novamente até completar mais um
+  ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
+  $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
+  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point},$O_{VS}$,
+  adquiri um token, habilitando a transição $t_{moac}$ do Remetente. 
+  $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
+  \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
+  e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
+  o valor inicial e $t_{moac}$ não pode ser disparada novamente até completar um
+  ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
+  $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
+  Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
+  Point},$O_{OATC}$, adquiri um token, habilitando a transição $t_{ssd}$ do
+  Remetente.
+  $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
+  \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
+  sistema de desvio de obstáculos e controle de rastreamento volta para o estado
+  inicial.
+  $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
+  \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
+  Organizador.
+  $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
+  robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
+  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+  \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
+  robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
+  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_f$ dispara para reportar o resultado da movimentação do
+  robô ao Organizador. Volta ao item 1.
+  $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+\end{enumerate} 
+A rede de Petri evidencia o motivo do uso dos PNT, com os parâmetros aumentados
+$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. Até agora, apenas as variáveis
+diretamente ligadas à rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
+integração das redes dos coordenadores fica nítida a necessidade de parâmetros
+para especificação das tarefas.
+
+O alfabeto de entrada do Remetente é dado pelo Organizador, dado como
+$\Sigma_0$. O alfabeto de saída ($\Delta_0$) são os alfabetos de entrada para
+cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
+$\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
+$\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
+
+O parâmetro que especifica as transições para uma determinada tarefa é $\sigma$.
+Para a transição $t_{mod}$, por exemplo,
+$\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
+\textrm{sendinfo}(ard_i,ptc_i)\}$, onde
+ 
