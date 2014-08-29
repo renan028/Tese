@@ -9,8 +9,8 @@ conhecimentos aplicados no controle de missão do robô DORIS, projeto que
 envolve esta dissertação. Os estudos serão apresentados de forma cronológica.
 
 Em 1986, um dos primeiros estudos em controle de missão foi desenvolvido por
-Rodney Brooks, em BROOKS, R.A. [1]. Este estudo é a base para diversos
-trabalhos atuais que envolvem controle de missão de robôs móveis. Os
+Rodney Brooks, em BROOKS, R.A. [1] (Massachusetts Institute of Technology). Este
+estudo é a base para diversos trabalhos atuais que envolvem controle de missão de robôs móveis. Os
 desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
 problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
 sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
@@ -191,8 +191,8 @@ State Machine}).
 Vale ressaltar que a conexão de diversas FSM's não é uma FSM e, dessa forma,
 Brooks acrescentou registradores e temporizadores em suas FSM.
 
-Antes de Brooks, em 1983, Elfes, A. [2],já havia idealizado uma arquitetura em
-módulos e controle distribuído a fim de atingir efetividade em processamento
+Antes de Brooks, em 1983, Elfes, A. [7] (Carnegie-Mellon, Pensilvânia),já havia
+idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
 paralelo, flexibilidade de interação com os diversos sensores, distribuir
 capacidades de decisão e flexibilidade de expansão e modificação do sistema.
 Porém o sistema de comunicação entre módulos era centralizado
@@ -200,9 +200,8 @@ Porém o sistema de comunicação entre módulos era centralizado
 Plano de Controle (\emph{Control Plan}), que o usuário deve explicitamente
 codificiar paralelismo, e os casos das exceções e condições inesperadas.
 
-Em 1989, Chatila, R.G. [3], descreve uma nova arquitetura e sistema de controle
-utilizando, assim como Brooks, módulos de forma hierárquica. A arquitetura do
-robô pode ser decomposta da seguinte forma:
+Em 1989, Chatila, R.G. [2] (Robotics And Artificial Intelligence Group,
+Toulouse), descreve uma nova arquitetura e sistema de controle utilizando, assim como Brooks, módulos de forma hierárquica. A arquitetura do robô pode ser decomposta da seguinte forma:
 \begin{itemize}
   \item Módulos de sensores: processam as saídas dos sensores. Os dados
   adquiridos por um sensor são processados pelo módulo de sensor e são tornados
@@ -234,15 +233,15 @@ compartilhados nos módulos de sensores, os automatos dos módulos de processo
 são bem simplificados e dependentes de um bloco central para resolver objetivos
 conflitantes.
 
-Em 1991, em uma pesquisa financiada pelo \emph{Center for Intelligent Robotic
-Systems for Space Exploration} (CIRSSE) da NASA, Saridis, F.Y. [3], realizou um dos
-primeiros trabalhos usando redes de Petri como módulos básicos para sistemas de
+Em 1991, Saridis, F.Y. [3] (Center for Intelligent Robotic
+Systems for Space Exploration, NASA), realizou
+um dos primeiros trabalhos usando redes de Petri como módulos básicos para sistemas de
 controle de missão, em vez de máquinas de estados finitos (Brooks).
 Alguns PNT (\emph{Petri Net Transducers}) são usados para traduzir os comandos
 gerados pelo nível de organização em algo compreensível para o nível de execução.
 
 O sistema criado por Saridis, \emph{Intelligent Mobile Robot System}(IMRS), é
-baseado na teoria de inteligência hierárquica de controle [4].
+baseado na teoria de inteligência hierárquica de controle, Saridis [4].
 Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{Saridis_1}:
 \begin{itemize}
   \item Nível organizacional (organizador de tarefas): gera tarefas de
@@ -269,8 +268,8 @@ básico de controle para seu sistema IMRS, já que as redes de Petri foram
 originalmente introduzidas para descrever as comunicações de FSM's,
 possibilitando flexibilidade e robustez. Além disso, é provado que redes de
 Petri são excelente ferramenta para modelagem de sistemas, sobretudo quando
-envolvem tarefas conflitantes ou simultâneas [5]. Os fundamentos teóricos sobre
-redes de Petri são abordados no capítulo 01 por serem essenciais para o
+envolvem tarefas conflitantes ou simultâneas, Murata, T. [5]. Os fundamentos
+teóricos sobre redes de Petri são abordados no capítulo 01 por serem essenciais para o
 entendimento desta dissertação.
 
 No trabalho de Saridis, o nível de coordenação do IMRS é composto por um remetente
@@ -416,25 +415,91 @@ As contribuições de Saridis, em [3], foram, portanto:
   robô móvel podem ser realizados com redes de Petri.
 \end{itemize} 
 
-Em 1996, Silva, V. et al [6], projetaram, desenvolveram e testaram um sistema de
-controle de missão para o MARIUS, robô autônomo submarino. \emph{A Mission
-Control System} (MCS), o conceito, aparece pela primeira vez na nomenclatura
-como um sistema que: \emph{i)} habilita o operador a definir uma missão ao
-veículo em uma linguagem de alto nível, que será traduzida em um plano de
-missão; \emph{ii)} provê ferramentas adequadas para converter um plano de missão em um
-programa de missão que pode ser verificado e executado em tempo real;
-\emph{iii)} fornece ao operador a capacidade de seguir o progresso do programa
-de missão enquanto ele é executado, e modificá-lo se necessário;
+Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
+California), introduz a terminologia de controle híbrido em seu trabalho de
+desenvolvimento do AUV Phoenix. As técnicas de controle híbrido são
+desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
+trabalhos apresentados anteriormente nesta dissertação. É a partir de Healey
+que são criados formalismo e terminologia apropriados nesse campo. O
+controle híbrido será responsável tanto pela movimentação do veículo, contínuo
+e síncrono, quanto pela sequência lógica das fases das missões, eventos
+discreto com transições assíncronas.
+
+Haley propõe uma arquitetura de software híbrida com três níveis organizacionais
+e hierárquicos, FIGURA: 
+\begin{itemize}
+  \item \textbf{Estratégico}: utiliza Prolog como linguagem de controle de
+  missão. Desenvolve os comandos que levam o veículo a executar determinada
+  missão.
+  \item \textbf{Tático}: funções na linguagem C que faz interface com os
+  predicados de Prolog e retorna \emph{TRUE / FALSE}. Este nível funciona de
+  maneira assíncrona e retém os dados da missão, além de se comunicar com o
+  nível de execução.
+  \item \textbf{Operacional}: comanda os subsistemas do veículo a ativar funções
+  de controle relacionadas ao nível tático.
+\end{itemize}
+A terminologia de Healey, essencial para os trabalhos futuros em controle missão
+é apresentada a seguir. Assumindo o conjunto de todos os atuadores disponíveis
+no veículo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
+contínuos como $X$:
+
+\textbf{Definição}: Uma Função de Controle (CF) é o uso de um subconjunto
+específico de atuadores $a_i \subset A$ com um subconjunto particular de
+sensores $s_i \subset S$ para estimar um subconjunto de estados contínuos $x_i
+\subset X$ e levar um certo subconjunto de erros $e_i$ para zero. Onde erro é
+definido como a diferença entre um valor de comando (\emph{Set Point}) e um
+estado atual estimado. A definição é análoga com a definição de Tarefa do Robô
+(\emph{Robot Task}), em Espiau, B. [9] (INRIA, França).
+
+\textbf{Definição}: Primitiva de Veículo é uma \emph{string} na linguagem de
+programação, associada a uma Função de Controle. Por exemplo,
+$Forward_Speed_Control$, controle de velocidade do veículo.
+
+\textbf{Definição}: A Terminação de uma função de controle ocorre nas seguintes
+condições:
+\begin{itemize}
+  \item Em um tempo especificado;
+  \item Quando a função positiva definida do erro, $P(\cdot)$, assume valores
+  limites especificados. Quando $b$ é um limite positivo e $F(\cdot)$ é um
+  filtro passa-baixa, a Terminação ocorre se
+  $$F(P(e)) < b$$
+\end{itemize}  
+\textbf{Definição}: Um Comportamento (B) é descrito como a execução de uma
+sequência particular de CFs, cada uma com sua terminação. O estado de realizar
+uma certa CF é um estado discreto do sistema. Um Comportamento pode ser
+representado como uma rede de Petri, por exemplo.
+
+\textbf{Definição}: Um Sistema de Controle Híbrido é um sistema de controle de
+elementos de hardware e software capaz de conduzir o veículo por um conjunto de
+Comportamentos.
+
+\textbf{Definição}: Um Plano de Missão é a sequência de Comportamentos
+conduzidos durante cada fase da missão, com tratamento de falhas.
+
+Healey define diversas Primitivas de Veículo para AUVs, mas serão estudadas as
+Primitivas do Robô MARIUS, de Silva, V., que é mais semelhante ao robô DORIS,
+objeto de estudo desta dissertação.
+
+Em 1996, Silva, V. et al [6] (Institute for Systems and Robotics, Lisboa),
+projetaram, desenvolveram e testaram um sistema de controle de missão para o
+MARIUS, robô autônomo submarino. \emph{A Mission Control System} (MCS), o
+conceito, aparece pela primeira vez na nomenclatura como um sistema que:
+\emph{i)} habilita o operador a definir uma missão ao veículo em uma linguagem
+de alto nível, que será traduzida em um plano de missão; \emph{ii)} provê
+ferramentas adequadas para converter um plano de missão em um programa de
+missão que pode ser verificado e executado em tempo real; \emph{iii)} fornece
+ao operador a capacidade de seguir o progresso do programa de missão enquanto
+ele é executado, e modificá-lo se necessário;
 
 O trabalho de Silva, V. [6], introduz novos e importantes conceitos chave para o
-MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do Veículo
-(\emph{Vechicle Primitive}), Procedimento de Missão (\emph{Mission Procedure})
+MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do
+Veículo (\emph{Vechicle Primitive}), Procedimento de Missão (\emph{Mission Procedure})
 e Programa de Missão (\emph{Mission Program}). Além disso, a arquitetura do
 veículo, por ser um AUV, possui sistemas e interconexões
 semelhantes ao robô DORIS, estudo desta dissertação.
 
 A arquitetura do veículo DORIS teve grande influência da organização do veículo
-MARIUS descrita abaixo, FIGURA:
+MARIUS descrita abaixo, figura~\ref{SILVA_1}:
 \begin{itemize}
   \item \emph{Vehicle Support System} (VSS) - Controla a distribuição de energia
   aos hardwares instalados no veículo, monitora consumo de energia e detecta
@@ -464,3 +529,12 @@ MARIUS descrita abaixo, FIGURA:
   das tarefas básicas do veículo para uma determinada missão e provê a
   recuperação em caso de falhas.
 \end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/SILVA_1.pdf}
+\caption{Arquitetura do Veículo MARIUS}
+\label{SILVA_1}
+\end{figure}
+
+
