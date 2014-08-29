@@ -441,11 +441,26 @@ MARIUS descrita abaixo, FIGURA:
   falhas de hardware, podendo enviar comandos de emergência.
   \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotação
   dos propulsores e posição dos ailerions e lemes. Os \emph{Set Points} dos
-  atuadores são dados pelo \emph{Vehicle Guidance and Control System} e os dados
-  dos atuadores são transmitidos para o \emph{Mission Control System}.
+  atuadores são dados pelo \emph{Vehicle Guidance and Control System} (VGCS) e
+  os dados dos atuadores são transmitidos para o \emph{Mission Control System}.
   \item \emph{Navigation System} (NS) - Estima posição linear e velocidade do
   veículo, orientação e velocidade angular. O sistema funde informações do
   \emph{Positioning System} (\emph{Long Baseline unit}) e \emph{Motion Sensor
   Integration System}, o qual inclui diversos sensores. As saídas do NS são
   entradas do VGCS, e enviadas ao MCS.
+  \item \emph{Vehicle Guidance and Control System} (VGCS) - Recebe como entrada
+  as trajetórias de referência pelo MCS, e os dados de navegação do NS. Suas
+  saídas são \emph{Set Points} para velocidade de rotação e outros atuadores do
+  ACS, tal que o veículo siga a trajetória desejada mesmo com incertezas e
+  distúrbios.
+  \item \emph{Communication System} (COMS) - Controla o link bidirecional usado
+  pelo operador para passar missões ao MCS, e pelo veículo para passar status de
+  missão ou estados do veículo.
+  \item \emph{Environmental Inspection System} (EIS) - Coleta dados do ambiente
+  com diversos sensores (inclusive câmeras), como temperatura, pressão, pH. É
+  controlado pelo MCS.
+  \item \emph{Data Logging System} (DLS) - Adquiri e armazena dados do veículo.
+  \item \emph{Mission Control System} (MCS) - Sequencia e sincroniza a execução
+  das tarefas básicas do veículo para uma determinada missão e provê a
+  recuperação em caso de falhas.
 \end{itemize}
