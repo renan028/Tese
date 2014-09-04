@@ -415,16 +415,6 @@ As contribuições de Saridis, em [3], foram, portanto:
   robô móvel podem ser realizados com redes de Petri.
 \end{itemize} 
 
-Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
-California), introduz a terminologia de controle híbrido em seu trabalho de
-desenvolvimento do AUV Phoenix. As técnicas de controle híbrido são
-desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
-trabalhos apresentados anteriormente nesta dissertação. É a partir de Healey
-que são criados formalismo e terminologia apropriados nesse campo. O
-controle híbrido será responsável tanto pela movimentação do veículo, contínuo
-e síncrono, quanto pela sequência lógica das fases das missões, eventos
-discreto com transições assíncronas.  
-
 Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
 que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
 combinam eventos discretos e componentes contínuos. Esses sistemas foram
@@ -432,9 +422,21 @@ estudados por duas comunidades distintas: ciência da computação e controle e
 automação. Engenheiros de controle e automação estudam sistemas dinâmicos
 (modelos) com ênfase nas teorias de estabilidade, convergência, robustez e
 introduzem sistemas de eventos discretos para mudanças no controle ou no modelo.
-A ciência da computação faz o caminho inverso, um estado em uma máquina de
+A ciência da computação faz o caminho inverso: um estado em uma máquina de
 estados representa um local de controle, onde variáveis mudam continuamente com
-o tempo, de acordo com leis de evolução.
+o tempo, de acordo com leis de evolução. A idéia controle híbrido são
+desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
+trabalhos apresentados anteriormente nesta dissertação.
+
+Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
+California), aplica técnicas de controle híbrido em seu trabalho de
+desenvolvimento do AUV Phoenix.  É a partir de Healey
+que são criados formalismo e terminologia apropriados nesse campo. O
+controle híbrido será responsável tanto pela movimentação do veículo, contínuo
+e síncrono, quanto pela sequência lógica das fases das missões, eventos
+discreto com transições assíncronas.  
+
+
 
 Haley propõe uma arquitetura de software híbrida com três níveis organizacionais
 e hierárquicos, figura~\ref{HEALEY_1}: 
@@ -457,9 +459,9 @@ e hierárquicos, figura~\ref{HEALEY_1}:
 \label{HEALEY_1}
 \end{figure}
 
-A terminologia de Healey, essencial para os trabalhos futuros em controle missão
-é apresentada a seguir. Assumindo o conjunto de todos os atuadores disponíveis
-no veículo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
+A terminologia de Healey, essencial para os trabalhos futuros em controle de
+missão, é apresentada a seguir. Assumindo o conjunto de todos os atuadores
+disponíveis no veículo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
 contínuos como $X$:
 
 \textbf{Definição}: Uma Função de Controle (CF) é o uso de um subconjunto

@@ -286,19 +286,19 @@ p\kern-.025em e}}\kern-.08em\TeX}
      \begin{center}
   \begin{flushright}
         \vskip16\p@ \baselineskip12pt
-        \eqmakebox{signture@list}{\hrulefill}\\
-        \eqmakebox{signture@list}{\protect\centering%
+        \eqmakebox{}{\hrulefill}\\
+        \eqmakebox{}{\protect\centering%
           \ \ \ \@adtitle\ \@adname\ \@adsurn, \@addegree\ \ \ }\\
         \ifthenelse{\equal{\@coadname}{\@empty}}{}{%
         \vskip26\p@ \baselineskip12pt
-        \eqmakebox{signture@list}{\hrulefill}\\
-        \eqmakebox{signture@list}{\protect\centering%
+        \eqmakebox{}{\hrulefill}\\
+        \eqmakebox{}{\protect\centering%
           \ \ \ \@coadtitle\ \@coadname\ \@coadsurn, \@coaddegree\ \ \ }\\}
         \count1=0
         \@whilenum \count1<\@examiner \do {
             \vskip26\p@ \baselineskip12pt
-        \eqmakebox{signture@list}{\hrulefill}\\
-        \eqmakebox{signture@list}{\protect\centering%
+        \eqmakebox{}{\hrulefill}\\
+        \eqmakebox{}{\protect\centering%
             \ \ \ \csname S:\the\count1 \endcsname\ \ \ }\\
             \advance\count1 by 1}
   \end{flushright}
