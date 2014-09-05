@@ -424,9 +424,32 @@ automação. Engenheiros de controle e automação estudam sistemas dinâmicos
 introduzem sistemas de eventos discretos para mudanças no controle ou no modelo.
 A ciência da computação faz o caminho inverso: um estado em uma máquina de
 estados representa um local de controle, onde variáveis mudam continuamente com
-o tempo, de acordo com leis de evolução. A idéia controle híbrido são
+o tempo, de acordo com leis de evolução. As ideias de controle híbrido são
 desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
-trabalhos apresentados anteriormente nesta dissertação.
+trabalhos apresentados anteriormente nesta dissertação. 
+
+A contribuição de Espiau foi o desenvolvimento do ORCCAD, um sistema híbrido
+para especificação, validação, simulação e implementação de aplicações
+robóticas. O sistema possui os seguintes princípios:
+\begin{itemize}
+  \item Tarefas físicas podem ser tratadas como problemas de controle, os quais
+  são resolvidos em tempo real utilizando técnicas de realimentação em controle.
+  A abordagem \emph{Task-Function} foi desenvolvida em [10].
+  \item A caracterização de uma ação física não é suficiente para definir
+  completamente a ação de um robô: tempo inicial e final devem ser considerados,
+  assim como as ações que o robô deve tomar em caso de eventos observados
+  durante a execução de alguma tarefa.
+  \item Como a performance de um sistema depende da eficiência de mecanismos em
+  tempo real no nível de operação, deve-se ter atenção particular em sua
+  especificação e verificação.
+\end{itemize}
+No sistema híbrido, o interesse do usuário final é em sua aplicação, portanto
+o sistema deve prover formalismo de alto nível para o usuário focar em
+especificação e verificação de tarefas. Por outro lado, o engenheiro
+de controle necessitará de um ambiente de programação, desenvolvimento e
+simulação para expressar suas leis de controle, as quais são encapsuladas para
+o usuário final.
+
 
 Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
 California), aplica técnicas de controle híbrido em seu trabalho de
