@@ -450,6 +450,28 @@ de controle necessitará de um ambiente de programação, desenvolvimento e
 simulação para expressar suas leis de controle, as quais são encapsuladas para
 o usuário final.
 
+No ORCCAD, duas entidades foram definidas: Tarefa do Robô (RT
+- \emph{Robot-task}) e Processo do Robô (RP - \emph{Robot Procedures}). 
+
+A Tarefa do Robô é definida como a especificação paramétrica de uma lei de
+controle elementar, i.e., a ativação de um esquema de controle invariante ao
+longo de uma tarefa, e um comportamento lógico associado com um conjunto de
+sinais (eventos) que podem ocorrer antes, durante ou após a execução da tarefa.
+A RT é composta por funções, modelos e parâmetros que aparecem em uma expressão
+analítica, em tempo contínuo, que será aplicada aos atuadores do robô para a
+execução de determinada ação física, e o comportamento lógico associado aos
+eventos, os quais podem ser:
+\begin{itemize}
+  \item Pré-condições: ocorrência necessária para a tarefa começar, como
+  condições de sincronização ou medida de sensores.
+  \item Exceções: executadas durante a execução da tarefa e pode indicar falha.
+  A ação tomada pode ser alteração de algum parâmetro, acionar outra RT
+  (matando a atual) ou fatal, levando o robô a uma área segura.
+  \item Pós-condição: normalmente associadas ao ambiente (final do curso do
+  robô). 
+\end{itemize}
+
+O Processo do Robô especifica de forma estruturada 
 
 Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
 California), aplica técnicas de controle híbrido em seu trabalho de
