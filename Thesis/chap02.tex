@@ -415,6 +415,9 @@ As contribuições de Saridis, em [3], foram, portanto:
   robô móvel podem ser realizados com redes de Petri.
 \end{itemize} 
 
+A partir de 1995, os autores começam a introduzir formalismo e terminologias
+para os sistemas que visam o controle de missão de robôs. 
+
 Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
 que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
 combinam eventos discretos e componentes contínuos. Esses sistemas foram
@@ -431,6 +434,7 @@ trabalhos apresentados anteriormente nesta dissertação.
 A contribuição de Espiau foi o desenvolvimento do ORCCAD, um sistema híbrido
 para especificação, validação, simulação e implementação de aplicações
 robóticas. O sistema possui os seguintes princípios:
+
 \begin{itemize}
   \item Tarefas físicas podem ser tratadas como problemas de controle, os quais
   são resolvidos em tempo real utilizando técnicas de realimentação em controle.
@@ -443,15 +447,15 @@ robóticas. O sistema possui os seguintes princípios:
   tempo real no nível de operação, deve-se ter atenção particular em sua
   especificação e verificação.
 \end{itemize}
+
 No sistema híbrido, o interesse do usuário final é em sua aplicação, portanto
 o sistema deve prover formalismo de alto nível para o usuário focar em
 especificação e verificação de tarefas. Por outro lado, o engenheiro
 de controle necessitará de um ambiente de programação, desenvolvimento e
 simulação para expressar suas leis de controle, as quais são encapsuladas para
-o usuário final.
-
-No ORCCAD, duas entidades foram definidas: Tarefa do Robô (RT
-- \emph{Robot-task}) e Processo do Robô (RP - \emph{Robot Procedures}). 
+o usuário final. No ORCCAD, duas entidades foram definidas: Tarefa do Robô (RT
+- \emph{Robot-task}) e Processo do Robô (RP - \emph{Robot Procedures}), as
+quais estão respectivamente ligadas aos dois tipos de usuários.
 
 A Tarefa do Robô é definida como a especificação paramétrica de uma lei de
 controle elementar, i.e., a ativação de um esquema de controle invariante ao
@@ -461,6 +465,7 @@ A RT é composta por funções, modelos e parâmetros que aparecem em uma expressão
 analítica, em tempo contínuo, que será aplicada aos atuadores do robô para a
 execução de determinada ação física, e o comportamento lógico associado aos
 eventos, os quais podem ser:
+
 \begin{itemize}
   \item Pré-condições: ocorrência necessária para a tarefa começar, como
   condições de sincronização ou medida de sensores.
@@ -471,7 +476,11 @@ eventos, os quais podem ser:
   robô). 
 \end{itemize}
 
-O Processo do Robô especifica de forma estruturada 
+O Processo do Robô especifica de forma estruturada um arranjo lógico e temporal
+de RTs de forma que um determinado objetivo seja alcançado.
+
+O sistema ORCCAD foi utilizado no robô submarino Vortex, em conjunto com o
+IFREMER \emph{Subsea Robotics Laboratory}.
 
 Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
 California), aplica técnicas de controle híbrido em seu trabalho de
@@ -480,8 +489,6 @@ que são criados formalismo e terminologia apropriados nesse campo. O
 controle híbrido será responsável tanto pela movimentação do veículo, contínuo
 e síncrono, quanto pela sequência lógica das fases das missões, eventos
 discreto com transições assíncronas.  
-
-
 
 Haley propõe uma arquitetura de software híbrida com três níveis organizacionais
 e hierárquicos, figura~\ref{HEALEY_1}: 
@@ -602,5 +609,42 @@ MARIUS descrita abaixo, figura~\ref{SILVA_1}:
 \caption{Arquitetura do Veículo MARIUS}
 \label{SILVA_1}
 \end{figure}
+
+A seguir, serão apresentados os conceitos chave de Silva, inpirados nos
+trabalhos de Espiau e Healey:\\
+
+\textbf{Tarefa do Sistema} (ST): é a especificação paramétrica de uma classe
+de algoritmos ou processos que implementam uma funcionalidade básica em um robô.
+Reque a implementação de dois módulos: \textit{i}) um \emph{módulo Funcional}
+que contém um determinado algoritmo e precesso, e transfere dados com outras
+Tarefas do Sistema e dispositivos físicos; \textit{ii}) um \emph{módulo
+Comando}, máquina de estado finito, que recebe comandos externos, produz
+mensagens de saída, e controla a seleção de algoritmos, processos, e caminhos
+dos dados para/de módulos Funcionais.
+
+Na modelagem do sistema por Silva em redes de Petri, quando uma transição é
+disparada, uma ST é executada, chamada através do seguinte cabeçalho:
+$STname(D_{mode},Din_{st},P_m)$, onde $STname$ é o nome da ST, $D_{mode}$ é uma
+string de dados de entrada que especifica um determinado algoritmo ou processo a
+ser executado, e $Din_{st}$ é um conjunto de dados numéricos que são entrada
+desses algoritmos ou processos.
+
+Os STs do MARIUS são semelhantes aos blocos da organização do veículo, FIGURA:
+\emph{Vehicle Support Task} (VST), \emph{Actuator Control Task} (ACT),
+\emph{Vehicle Navigation Task} (VNT), \emph{Motion Sensor Task} (MST),
+\emph{Guidance and Control Task} (GCT), \emph{Vehicle Communications Task}
+(VCT), \emph{Space and Time Task} (STT), \emph{Vehicle Log Taks} (VLT). 
+
+O exemplo de um cabeçalho que chama uma ST seria:
+$GCT(YAW\_AUTO,\Psi,p_{yaw\_auto})$, onde $GCT$ é o nome da ST, $YAW\_AUTO$
+seleciona um modo de operação particular que implementa um controle automático
+para guinada (\emph{yaw}), e $\Psi$ é ângulo \emph{set-Point}.
+
+\textbf{Primitiva do Veículo} (VP): é a especificação paramétrica de um modo
+de operação elementar em um robô. Corresponde a ativação lógica e sincronizada
+de um número de STs, as quais conduzem a um comportamento lógico e estrututrado
+do veículo. Assim como em 
+
+
 
 
