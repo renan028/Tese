@@ -622,28 +622,72 @@ Comando}, máquina de estado finito, que recebe comandos externos, produz
 mensagens de saída, e controla a seleção de algoritmos, processos, e caminhos
 dos dados para/de módulos Funcionais.
 
-Na modelagem do sistema por Silva em redes de Petri, quando uma transição é
+Na modelagem do sistema em redes de Petri, quando uma transição é
 disparada, uma ST é executada, chamada através do seguinte cabeçalho:
 $STname(D_{mode},Din_{st},P_m)$, onde $STname$ é o nome da ST, $D_{mode}$ é uma
 string de dados de entrada que especifica um determinado algoritmo ou processo a
 ser executado, e $Din_{st}$ é um conjunto de dados numéricos que são entrada
-desses algoritmos ou processos.
+desses algoritmos ou processos. $P_m$ é um parâmetro para associar ST com
+Primitivas do Veículo (descritos abaixo), indicando um número finito de lugares
+na rede de Petri que devem ser marcados de acordo com o tipo da saída das
+mensagens das STs.
 
-Os STs do MARIUS são semelhantes aos blocos da organização do veículo, FIGURA:
+As STs do MARIUS são semelhantes aos blocos da organização do veículo, FIGURA:
 \emph{Vehicle Support Task} (VST), \emph{Actuator Control Task} (ACT),
 \emph{Vehicle Navigation Task} (VNT), \emph{Motion Sensor Task} (MST),
 \emph{Guidance and Control Task} (GCT), \emph{Vehicle Communications Task}
 (VCT), \emph{Space and Time Task} (STT), \emph{Vehicle Log Taks} (VLT). 
 
 O exemplo de um cabeçalho que chama uma ST seria:
-$GCT(YAW\_AUTO,\Psi,p_{yaw\_auto})$, onde $GCT$ é o nome da ST, $YAW\_AUTO$
+$GCT(YAW\_AUTO,\psi,p_{yaw\_auto})$, onde $GCT$ é o nome da ST, $YAW\_AUTO$
 seleciona um modo de operação particular que implementa um controle automático
-para guinada (\emph{yaw}), e $\Psi$ é ângulo \emph{set-Point}.
+para guinada (\emph{yaw}), e $\psi$ é ângulo \emph{set-Point}.
 
 \textbf{Primitiva do Veículo} (VP): é a especificação paramétrica de um modo
 de operação elementar em um robô. Corresponde a ativação lógica e sincronizada
 de um número de STs, as quais conduzem a um comportamento lógico e estrututrado
-do veículo. Assim como em 
+do veículo. Existe um conjunto de pré-condições, recursos alocados, exceções e
+pós-condições associados às VPs, assim como as RT (Robot-Task) definidas em
+Espiau.
+
+A rede de Petri associada à VP é uma tupla de 5 parâmetros
+$(P_{VP},T_{VP},A_{VP},\omega_{VP},X_{VP})$, onde $P_{VP},T_{VP}$ e $A_{VP}$ são
+os conjuntos de lugares, transições e arcos, respectivamente, $\omega_{VP}$ é
+uma função peso, e $X_{VP_{0}}$ é a condição inicial da rede de Petri. O
+conjunto dos lugares pode ser decomposto em $P_{VP}=P_{pre}\cup P_{res}\cup
+P_{err}\cup P_{loc}\cup P{pos}$, onde $P_{pre}$, $P_{res}$, $P_{err}$,
+$P_{loc}$ e $P{pos}$ denotam os subconjuntos de lugares das pré-condições,
+recursos alocados, erros, pós-condições, e os outros estados da rede de Petri,
+respectivamente.
+
+A transição em um Processo de Missão (descrito abaixo) inicializa a execução de
+uma VP, chamada com o seguinte cabeçalho: $VPname(Din_{vp},P_m)$, onde
+$Din_{vp}$ é o conjunto de dados numéricos que são entrada da VP e $P_m$ é o
+parâmetro que associa a VP ao Processo de Missão.
+
+\textbf{Processo de Missão} (MP): é a especificação paramétrica de uma Ação de
+um sistema robótico. MP corresponde à cadeia lógica e temporal de VPs e,
+possivelmente, outras MPs, as quais, em conjunto, executam uma determinada Ação.
+
+A modelagem de MPs também pode ser em redes de Petri e é semelhante à VP, porém
+em maior alto nível. O cabeçalho é: $MPname(Din_{mp},P_m)$, onde
+$Din_{mp}$ é o conjunto de dados numéricos que são entrada do MP e $P_m$ é
+similar à VP.
+
+As VPs e MPs apresentadas por Silva, em [6], serão abordadas ao longo desta
+dissertação de metrado, por ter grande semelhança às características do robô
+DORIS, apesar de ter como enfoque UAVs. A fim de exemplificar todo o formalismo
+apresentado, a modelagem da VP
+$KeepHeading(\psi,p_{\textrm{Exit}},p_{\textrm{End}})$ será avaliada. A
+VP é responsável por levar o robô a um determinado \emph{Set-Point} ($\psi$),
+$p_{\textrm{Exit}}$ é um lugar na rede de Petri que deve ser marcado como parada
+da execução da VP e $p_{\textrm{End}}$ é um lugar que tem a informação de
+término da execução da VP. A única pré-condição para a execução da VP é a
+inicialização de todas as ST: comando
+$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. Não há pós-condições e o recurso é
+o leme: $P_{pre}=\{p_{Init}\}$, e $P_{res}=\{p_{Rudder}\}$.
+
+
 
 
 
