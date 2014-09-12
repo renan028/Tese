@@ -726,8 +726,8 @@ Após a transição $T0$:
   leme do console (operador).
 $$M
 =\{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$ 
-  \item A transição $T1$ é habilitada após a ST VCT for finalizada e
-  $P_{\textrm{cmmd\_on}}$ for marcada (token). $$M
+  \item A transição $T1$ é habilitada após a alteração da ST VCT for concluída
+  e $P_{\textrm{cmmd\_on}}$ for marcada (token). $$M
 =\{0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
 Após a transição $T1$:
 $$M
@@ -741,7 +741,8 @@ $$M
 $$M
 =\{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
   \item A transição $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$ (\emph{Motion
-  Sensor Task}) é habilitada após as STs ACT e GCT serem finalizadas.
+  Sensor Task}) é habilitada após as alterações das STs ACT e GCT serem
+  concluídas.
   $P_{\textrm{yaw\_auto}}$ e $P_{\textrm{autoon}}$ são marcados (tokens):
   $$M
 =\{0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
@@ -751,31 +752,50 @@ Após a transição
 $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$:
   $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transição $T2$ só é habilitada quando a ST MST é finalizada e
-  $P_{\textrm{yaw\_on}}$ adquire um token:
+  \item A transição $T2$ só é habilitada quando a alteração da ST MST for
+  concluída e, assim, $P_{\textrm{yaw\_on}}$ adquire um token:
     $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
 Após transição de $T2$:
 $$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
-  sistema de desvio de obstáculos e controle de rastreamento volta para o estado
-  inicial.
-  $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
-  \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
-  Organizador.
-  $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
-  robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
-  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-  \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
-  robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
-  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_f$ dispara para reportar o resultado da movimentação do
-  robô ao Organizador. Volta ao item 1.
-  $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item Em $P_7$, o robô permanece em sistema de controle em malha fechada da VP
+  KeepHeading até que o lugar $P_{\textrm{Exit}}$ seja marcado:
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+A transição $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$ é, então, habilitada. A
+ST MST é, novamente, chamada para desabilitar o envio de mensagens à GCT. Após a
+transição da $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$:
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item As transições $T3$, $GCT(YAW\_MANUAL,P_{\textrm{yaw\_manual}})$,
+  $ACT(MANUAL\_RUDDER,P_{\textrm{manual\_on}})$ e
+  $VCT(RUDDER\_CMMD,OFF,P_{\textrm{cmmd\_off}})$ alteram as STs GCT, ACT e VCT
+  para levarem ao estados manual, como era inicialmente. Os estados para isso
+  são:
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0\}$$
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\}$$  
+  \item A última transição $T5$ libera o recurso $P_{\textrm{Rudder}}$ e
+  finaliza a VP no lugar $P_{\textrm{End}}$:
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1\}$$
 \end{enumerate} 
+
+Silva desenvolveu os softwares CORAL e ATOL para implementação das VPs e STs em
+redes de Petri de forma que um usuário final, como um operador, pudesse
+facilmente criar seus MPs. A grande contribuição 
 
 
 
