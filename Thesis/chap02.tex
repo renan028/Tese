@@ -306,7 +306,7 @@ de rede de Petri para o Remetente.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\columnwidth]{figs/SARIDIS_2.pdf}
+\includegraphics[width=1\columnwidth,angle=90]{figs/SARIDIS_2.pdf}
 \caption{Estrutura do nível de coordenação com foco na rede de Petri do
 Remetente}
 \label{Saridis_2}
@@ -632,11 +632,19 @@ Primitivas do Veículo (descritos abaixo), indicando um número finito de lugares
 na rede de Petri que devem ser marcados de acordo com o tipo da saída das
 mensagens das STs.
 
-As STs do MARIUS são semelhantes aos blocos da organização do veículo, FIGURA:
+As STs do MARIUS são semelhantes aos blocos da organização do veículo,
+figura~\ref{SILVA_2}:
 \emph{Vehicle Support Task} (VST), \emph{Actuator Control Task} (ACT),
 \emph{Vehicle Navigation Task} (VNT), \emph{Motion Sensor Task} (MST),
 \emph{Guidance and Control Task} (GCT), \emph{Vehicle Communications Task}
 (VCT), \emph{Space and Time Task} (STT), \emph{Vehicle Log Taks} (VLT). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/SILVA_2.pdf}
+\caption{Tarefas de Sistema do veículo MARIUS}
+\label{SILVA_2}
+\end{figure}
 
 O exemplo de um cabeçalho que chama uma ST seria:
 $GCT(YAW\_AUTO,\psi,p_{yaw\_auto})$, onde $GCT$ é o nome da ST, $YAW\_AUTO$
@@ -676,7 +684,7 @@ similar à VP.
 
 As VPs e MPs apresentadas por Silva, em [6], serão abordadas ao longo desta
 dissertação de metrado, por ter grande semelhança às características do robô
-DORIS, apesar de ter como enfoque UAVs. A fim de exemplificar todo o formalismo
+DORIS, apesar de ter como enfoque AUVs. A fim de exemplificar todo o formalismo
 apresentado, a modelagem da VP
 $KeepHeading(\psi,p_{\textrm{Exit}},p_{\textrm{End}})$ será avaliada. A
 VP é responsável por levar o robô a um determinado \emph{Set-Point} ($\psi$),
@@ -684,11 +692,90 @@ $p_{\textrm{Exit}}$ é um lugar na rede de Petri que deve ser marcado como parada
 da execução da VP e $p_{\textrm{End}}$ é um lugar que tem a informação de
 término da execução da VP. A única pré-condição para a execução da VP é a
 inicialização de todas as ST: comando
-$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. Não há pós-condições e o recurso é
-o leme: $P_{pre}=\{p_{Init}\}$, e $P_{res}=\{p_{Rudder}\}$.
+$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. Não há pós-condições e o recurso
+alocado para a VP é o leme: $P_{\textrm{pre}}=\{p_{\textrm{Init}}\}$, e
+$P_{res}=\{p_{\textrm{Rudder}}\}$.
+A rede de Petri da VP pode ser vista na figura~\ref{SILVA_3}.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.87\columnwidth]{figs/SILVA_3.png}
+\caption{Rede de Petri da Primitiva de Veículo KeepHeading do robô MARIUS}
+\label{SILVA_3}
+\end{figure}
 
+O estado inicial da rede de Petri é: $$M
+=\{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$, cujos lugares
+são:
+$$M
+=\{P_{\textrm{KeepHeading}},P_{\textrm{Rudder}},P_{\textrm{Init}},P_0,P_1,P_{\textrm{cmmd\_on}},P_2,P_3,P_{\textrm{yaw\_auto}},P_4,P_5,P_{\textrm{auto\_on}},\ldots$$
+$$P_6,P_{\textrm{yaw\_on}},P_{\textrm{Exit}},P_7,P_8,P_{\textrm{yaw\_off}},P_9,P{10},P_{\textrm{yaw\_manual}},P_{11},P_{12},P_{\textrm{manual\_on}},\ldots$$
+$$P_{13},P_{\textrm{cmmd\_off}},P_{\textrm{success}},P_{\textrm{Rudder}},P_{\textm{End}}\}$$
 
+As suas transições são:
+\begin{enumerate}
+  \item A transição $T0$ só pode ser disparada quando o recurso leme fica
+  disponível e as ST são inicializadas:
+ $$M
+=\{1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+Após a transição $T0$:
+  $$M
+=\{0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$  
+  \item A transição $VCT(RUDDER\_CMMD,ON,P_{\textrm{cmmd\_on}})$
+  (\emph{Vehicle Communications Task}) é ST para desabilitar comandos diretos ao
+  leme do console (operador).
+$$M
+=\{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$ 
+  \item A transição $T1$ é habilitada após a ST VCT for finalizada e
+  $P_{\textrm{cmmd\_on}}$ for marcada (token). $$M
+=\{0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+Após a transição $T1$:
+$$M
+=\{0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item As transições $ACT(AUTO\_RUDDER,P_{\textrm{auto\_on}})$
+  (\emph{Actuator Control Task}) e $GCT(YAW\_AUTO,\Psi,P_{\textrm{yaw\_auto}})$
+  (\emph{Guidance and Control Task}) são ativadas paralelamente. A primeira está
+  associada à ST para habilitar o leme a receber comandos diretamente do
+  controlador. A ST GCT é requisitada para ativar o controle de guinada
+  (\emph{Yaw}) e recebe como argumento o \emph{set-point} $\psi$.
+$$M
+=\{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item A transição $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$ (\emph{Motion
+  Sensor Task}) é habilitada após as STs ACT e GCT serem finalizadas.
+  $P_{\textrm{yaw\_auto}}$ e $P_{\textrm{autoon}}$ são marcados (tokens):
+  $$M
+=\{0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+A ST MST é chamada para enviar dados dos sensores de ângulo de guinada
+periodicamente para a ST GCT.
+Após a transição
+$MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$:
+  $$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item A transição $T2$ só é habilitada quando a ST MST é finalizada e
+  $P_{\textrm{yaw\_on}}$ adquire um token:
+    $$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+Após transição de $T2$:
+$$M
+=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
+  \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
+  sistema de desvio de obstáculos e controle de rastreamento volta para o estado
+  inicial.
+  $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
+  \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
+  Organizador.
+  $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
+  robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
+  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+  \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
+  robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
+  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+  \item A transição $t_f$ dispara para reportar o resultado da movimentação do
+  robô ao Organizador. Volta ao item 1.
+  $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+\end{enumerate} 
 
 
 
