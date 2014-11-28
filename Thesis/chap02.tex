@@ -3,10 +3,10 @@
 Neste capítulo, são apresentados alguns fundamentos teóricos necessários para o
 entendimento desta dissertação e alguns dos principais trabalhos e pesquisas
 científicos relacionados ao controle de missão de robôs móveis. O objetivo deste
-levantamento bibliográfico é apresentar técnicas viáveis e aplicações de
+levantamento bibliográfico é apresentar técnicas e aplicações de
 diversos sistemas de controle de missão, e direcionar o leitor para os
 conhecimentos aplicados no controle de missão do robô DORIS, projeto que
-envolve esta dissertação. Os estudos serão apresentados de forma cronológica.
+envolve esta dissertação.
 
 Em 1986, um dos primeiros estudos em controle de missão foi desenvolvido por
 Rodney Brooks, em BROOKS, R.A. [1] (Massachusetts Institute of Technology). Este
@@ -37,9 +37,10 @@ informações podem ser redundantes, conflitantes ou complementares,
 podendo ser utilizadas para uma mesma tarefa do robô.
 Por exemplo, encoders para odometria e câmeras fixas ao robô
 podem ser utilizados para localização de forma que se complementem.
-Os sensores podem apresentar erros ou resultados conflitantes, portanto a fusão da informação de múltiplos sensores, a determinação de seus
-graus de confiabilidade e em quais tarefas devem ser considerados são
-decisões que o robô deve saber fazer.
+Os sensores podem apresentar erros ou resultados conflitantes, portanto a fusão
+da informação de múltiplos sensores, a determinação de seus graus de
+confiabilidade e em quais tarefas devem ser considerados são decisões que o
+robô deve saber fazer.
 
 Um robô deve ser robusto, isto é, em caso de falha de um sensor, o robô
 deve se adaptar e utilizar os outros sensores que ainda funcionam para realizar as
@@ -58,7 +59,8 @@ pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
 baseados em planejamento (\emph{Planning-based systems}); 2) sistemas baseados
 em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
 (\emph{hybrid systems}).
-Brooks propõe o primeiro sistema baseado em comportamentos, uma nova arquitetura que tem como objetivo descentralizar a tomada de decisão de um
+Brooks propõe o primeiro sistema baseado em comportamentos, uma nova
+arquitetura que tem como objetivo descentralizar a tomada de decisão de um
 modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
 O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
 diferente para sistema de controle de robôs móveis em estratégias de
@@ -217,7 +219,25 @@ incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
 concorrentemente com os outros, o comportamento corrente é o único estado no
 qual o veículo como um todo funcionará, são sistemas também chamados de
 \emph{non-taskable systems}. Uma tarefa não pode ser designada ao
-veículo sem reprogramação de todo o sistema. % TODO Artigo
+veículo sem reprogramação de todo o sistema. 
+
+Apenas em 1996, Bellingham e Consi do MIT
+Sea Grant AUV Laboratory [12] propuseram um controle por camadas (\emph{Layered
+Control}) a fim de resolverem o problema de escala. A diferença entre o controle
+baseado em comportamento e o de Bellingham é a restrição de
+interatividade entre camadas neste último.
+As camadas (que são referenciadas como comportamentos) são associadas com um número de
+prioridade, de forma que saídas conflitantes são resolvidas com esse número. Há
+um módulo de processamento de sensores que disponibiliza os dados aos
+comportamentos, como o \emph{Blackboard}, o que viola a premissa de
+paralelismo, mas resolve o problema de interconexões, já que antes as camadas
+superiores deveriam se conectar às inferiores para obter os dados dos sensores.
+
+A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
+em [11]. No \emph{State Configured Layered Control} (SCLC), múltiplos conjuntos
+de comportamentos simples são escolhidos de uma biblioteca de comportamentos e
+são executados em cada fase da missão. A vantagem é o número reduzido de
+comportamentos sendo executados ao mesmo tempo.
 
 Em 1989, Chatila, R.G. [2] (Robotics And Artificial Intelligence Group,
 Toulouse), descreve uma nova arquitetura e sistema de controle utilizando,
