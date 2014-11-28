@@ -208,10 +208,16 @@ Plano de Controle (\emph{Control Plan}). O usuário ainda deveria explicitamente
 codificiar paralelismo, os casos das exceções e condições inesperadas.
 
 Apesar dos pontos positivos, a arquitetura de controle de um sistema
-baseado em comportamento apresenta problemas com escala e contextualidade. O
-problema com escala é resultado das interconexões, que podem crescer de maneira
-fatorial em relação ao número de comportamentos.
-% TODO HERE
+baseado em comportamento apresenta problemas com escala e contextualização
+(\emph{situatedness}).
+O problema com escala é resultado das interconexões, que podem crescer de maneira
+fatorial em relação ao número de comportamentos. A contextualização é um
+problema de sistemas de subsunção, onde subsistemas são
+incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
+concorrentemente com os outros, o comportamento corrente é o único estado no
+qual o veículo como um todo funcionará, são sistemas também chamados de
+\emph{non-taskable systems}. Uma tarefa não pode ser designada ao
+veículo sem reprogramação de todo o sistema. % TODO Artigo
 
 Em 1989, Chatila, R.G. [2] (Robotics And Artificial Intelligence Group,
 Toulouse), descreve uma nova arquitetura e sistema de controle utilizando,
