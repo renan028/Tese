@@ -46,7 +46,7 @@ deve se adaptar e utilizar os outros sensores que ainda funcionam para realizar 
 tarefas. Ou em caso de alterações no ambiente, o robô deve ser
 capaz de cumprir determinadas funções essenciais.
 
-A extensabilidade constitui em acrescentar mais sensores e,
+A extensibilidade constitui em acrescentar mais sensores e,
 portanto, aumentar a capacidade do robô, sendo possível a execução de novas
 tarefas. Porém, existe um limite imposto pela limitação
 de processamento do robô.
@@ -55,9 +55,10 @@ A modelagem de robôs de acordo com suas principais funcionalidades e o
 desenvolvimento de novas arquiteturas para controle são o âmago no estudo
 de controle de missão de robôs móveis. Emergiram três linhas principais de
 pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
-baseados em planejamento; 2) sistemas baseados em comportamento; e 3) sistemas
-híbridos. Brooks propõe o primeiro sistema baseado em comportamentos, uma nova
-arquitetura que tem como objetivo descentralizar a tomada de decisão de um
+baseados em planejamento (\emph{Planning-based systems}); 2) sistemas baseados
+em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
+(\emph{hybrid systems}).
+Brooks propõe o primeiro sistema baseado em comportamentos, uma nova arquitetura que tem como objetivo descentralizar a tomada de decisão de um
 modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
 O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
 diferente para sistema de controle de robôs móveis em estratégias de
@@ -109,7 +110,7 @@ dados, figura~\ref{BROOKS_2}.
 \label{BROOKS_2}
 \end{figure}
 
-Os problemas apresentados por Brooks são solucionados pela nova estrutura:
+Os problemas apresentados por Brooks são solucionados pela nova arquitetura:
 \begin{itemize}
   \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
   individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
@@ -129,14 +130,15 @@ A estrutura das camadas de controle foram construídas por um conjunto de
 pequenos processadores que enviam mensagens uns para os outros. Cada processador
 é uma máquina de estado finito. A nova arquitetura e essa nova estrutura de
 camadas com eventos discretos foram a base de diversos sistemas de controle de
-missão da atualidade. A fim de melhor o entendimento desse sistema criado por
-Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
+missão da atualidade. A fim de melhorar o entendimento desse sistema criado
+por Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
 móvel.
 
 A camada de controle nível zero deve garantir que o robô não entre em contato
-com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar se
-algo se aproximar dele ou parar se algo estiver em sua trajetória. Na
-figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
+com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
+objetos que se aproximam ou parar se houver um objeto fixo em
+sua trajetória.
+Na figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
 
 \begin{figure}[H]
 \centering
@@ -151,7 +153,7 @@ Segue pequena descrição de cada módulo:
   Recebe uma mensagem \emph{Dirigir} especificando um ângulo de giro seguido por
   uma mensagem do módulo \emph{Avanço} com uma determinada magnitude. Isso faz
   com que o robô realize uma curva e vá para o estado de \emph{Avanço}.
-  \item Módulo \emph{Avanço}: comando o robô a se movimentar (atuadores), mas
+  \item Módulo \emph{Avanço}: comando faz robô se movimentar (atuadores), mas
   pára o robô se receber mensagem do módulo \emph{Colisão}. O robô fica inativo
   e mensagens do encoder é enviado ao módulo \emph{Curva}, funcionando como um
   \emph{reset}, e podendo receber novos comandos.
@@ -168,8 +170,8 @@ Segue pequena descrição de cada módulo:
 \end{itemize}
  
  A camada de controle nível 1, combinada a camada de controle nível 0, permite
- que o robô vagueie sem bater em obstáculos. A figura~\ref{BROOKS_3} mostra o
- sistema de controle aumentado pelo nível da camada 1.
+ que o robô vagueie sem colisões. A
+ figura~\ref{BROOKS_3} mostra o sistema de controle aumentado pelo nível da camada 1.
 
 \begin{figure}[H]
 \centering
@@ -178,7 +180,7 @@ Segue pequena descrição de cada módulo:
 \label{BROOKS_4}
 \end{figure}
 
-Segue pequena descrição de cada módulo:
+Segue pequena descrição de cada módulo do nível 1:
 \begin{itemize}
   \item Módulo \emph{Vaguear}: gera nova direção para o robô a cada 20 segundos.
   \item Módulo \emph{Evitar}: recebe resultado da força computada pelo nível 0
@@ -188,13 +190,13 @@ Segue pequena descrição de cada módulo:
   suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
 \end{itemize}
 
-A nova arquitetura de Brooks é robusta, permite interações dinâmicas, flexível
-para integrar novas funcionalidades, fácil para implementar e debugar, além de
-associar sistemas de eventos discretos no controle de robôs autônomos,
+A nova arquitetura de Brooks é robusta, permite interações dinâmicas, é flexível
+para integrar novas funcionalidades e fácil para implementar e debugar. Brooks
+ainda associa sistemas de eventos discretos no controle de robôs autônomos,
 utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
-State Machine}).
-Vale ressaltar que a conexão de diversas FSM's não é uma FSM e, dessa forma,
-Brooks acrescentou registradores e temporizadores em suas FSM.
+State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
+encontrada por Brooks foi acrescentar registradores e
+temporizadores em suas FSM.
 
 Antes de Brooks, em 1983, Elfes, A. [7] (Carnegie-Mellon, Pensilvânia),já havia
 idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
@@ -202,20 +204,29 @@ paralelo, flexibilidade de interação com os diversos sensores, distribuir
 capacidades de decisão e flexibilidade de expansão e modificação do sistema.
 Porém o sistema de comunicação entre módulos era centralizado
 (\emph{Blackboard}) e só realizavam uma determinada tarefa sob o comando de um
-Plano de Controle (\emph{Control Plan}), que o usuário deve explicitamente
-codificiar paralelismo, e os casos das exceções e condições inesperadas.
+Plano de Controle (\emph{Control Plan}). O usuário ainda deveria explicitamente
+codificiar paralelismo, os casos das exceções e condições inesperadas.
+
+Apesar dos pontos positivos, a arquitetura de controle de um sistema
+baseado em comportamento apresenta problemas com escala e contextualidade. O
+problema com escala é resultado das interconexões, que podem crescer de maneira
+fatorial em relação ao número de comportamentos.
+% TODO HERE
 
 Em 1989, Chatila, R.G. [2] (Robotics And Artificial Intelligence Group,
-Toulouse), descreve uma nova arquitetura e sistema de controle utilizando, assim como Brooks, módulos de forma hierárquica. A arquitetura do robô pode ser decomposta da seguinte forma:
+Toulouse), descreve uma nova arquitetura e sistema de controle utilizando,
+assim como Brooks, módulos hierárquicos. A arquitetura do robô pode ser
+decomposta da seguinte forma:
 \begin{itemize}
-  \item Módulos de sensores: processam as saídas dos sensores. Os dados
-  adquiridos por um sensor são processados pelo módulo de sensor e são tornados
+  \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
+  adquiridos por um sensor são processados pelo módulo de sensor e ficam
   disponíveis para os módulos de nível mais alto para seus próprios
   processamentos e interpretaçõs.
-  \item Unidades funcionais: realizam uma determinada função no robô. Por
-  exemplo, localização do robô, combinando visão, odometria, laser e etc.
-  \item Processos: realiza a dinâmica de malha fechada entre percpção e ação,
-  usando unidades de função. O processo é representado por uma máquina de estado
+  \item \textbf{Unidades funcionais}: realizam uma determinada função no robô.
+  Por exemplo, localização do robô combinando sensores de visão, odometria, laser e
+  etc.
+  \item \textbf{Processos}: realiza a dinâmica de malha fechada entre percepção
+  e ação, usando unidades de função. O processo é representado por uma máquina de estado
   finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
   são comandos aos atuadores.
 \end{itemize}
