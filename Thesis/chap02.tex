@@ -2,7 +2,7 @@
 
 Neste capítulo, são apresentados alguns fundamentos teóricos necessários para o
 entendimento desta dissertação e alguns dos principais trabalhos e pesquisas
-científicas relacionados ao controle de missão de robôs móveis. O objetivo deste
+científicos relacionados ao controle de missão de robôs móveis. O objetivo deste
 levantamento bibliográfico é apresentar técnicas viáveis e aplicações de
 diversos sistemas de controle de missão, e direcionar o leitor para os
 conhecimentos aplicados no controle de missão do robô DORIS, projeto que
@@ -27,37 +27,42 @@ Os múltiplos objetivos de robôs móveis podem:
   \item Ser denpendentes: objetivos de \emph{alto nível} englobam diversos
   objetivos de \emph{baixo nível}. No caso do exemplo acima, o robô que sai do
   trilho para evitar o trêm deve se manter equilibrado para não cair. Outros
-  artigos mais recentes, e que serão discutidos em outras subseções, separam
+  artigos mais recentes separam
   esses objetivos em \emph{tarefas} (objetivos de \emph{alto nível}) e
   \emph{primitivas do veículo}.
 \end{itemize}
 
-Os múltiplos sensores de um robô móvel dependem de sua aplicação, porém
-normalmente ele é provido de inúmeros sensores redundantes ou que são utilizados
-para uma mesma tarefa. Por exemplo, a utilização de encoders para odometria e
-localização, e câmeras que comparam quadros já coletados previamente também para
-localização. Os sensores podem apresentar erros ou resultados conflitantes,
-portanto a fusão da informação de múltiplos sensores, a determinação de seus
-graus de confiabilidade e onde devem ser considerados são decisões que
-o robô deve saber fazer.
+Robôs são normalmente providos de múltiplos sensores e suas diversas
+informações podem ser redundantes, conflitantes ou complementares,
+podendo ser utilizadas para uma mesma tarefa do robô.
+Por exemplo, encoders para odometria e câmeras fixas ao robô
+podem ser utilizados para localização de forma que se complementem.
+Os sensores podem apresentar erros ou resultados conflitantes, portanto a fusão da informação de múltiplos sensores, a determinação de seus
+graus de confiabilidade e em quais tarefas devem ser considerados são
+decisões que o robô deve saber fazer.
 
-Um robô deve ser robusto. Quando um sensor falha, o robô deve se
-adaptar e utilizar os outros sensores que ainda funcionam para realizar as
-tarefas. Quando o ambiente sofre alterações, o robô deve ser capaz de cumprir
-determinadas funções essenciais.
+Um robô deve ser robusto, isto é, em caso de falha de um sensor, o robô
+deve se adaptar e utilizar os outros sensores que ainda funcionam para realizar as
+tarefas. Ou em caso de alterações no ambiente, o robô deve ser
+capaz de cumprir determinadas funções essenciais.
 
 A extensabilidade constitui em acrescentar mais sensores e,
-portanto, aumentar a capacidade do robô, este pode executar novas tarefas.
-Porém, isso vai esbarrar com a limitação de processamento do robô.
+portanto, aumentar a capacidade do robô, sendo possível a execução de novas
+tarefas. Porém, existe um limite imposto pela limitação
+de processamento do robô.
 
 A modelagem de robôs de acordo com suas principais funcionalidades e o
-desenvolvimento de novas arquiteturas para seus controles são o âmago no estudo
-de controle de missão de robôs móveis. Brooks propõe uma
-nova arquitetura, como pode ser visto na figura~\ref{BROOKS_1}. O autor
-comenta que essa decomposição conduz a uma arquitetura radicalmente diferente para sistema de
-controle de robôs móveis, com diferenças radicais em estratégias de
+desenvolvimento de novas arquiteturas para controle são o âmago no estudo
+de controle de missão de robôs móveis. Emergiram três linhas principais de
+pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
+baseados em planejamento; 2) sistemas baseados em comportamento; e 3) sistemas
+híbridos. Brooks propõe o primeiro sistema baseado em comportamentos, uma nova
+arquitetura que tem como objetivo descentralizar a tomada de decisão de um
+modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
+O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
+diferente para sistema de controle de robôs móveis em estratégias de
 implementação a nível de hardware e com grandes vantagens em robustez,
-construção e teste.
+desenvolvimento e teste.
 
 \begin{figure}[H]
 \centering
@@ -68,7 +73,7 @@ construção e teste.
 
 Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
 classes de comportamentos desejados para o robô sobre todos os ambientes que ele
-pode encontrar. As classes são:
+pode encontrar. As classes definidas por Brooks são:
 \begin{enumerate}
 \setcounter{enumi}{-1}
   \item Evitar contato com objetos (estacionários ou móveis);
@@ -94,7 +99,7 @@ Controle}, correspondentes a cada nível de competência. A ideia dessa abordagem
 alterar a camada do nível anterior. Inicia-se, portanto, com a camada de
 controle para o nível zero de competência, ela é testada e não será mais alterada. Depois é
 criada a camanda de nível 1, capaz de examinar os dados da camada de nível 0 e
-injetar dados nas interfaces internas do nível 0, suprimindo seu trânsito de
+injetar dados nas interfaces internas deste nível, suprimindo seu trânsito de
 dados, figura~\ref{BROOKS_2}.
 
 \begin{figure}[H]
