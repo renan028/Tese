@@ -6,7 +6,32 @@ científicos relacionados ao controle de missão de robôs móveis. O objetivo deste
 levantamento bibliográfico é apresentar técnicas e aplicações de
 diversos sistemas de controle de missão, e direcionar o leitor para os
 conhecimentos aplicados no controle de missão do robô DORIS, projeto que
-envolve esta dissertação.
+envolve esta dissertação. 
+
+As três primeiras seções desta pesquisa bibliográfica abordam os paradigmas da
+robótica, isto é, as três arquiteturas de operação de um sistema robótica:
+paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}), paradigma
+reativo e paradigmo híbrido deliberativo/reativo. As arquiteturas serão
+apresentadas, analisadas, criticadas e exemplificadas. 
+
+\section{Paradigma Deliberativo}
+Em meados do século XX, são realizados os primeiros estudos de robôs autônomos,
+juntamente com o aparecimento da Inteligência Artificial. Em um sistema
+robótico, a IA clássica consiste em um modelo centralizado que coleta
+informações usando sensores, cria um modelo do ambiente, planeja o próximo
+movimento e executa a ação. São sistemas do tipo SPA, \emph{Sense, Plan and
+act}. Essa arquitetura de controle é clássica e abordagem é \emph{top-down},
+como na decomposição tradicional da figura~\ref{BROOKS_1}.
+
+Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford,
+criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/SHAKEY_1.png}
+\caption{Shakey robot}
+\label{SHAKEY_1}
+\end{figure}
 
 \section{Sistemas baseados em comportamento}
 
