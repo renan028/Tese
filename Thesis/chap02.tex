@@ -1,24 +1,49 @@
 \chapter{Revisão Bibliográfica}
 
-Neste capítulo, são apresentados alguns fundamentos teóricos necessários para o
-entendimento desta dissertação e alguns dos principais trabalhos e pesquisas
-científicos relacionados ao controle de missão de robôs móveis. O objetivo deste
-levantamento bibliográfico é apresentar técnicas e aplicações de
-diversos sistemas de controle de missão, e direcionar o leitor para os
-conhecimentos aplicados no controle de missão do robô DORIS, projeto que
-envolve esta dissertação. 
+A modelagem de robôs de acordo com suas principais funcionalidades e o
+desenvolvimento de novas arquiteturas para controle são o âmago no estudo de
+controle de missão de robôs móveis. Dessa forma, arquitetura robótica e controle
+de missão são conceitos relacionados, e, portanto, o cerne desta pesquisa
+bibliográfica.
 
-% TODO O que é arquitetura de um robô
+Neste capítulo, são apresentados os fundamentos teóricos necessários para o
+entendimento desta dissertação. O objetivo deste levantamento bibliográfico é
+apresentar alguns dos principais trabalhos e pesquisas científicos sobre
+arquiteturas e sistemas de controle de missão de robôs móveis. Por fim,
+o leitor é direcionado para os conhecimentos aplicados no controle de missão do
+robô DORIS, projeto que envolve esta dissertação.
+
+O conceito de arquitetura %do grego arkhétékhton, do ingles architecture, do
+% frances architecture
+ para robôs é definido de diferentes formas na
+literatura. Em \cite{arkin1998behavior}, arquitetura de robô é
+relacionada com arquitetura de software, em uma adaptação à
+arquitetura de computadores de \cite{stone1980introduction}, e definida como:
+arquitetura de robô é a disciplina dedicada ao projeto de robôs altamente específicos e individuais
+a partir de uma coleção de blocos comuns de softwares.
+Em \cite{mataric1992behavior}, a definição aborda sistemas de controle: uma
+arquitetura fornece uma maneira principal de organizar um
+sistema de controle. Contudo, a arquitetura também impõe restrições sobre a
+forma como o problema de controle pode ser resolvido. Já
+em \cite{brooks1986robust}, o autor tenta associar a arquitetura de software
+com os componentes de hardware (processadores) para compor a arquitetura
+robótica.
+
+O sistema robótico é composto por diversos elementos de hardware e
+software que são interdependentes e necessários para o funcionamento do sistema.
+Como o propósito deste trabalho é o desenvolvimento de uma arquitetura robótica para
+o DORIS, sendo considerados os aspectos físicos e lógicos do robô, entende-se
+que uma arquitetura para robô móvel descreve uma maneira de se construir o
+controle inteligente do robô, os módulos do sistema, como estes
+módulos interagem entre si e seus elementos de hardware associados.
 
 As três primeiras seções desta pesquisa bibliográfica abordam os paradigmas da
 robótica, isto é, as três arquiteturas de operação de um sistema robótico:
 paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}), paradigma
 reativo e paradigmo híbrido deliberativo/reativo. As arquiteturas serão
-apresentadas, analisadas, criticadas e exemplificadas.
+apresentadas, analisadas e exemplificadas.
 
-De acordo com a literatura, a modelagem de robôs de acordo com suas principais
-funcionalidades e o desenvolvimento de novas arquiteturas para controle são o âmago no estudo
-de controle de missão de robôs móveis. Emergiram três linhas principais de
+ Emergiram três linhas principais de
 pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
 baseados em planejamento (\emph{Planning-based systems}); 2) sistemas baseados
 em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
