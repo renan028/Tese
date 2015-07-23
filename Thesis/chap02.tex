@@ -43,11 +43,11 @@ paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}), paradigma
 reativo e paradigmo híbrido deliberativo/reativo. As arquiteturas serão
 apresentadas, analisadas e exemplificadas.
 
- Emergiram três linhas principais de
-pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
-baseados em planejamento (\emph{Planning-based systems}); 2) sistemas baseados
-em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
-(\emph{hybrid systems}). 
+%Emergiram três linhas principais de
+%pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
+%baseados em planejamento (\emph{Planning-based systems}); 2) sistemas baseados
+%em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
+%(\emph{hybrid systems}). 
 
 \section{Arquitetura Deliberativa}
 Em meados do século XX, são realizados os primeiros estudos de robôs autônomos,
@@ -70,10 +70,33 @@ criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}).
 
 \section{Arquitetura Reativa}
 
+Sistemas de arquitetura reativa também são chamados de sistemas baseados em
+comportamentos. Os robôs são programados para agir através de ativação de uma
+coleção de comportamentos primitivos de baixo nível. De acordo com
+\cite{arkin1995reactive}, as principais características de sistemas puramente
+reativos são:
+\begin{itemize}
+  \item Comportamentos são como elementos construtivos: são um par sensor-motor,
+  onde o sensor provê informação necessária para o motor executar uma ação
+  reativa, como desvio de obstáculo, atrair-se a objetivos, escapar de
+  predadores e etc.
+  \item Não há criação ou manutenção precisa do modelo do mundo. Os sistemas
+  reagem ao estímulo do mundo, extremamente útil para mundos dinâmicos e
+  hostil.
+  \item Comportamentos de animais são normalmente utilizados para modelar esses
+  sistemas.
+\end{itemize}
+
+Em 1953, Grey Walter \cite{holland1997grey} desenvolveu uma ``tartaruga''
+elétrica capaz de se movimentar pelo ambiente, evitando ameaças e atraída por
+certos objetivos. Vale observar a característica do robô de perceber baixo nível
+de bateria e procurar uma estação de recarga, que sobrepõe os outros objetivos.
+Os comportamentos são simples e não há representação abstrata do mundo:
+dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
+
 Em 1986, um dos primeiros estudos em controle de missão foi desenvolvido por
-Rodney Brooks, em BROOKS, R.A. [1] (Massachusetts Institute of Technology). Este
-estudo é a base para diversos trabalhos atuais que envolvem controle de missão de robôs móveis. Os
-desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
+Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
+trabalhos atuais que envolvem controle de missão de robôs móveis. Os desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
 problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
 sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
 suportados pela arquitetura tradicional (paradigma hierárquico) de um sistema de
@@ -113,9 +136,8 @@ tarefas. Porém, existe um limite imposto pela limitação
 de processamento do robô, já que um novo hardware (sensor) é adicionado, mas o
 processamento (computador) não é substituído e sua capacidade não é aumentada.
 
-Brooks propõe o primeiro sistema baseado em comportamentos, uma nova
-arquitetura que tem como objetivo descentralizar a tomada de decisão de um
-modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
+Brooks propõe um dos primeiros sistemas baseados em comportamentos, uma
+arquitetura que tem como objetivo descentralizar a tomada de decisão de um modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
 O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
 diferente para sistema de controle de robôs móveis em estratégias de
 implementação a nível de hardware e com grandes vantagens em robustez,
@@ -255,7 +277,7 @@ State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
 encontrada por Brooks foi acrescentar registradores e
 temporizadores em suas FSM.
 
-Antes de Brooks, em 1983, Elfes, A. [7] (Carnegie-Mellon, Pensilvânia),já havia
+Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
 idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
 paralelo, flexibilidade de interação com os diversos sensores, distribuir
 capacidades de decisão e flexibilidade de expansão e modificação do sistema.
@@ -268,15 +290,16 @@ Apesar dos pontos positivos, a arquitetura de controle de um sistema
 baseado em comportamento apresenta problemas com escala e contextualização
 (\emph{situatedness}).
 O problema com escala é resultado das interconexões, que podem crescer de maneira
-fatorial em relação ao número de comportamentos. A contextualização é um
+fatorial em relação ao número de comportamentos. 
+A contextualização é um
 problema de sistemas de subsunção, onde subsistemas são
 incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
 concorrentemente com os outros, o comportamento corrente é o único estado no
-qual o veículo como um todo funcionará, são sistemas também chamados de
+qual o veículo como um todo funcionará. São sistemas também chamados de
 \emph{non-taskable systems}. Uma tarefa não pode ser designada ao
-veículo sem reprogramação de todo o sistema. 
+veículo sem reprogramação de todo o sistema.  
 
-Apenas em 1996, Bellingham e Consi do MIT Sea Grant AUV Laboratory [12]
+Apenas em 1996, Bellingham e Consi \cite{bellingham1994second}
 propuseram um controle por camadas (\emph{Layered Control}) a fim de resolver o
 problema de escala. A diferença entre o controle baseado em comportamento e o de
 Bellingham é a restrição de interatividade entre camadas.
@@ -289,13 +312,11 @@ paralelismo, mas resolve o problema de interconexões, já que antes as camadas
 superiores deveriam se conectar às inferiores para obter os dados dos sensores.
 
 A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
-em [11]. No \emph{State Configured Layered Control} (SCLC), múltiplos conjuntos
-de comportamentos simples são escolhidos de uma biblioteca de comportamentos e
-são executados em cada fase da missão. A vantagem é o número reduzido de
+\cite{bennett2000behavior}. No \emph{State Configured Layered Control} (SCLC),
+múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca de comportamentos e são executados em cada fase da missão. A vantagem é o número reduzido de
 comportamentos sendo executados ao mesmo tempo.
 
-Em 1989, Chatila, R.G. [2] (Robotics And Artificial Intelligence Group,
-Toulouse), descreve uma nova arquitetura e sistema de controle utilizando,
+Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e sistema de controle utilizando,
 assim como Brooks, módulos hierárquicos. A arquitetura do robô pode ser
 decomposta da seguinte forma:
 \begin{itemize}
@@ -335,15 +356,15 @@ conflitantes.
 
 \section{Arquitetura híbrida deliberativa/reativa}
 
-Em 1991, Saridis, F.Y. [3] (Center for Intelligent Robotic
-Systems for Space Exploration, NASA), realizou
+Em 1991, Saridis \cite{wang1991petri} realizou
 um dos primeiros trabalhos usando redes de Petri como módulos básicos para sistemas de
 controle de missão, em vez de máquinas de estados finitos.
 Alguns PNT (\emph{Petri Net Transducers}) são usados para traduzir os comandos
 gerados pelo nível de organização em algo compreensível para o nível de execução.
 
 O sistema criado por Saridis, \emph{Intelligent Mobile Robot System}(IMRS), é
-baseado na teoria de inteligência hierárquica de controle, Saridis [4].
+baseado na teoria de inteligência hierárquica de controle
+\cite{saridis1988analytical}.
 Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{Saridis_1}:
 \begin{itemize}
   \item Nível organizacional (organizador de tarefas): gera tarefas de
@@ -365,14 +386,15 @@ Portanto, o IMRS possui a seguinte arquitetura, figura~\ref{Saridis_1}:
 \label{Saridis_1} 
 \end{figure}
 
-A grande contribuição de Saridis foi a utilização de redes de Petri como módulo
-básico de controle para seu sistema IMRS, já que as redes de Petri foram
-originalmente introduzidas para descrever as comunicações de FSM's,
-possibilitando flexibilidade e robustez. Além disso, é provado que redes de
-Petri são excelente ferramenta para modelagem de sistemas, sobretudo quando
-envolvem tarefas conflitantes ou simultâneas, Murata, T. [5]. Os fundamentos
-teóricos sobre redes de Petri são abordados no capítulo 01 por serem essenciais para o
-entendimento desta dissertação.
+A grande contribuição de Saridis foi a arquitetura, que cria um nível
+organizacional, separando o nível do desenvolvedor de baixo nível e um
+nível de alto nível para um operador (usuário). Isso foi facilitado
+com a introdução de redes de Petri como módulo básico de controle
+para seu sistema IMRS. As redes de Petri foram originalmente introduzidas
+para descrever as comunicações de FSM's, possibilitando flexibilidade e
+robustez. Além disso, é provado que redes de Petri são excelente ferramenta para
+modelagem de sistemas, sobretudo quando envolvem tarefas conflitantes ou
+simultâneas, Murata \cite{murata1989petri}. 
 
 No trabalho de Saridis, o nível de coordenação do IMRS é composto por um remetente
 (\emph{Dispatcher}) e três coordenadores: sistema de visão (VS), desvio de
@@ -630,7 +652,7 @@ estado atual estimado. A definição é análoga com a definição de Tarefa do Robô
 programação, associada a uma Função de Controle. Por exemplo,
 $Forward_Speed_Control$, controle de velocidade do veículo.
 
-\textbf{Definição}: A Terminação de uma função de controle ocorre nas seguintes
+\textbf{Definição}: O Término de uma função de controle ocorre nas seguintes
 condições:
 \begin{itemize}
   \item Em um tempo especificado;
