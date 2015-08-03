@@ -58,14 +58,15 @@ comparadas e analisadas.
 %em comportamento (\emph{Behavior-based systems}); e 3) sistemas híbridos
 %(\emph{hybrid systems}). 
 
-\section{Arquitetura Deliberativa}
+\section{Paradigma hierárquico/deliberativa}
 Em meados do século XX, são realizados os primeiros estudos de robôs autônomos,
 juntamente com o aparecimento da Inteligência Artificial (IA). Em um sistema
 robótico, a IA clássica consiste em um modelo centralizado que coleta
 informações usando sensores, cria um modelo do ambiente, planeja o próximo
 movimento e executa a ação. São sistemas do tipo \emph{Sense, Plan and
 act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
-\emph{top-down}, como na decomposição tradicional da figura~\ref{BROOKS_1}.
+\emph{top-down} (hierárquica), como na decomposição tradicional da
+figura~\ref{BROOKS_1}.
 
 De acordo com Marvin Minsky, uma máquina tenderia a criar, por si só, um modelo
 abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
@@ -73,23 +74,21 @@ primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
 experimentá-las externamente. Seria como realizar uma simulação interna
 e, caso funcionasse, realizá-la no mundo real.
 
-A abordagem deliberativa simula, de certa forma, o processo de planejamento e
-tomada de decisão do ser humano. Há um núcleo, o cérebro, que processa todos os
-dados sensorias e armazena o mundo, isto é, o ambiente em que está inserido,
-simbolicamente, geometricamentede ou outras formas. Além disso, ele planeja todas as ações para
-uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
-também, sensores que enviam suas novas informações periodicamente para o núcleo,
-como a visão, audição e outros, atualizando o mundo. E há atuadores, como os
-músculos, necessários para a realização das tarefas.
-
-É fácil observar que a arquitetura deliberativa é dependende do
-modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
-utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
-custosa devido às atualizações e ao replanejamento.
-
-Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford,
+\subsection{Robôs deliberativos}
+Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford
 criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}). Foi
 desenvolvida uma inteligência artificial chamada STRIPS.
+
+Em 1977, começou a ser desenvolvido o projeto HILARE, no Laboratoire d'Automatique et
+d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
+medir distância, sendo possível atualizar o seu mundo com acurácia. Seu mundo
+era representado por modelos geométricos e um modelo relacional que expressava a
+conectividade dos quartos e corredores (simbólico) \cite{norelis1989control}.
+
+Também em 1977, o Stanford Cart foi criado por Moravec para teste de visão
+para navegação e desvio de obstáculos \cite{moravec1977towards}. Os obstáculos
+eram identificados pelo robô durante a operação e representados em seu mundo
+como esferas. O mundo também era representado simbolicamente por grafos.
 
 \begin{figure}[H]
 \centering
@@ -97,6 +96,25 @@ desenvolvida uma inteligência artificial chamada STRIPS.
 \caption{Shakey robot}
 \label{SHAKEY_1}
 \end{figure}
+
+\subsection{Controles de missão deliberativos}
+Albus foi o pioneiro a desenvolver teorias em controle de missão deliberativo
+em seu trabalho \cite{albus1991outline}.
+
+\subsection{Análise crítica}
+A abordagem deliberativa simula, de certa forma, o processo de planejamento e
+tomada de decisão do ser humano. Há um núcleo (cérebro) que
+processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que
+está inserido, de maneira simbolica, geométrica ou outras.
+Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
+também, sensores que enviam suas novas informações periodicamente para o núcleo,
+(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
+atuadores (músculos) necessários para a realização das tarefas.
+
+É fácil observar que a arquitetura deliberativa é dependente do
+modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
+utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
+custosa devido às atualizações e ao replanejamento.
 
 \section{Arquitetura Reativa}
 
