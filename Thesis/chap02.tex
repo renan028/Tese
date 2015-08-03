@@ -1,7 +1,7 @@
 \chapter{Revisão Bibliográfica}
 
 A modelagem de robôs de acordo com suas principais funcionalidades e o
-desenvolvimento de novas arquiteturas para controle são o âmago no estudo de
+desenvolvimento de novas arquiteturas são o âmago no estudo de
 controle de missão de robôs móveis. Dessa forma, arquitetura robótica e controle
 de missão são conceitos relacionados, e, portanto, o cerne desta pesquisa
 bibliográfica.
@@ -23,7 +23,7 @@ arquitetura de robô é a disciplina dedicada ao projeto de robôs altamente especí
 a partir de uma coleção de blocos comuns de softwares.
 Em \cite{mataric1992behavior}, a definição aborda sistemas de controle: uma
 arquitetura fornece uma maneira principal de organizar um
-sistema de controle. Contudo, a arquitetura também impõe restrições sobre a
+sistema de controle, contudo, a arquitetura também impõe restrições sobre a
 forma como o problema de controle pode ser resolvido. Já
 em \cite{brooks1986robust}, o autor tenta associar a arquitetura de software
 com os componentes de hardware (processadores) para compor a arquitetura
@@ -37,11 +37,20 @@ que uma arquitetura para robô móvel descreve uma maneira de se construir o
 controle inteligente do robô, os módulos do sistema, como estes
 módulos interagem entre si e seus elementos de hardware associados.
 
+De acordo com \cite{siegwart2004autonomous}, os componentes básicos de uma
+arquitetura para robôs são classificados em três grupos: \textit{Percepção}, que
+envolve as atividades de interpretação e integração dos sensores;
+\textit{Planejamento} de tarefas, sincronização,
+e o monitoramento da execução de todas as atividades do robô; \textit{Atuação},
+que envolve as atividades de execução dos movimentos, ações do robô e controle
+dos atuadores.
+
 As três primeiras seções desta pesquisa bibliográfica abordam os paradigmas da
 robótica, isto é, as três arquiteturas de operação de um sistema robótico:
-paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}), paradigma
-reativo e paradigmo híbrido deliberativo/reativo. As arquiteturas serão
-apresentadas, analisadas e exemplificadas.
+paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}); paradigma
+reativo; e paradigmo híbrido deliberativo/reativo. As seções apresentam e
+exemplificam as arquiteturas pela ótica de diversos autores, e são
+comparadas e analisadas.
 
 %Emergiram três linhas principais de
 %pensamento para arquiteturas de controle em \emph{alto nível}: 1) sistemas
@@ -58,8 +67,29 @@ movimento e executa a ação. São sistemas do tipo \emph{Sense, Plan and
 act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
 \emph{top-down}, como na decomposição tradicional da figura~\ref{BROOKS_1}.
 
+De acordo com Marvin Minsky, uma máquina tenderia a criar, por si só, um modelo
+abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
+primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
+experimentá-las externamente. Seria como realizar uma simulação interna
+e, caso funcionasse, realizá-la no mundo real.
+
+A abordagem deliberativa simula, de certa forma, o processo de planejamento e
+tomada de decisão do ser humano. Há um núcleo, o cérebro, que processa todos os
+dados sensorias e armazena o mundo, isto é, o ambiente em que está inserido,
+simbolicamente, geometricamentede ou outras formas. Além disso, ele planeja todas as ações para
+uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
+também, sensores que enviam suas novas informações periodicamente para o núcleo,
+como a visão, audição e outros, atualizando o mundo. E há atuadores, como os
+músculos, necessários para a realização das tarefas.
+
+É fácil observar que a arquitetura deliberativa é dependende do
+modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
+utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
+custosa devido às atualizações e ao replanejamento.
+
 Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford,
-criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}).
+criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}). Foi
+desenvolvida uma inteligência artificial chamada STRIPS.
 
 \begin{figure}[H]
 \centering
