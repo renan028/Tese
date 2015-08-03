@@ -98,8 +98,37 @@ como esferas. O mundo também era representado simbolicamente por grafos.
 \end{figure}
 
 \subsection{Controles de missão deliberativos}
-Albus foi o pioneiro a desenvolver teorias em controle de missão deliberativo
-em seu trabalho \cite{albus1991outline}.
+Albus foi o pioneiro a desenvolver teorias em controle de missão deliberativo,
+em seu trabalho \cite{albus1991outline}. Sua grande contribuição foi a
+formalização e definição de diversos termos amplamente utilizados em automação e
+controle. Dentre outros, destaca-se o teorema de que há quatro sistemas que
+compõem a inteligência: processamento de sensores, modelo do mundo, geração de
+comportamentos e julgamento de valor. As entradas desses elementos são os
+sensores e suas saídas são os atuadores:
+
+\begin{itemize}
+  \item Atuadores: as saídas de um sistema inteligente pe produzida por
+  atuadores, como mover, posicionar braços, pernas, mãos, olhos e etc. Os
+  atuadores naturais são os músculos e as glândulas, já os atuadores de máquinas
+  são motores, pistões e válvulas.
+  \item Sensores: são as entradas de um sistema inteligente, como sensores de
+  força, torque, posição, velocidade, vibração, acústico, gases, temperatura e
+  muitos outros. Monitoram o mundo e o estado interno do sistema, e provê dados
+  ao sistema de processamento sensorial.
+  \item Processamento sensorial: sistema que compara novas observações com a
+  expectativa interna do modelo do mundo. Integra e armazena as diferenças e
+  semelhanças encontradas, a fim de reconhecer padrões, objetos e relações no
+  mundo.
+  \item Modelo do mundo: é a melhor estimativa que o sistema inteligente possui
+  do mundo, e atualizado pelo processamento sensorial. É um banco de dados com
+  todo o conhecimento do mundo e contém uma capacidade de simulação que gera expectativas e predições. O modelo do mundo
+  pode prover informações do passado, presente e prevê estados futuros.
+  Os dados são importantes para: o gerador de comportamentos escolher o plano
+  adequado para execução das ações; o processamento sensorial fazer correlações,
+  comparação de modelos, e reconhecimento de objetos, estados e eventos; e o
+  sistema de julgamento de valor computar valores de custo, benefício, risco,
+  incerteza, importância e outros.
+\end{itemize}
 
 \subsection{Análise crítica}
 A abordagem deliberativa simula, de certa forma, o processo de planejamento e
