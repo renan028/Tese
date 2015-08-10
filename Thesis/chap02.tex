@@ -67,6 +67,7 @@ movimento e executa a ação. São sistemas do tipo \emph{Sense, Plan and
 act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
 \emph{top-down} (hierárquica), como na decomposição tradicional da
 figura~\ref{BROOKS_1}.
+%TODO: Mudar essa figura
 
 De acordo com Marvin Minsky, uma máquina tenderia a criar, por si só, um modelo
 abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
@@ -98,6 +99,15 @@ como esferas. O mundo também era representado simbolicamente por grafos.
 \end{figure}
 
 \subsection{Arquiteturas deliberativas}
+As arquiteturas deliberativas são sistemas hierárquicos com a lógica SPA. São
+utilizados em sistemas robóticos até hoje, quando a aplicação favorece seu uso e
+devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
+NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
+Robot System} de Saridis.
+%TODO:  Falar de hierarquia
+
+\subsubsection{Modelo de Albus}
+
 Albus foi o pioneiro e mais influente autor de teorias em arquiteturas
 deliberativas, que pode ser vista em \cite{albus1991outline}. Sua
 grande contribuição foi a formalização e definição de diversos termos
@@ -140,7 +150,16 @@ As relações entre os elementos do sistema inteligente estão representados na
 figura~\ref{albus}.  Esses elementos e suas relações possibilitaram a criação de
 diversas arquiteturas.
 
-O NASREM, por exemplo, \cite{albus1989nasa} foi uma arquitetura utilizada pela
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/albus.pdf}
+\caption{Arquitetura de Albus para sistemas deliberativos.}
+\label{albus}
+\end{figure}
+
+
+\subsubsection{NASREM}
+O NASREM \cite{albus1989nasa} foi uma arquitetura utilizada pela
 NASA e possuía uma arquitetura com seis níveis de
 funcionalidade(figura~\ref{nasrem}):
 \begin{enumerate}
@@ -161,18 +180,6 @@ funcionalidade(figura~\ref{nasrem}):
  substituir as entradas de sensores, modelo do mundo e outros. Dessa forma, o
  nível de autonomia do robô pode ser desenvolvido de forma incremental.
  
- Outro exemplo de arquitetura deliberativa é o \textit{Nested Hierarchical
-Controllers} (NHC), que consiste também em seis níveis hierárquicos:
-planejador de alto nível, navegador, piloto, monitor de trajetória, controlador,
-e sistema de controle de baixo nível. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\columnwidth]{figs/albus.pdf}
-\caption{Arquitetura de Albus para sistemas deliberativos.}
-\label{albus}
-\end{figure}
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/NASREM.pdf}
@@ -180,10 +187,17 @@ e sistema de controle de baixo nível.
 \label{nasrem}
 \end{figure}
 
-Em 1991, Saridis \cite{wang1991petri} cria o sistema \emph{Intelligent Mobile
+\subsubsection{\textit{Nested Hierarchical Controllers}}
+O \textit{Nested Hierarchical Controllers} (NHC) consiste também em seis
+níveis hierárquicos: planejador de alto nível, navegador, piloto, monitor de
+trajetória, controlador, e sistema de controle de baixo nível.
+%TODO: Falar mais do NHC 
+
+\subsubsection{\textit{Intelligent Mobile Robot System}}
+Em 1991, Saridis \cite{wang1991petri} cria o \emph{Intelligent Mobile
 Robot System} (IMRS) baseado na teoria de inteligência hierárquica de controle
 \cite{saridis1988analytical}. Saridis utiliza redes de Petri como módulos
-básicos da arquitetura e são usadas para traduzir os comandos
+básicos da arquitetura, e são usadas para traduzir os comandos
 gerados pelo nível de organização em algo compreensível para o nível de execução.
 
 O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
@@ -266,11 +280,11 @@ As suas transições são:
   $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
   visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point},$O_{VS}$,
-  adquiri um token, habilitando a transição $t_{PP}$ do Remetente. 
+  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+  adquire um token, habilitando a transição $t_{PP}$ do Remetente. 
   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-  Vale observar as características que Brooks já utilizava em máquinas de estado
-  como inibidores, supressores e níveis de competência.
+  Vale observar que não é possível modelar essas características com máquinas de
+  estado sem a utilização de recursos extras como inibidores e supressores.
   \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
   $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
   otimização. $t_{pp}$ não pode ser disparada novamente até completar um
@@ -278,7 +292,7 @@ As suas transições são:
   $IS_{PP}$.
   $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
   Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
-  Point},$O_{PP}$, adquiri um token, habilitando a transição $t_{ssd}$ do
+  Point}, $O_{PP}$, adquire um token, habilitando a transição $t_{ssd}$ do
   Remetente.
   $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
   \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
@@ -290,8 +304,8 @@ As suas transições são:
   transição $t_{mod}$ não pode ser disparada novamente até completar mais um
   ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point},$O_{VS}$,
-  adquiri um token, habilitando a transição $t_{moac}$ do Remetente. 
+  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+  adquire um token, habilitando a transição $t_{moac}$ do Remetente. 
   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
   \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
   e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
@@ -299,7 +313,7 @@ As suas transições são:
   ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
   Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
-  Point},$O_{OATC}$, adquiri um token, habilitando a transição $t_{ssd}$ do
+  Point}, $O_{OATC}$, adquire um token, habilitando a transição $t_{mte}$ do
   Remetente.
   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
   \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
@@ -390,7 +404,7 @@ reativos são:
   predadores e etc.
   \item Não há criação ou manutenção precisa do modelo do mundo. Os sistemas
   reagem ao estímulo do mundo, extremamente útil para mundos dinâmicos e
-  hostil.
+  hostis.
   \item Comportamentos de animais são normalmente utilizados para modelar esses
   sistemas.
 \end{itemize}
