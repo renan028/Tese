@@ -189,9 +189,21 @@ funcionalidade(figura~\ref{nasrem}):
 
 \subsubsection{\textit{Nested Hierarchical Controllers}}
 O \textit{Nested Hierarchical Controllers} (NHC) consiste também em seis
-níveis hierárquicos: planejador de alto nível, navegador, piloto, monitor de
-trajetória, controlador, e sistema de controle de baixo nível.
-%TODO: Falar mais do NHC 
+níveis hierárquicos: planejador da missão, navegador, piloto, monitor de
+trajetória, controlador, e sistema de controle de baixo nível. Há também
+constante atualização do modelo do mundo por um sistema de sensoriamento.
+
+O planejamento é decomposto em planejador da missão, navegador e piloto e seus
+módulos são executados sequencialmente, tornando-se mais específico e detalhado.
+A lógica é hierárquica: o planejador de missão envia trechos da missão para o
+navegador, o qual envia trechos de trajetória para o piloto, que determina ações
+ao controlador de baixo nível. A utilização do mapa interno do robô por cada
+módulo é diferente, enquanto o planejador usa o mapa global, o piloto recebe
+informações locais. Vale observar que, quando o modelo do mundo é atualizado,
+muitas vezes não há necessidade de o planejador atualizar toda a missão e
+recomeçar o ciclo de planejamento, apenas o piloto pode recalcular a trajetória
+local. 
+%TODO: FIGURA 
 
 \subsubsection{\textit{Intelligent Mobile Robot System}}
 Em 1991, Saridis \cite{wang1991petri} cria o \emph{Intelligent Mobile
@@ -397,6 +409,7 @@ comportamentos. Os robôs são programados para agir através de ativação de uma
 coleção de comportamentos primitivos de baixo nível. De acordo com
 \cite{arkin1995reactive}, as principais características de sistemas puramente
 reativos são:
+
 \begin{itemize}
   \item Comportamentos são como elementos construtivos: são um par sensor-motor,
   onde o sensor provê informação necessária para o motor executar uma ação
@@ -409,6 +422,10 @@ reativos são:
   sistemas.
 \end{itemize}
 
+
+%TODO: continuar explicação de sistemas reativos
+
+\subsection{Robôs reativos}
 Em 1953, Grey Walter \cite{holland1997grey} desenvolveu uma ``tartaruga''
 elétrica capaz de se movimentar pelo ambiente, evitando ameaças e atraída por
 certos objetivos. Vale observar a característica do robô de perceber baixo nível
@@ -416,10 +433,11 @@ de bateria e procurar uma estação de recarga, que sobrepõe os outros objetivos.
 Os comportamentos são simples e não há representação abstrata do mundo:
 dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
 
-Em 1986, um dos primeiros estudos em controle de missão foi desenvolvido por
+\subsection{Arquiteturas reativas}
+Em 1986, um dos primeiros estudos em sistemas reativos foi desenvolvido por
 Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
-trabalhos atuais que envolvem controle de missão de robôs móveis. Os desafios de robôs autônomos apontados por Brooks e que ainda ilustram os
-problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
+trabalhos atuais que envolvem robôs reativos móveis. Os desafios de
+robôs autônomos apontados por Brooks e que ainda ilustram os problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
 sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
 suportados pela arquitetura tradicional (paradigma hierárquico) de um sistema de
 controle.
@@ -472,6 +490,7 @@ desenvolvimento e teste.
 \label{BROOKS_1}
 \end{figure}
 
+\subsubsection{Arquitetura de subsunção}
 Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
 classes de comportamentos desejados para o robô sobre todos os ambientes que ele
 pode encontrar. As classes definidas por Brooks são:
