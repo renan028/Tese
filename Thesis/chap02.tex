@@ -104,7 +104,6 @@ utilizados em sistemas robóticos até hoje, quando a aplicação favorece seu uso e
 devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
 NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
 Robot System} de Saridis.
-%TODO:  Falar de hierarquia
 
 \subsubsection{Modelo de Albus}
 
@@ -209,7 +208,7 @@ local.
 Em 1991, Saridis \cite{wang1991petri} cria o \emph{Intelligent Mobile
 Robot System} (IMRS) baseado na teoria de inteligência hierárquica de controle
 \cite{saridis1988analytical}. Saridis utiliza redes de Petri como módulos
-básicos da arquitetura, e são usadas para traduzir os comandos
+básicos da arquitetura para traduzir os comandos
 gerados pelo nível de organização em algo compreensível para o nível de execução.
 
 O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
@@ -238,8 +237,8 @@ O nível de coordenação do IMRS é composto por um remetente
 obstáculo e controle de rastreamento (OATC), e planejamento de trajetórias (PP).
 Com o modelo de redes de Petri não é possível implementar o esquema de linguagem de
 decisão para descrever a tradução de tarefas entre remetente e coordenadores.
-Portanto, \emph{Petri Net transducer} (PNT) foram introduzidos como um
-tradutor de linguagem (protocolo): $PNT = (N,\Sigma,
+Portanto, os \emph{Petri Net Transducers} (PNTs) foram introduzidos como
+tradutores de linguagem (protocolo): $PNT = (N,\Sigma,
 \Delta, \sigma, \mu, F)$. Onde:
 \begin{itemize}
 	\item A rede de Petri $N=(P,T,I,O)$, $P$ lugares, $T$
@@ -277,7 +276,7 @@ O estado inicial da rede de Petri é: $$M
 =\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
 =\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
 $$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
-O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ .
+O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ 
 As suas transições são:
 \begin{enumerate}
   \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
@@ -391,7 +390,7 @@ simultâneas, Murata \cite{murata1989petri}.
 A abordagem deliberativa simula, de certa forma, o processo de planejamento e
 tomada de decisão do ser humano. Há um núcleo (cérebro) que
 processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que
-está inserido, de maneira simbolica, geométrica ou outras.
+está inserido, de maneira simbólica, geométrica ou outras.
 Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
 também, sensores que enviam suas novas informações periodicamente para o núcleo,
 (órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
@@ -427,9 +426,10 @@ reativos são:
 
 \subsection{Robôs reativos}
 Em 1953, Grey Walter \cite{holland1997grey} desenvolveu uma ``tartaruga''
-elétrica capaz de se movimentar pelo ambiente, evitando ameaças e atraída por
-certos objetivos. Vale observar a característica do robô de perceber baixo nível
-de bateria e procurar uma estação de recarga, que sobrepõe os outros objetivos.
+elétrica capaz de se movimentar pelo ambiente, evitando luz intensa
+(``ameaças'') e atraída por certos objetivos. Vale observar a característica do robô de perceber baixo nível
+de bateria e procurar uma estação de recarga, comportamento que se sobrepõe aos
+outros.
 Os comportamentos são simples e não há representação abstrata do mundo:
 dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
 
