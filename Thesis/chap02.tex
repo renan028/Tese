@@ -401,7 +401,7 @@ modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
 utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
 custosa devido às atualizações e ao replanejamento.
 
-\section{Arquitetura Reativa}
+\section{Paradigma reativo}
 
 Sistemas de arquitetura reativa também são chamados de sistemas baseados em
 comportamentos. Os robôs são programados para agir através de ativação de uma
@@ -421,19 +421,10 @@ reativos são:
   sistemas.
 \end{itemize}
 
+Dessa forma, controle reativo é uma técnica que une percepção e ação,
+tipicamente no contexto de comportamentos motores, para produzir respostas
+robóticas em tempo real em mundos dinâmicos e não estruturados.
 
-%TODO: continuar explicação de sistemas reativos
-
-\subsection{Robôs reativos}
-Em 1953, Grey Walter \cite{holland1997grey} desenvolveu uma ``tartaruga''
-elétrica capaz de se movimentar pelo ambiente, evitando luz intensa
-(``ameaças'') e atraída por certos objetivos. Vale observar a característica do robô de perceber baixo nível
-de bateria e procurar uma estação de recarga, comportamento que se sobrepõe aos
-outros.
-Os comportamentos são simples e não há representação abstrata do mundo:
-dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
-
-\subsection{Arquiteturas reativas}
 Em 1986, um dos primeiros estudos em sistemas reativos foi desenvolvido por
 Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
 trabalhos atuais que envolvem robôs reativos móveis. Os desafios de
@@ -489,6 +480,27 @@ desenvolvimento e teste.
 \caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
 \label{BROOKS_1}
 \end{figure}
+
+\subsection{Robôs reativos}
+Antes mesmo de Brooks, ou seja, da formalização de toda a teoria em sistemas
+reativos, simples robôs eram criados na lógica de controle reativo e de
+comportamentos. Em 1953, por exemplo, Grey Walter \cite{holland1997grey}
+desenvolveu uma ``tartaruga'' elétrica capaz de se movimentar pelo ambiente,
+evitando luz intensa (``ameaças'') e atraída por certos objetivos. Vale
+observar a característica do robô de perceber baixo nível de bateria e procurar
+uma estação de recarga, comportamento que se sobrepõe aos outros. Os
+comportamentos são simples e não há representação abstrata do mundo:
+dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
+
+Em 1984, veículos simples e puramente reativos com os pares clássicos
+sensor-motor foram desenvolvidos pelo psicologista Braitenberg
+\citep{braitenberg1986vehicles}, a fim de simular sentimentos, como covardia,
+agressividade e outros. 
+
+
+
+\subsection{Arquiteturas reativas}
+
 
 \subsubsection{Arquitetura de subsunção}
 Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
