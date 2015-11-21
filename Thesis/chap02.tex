@@ -36,6 +36,10 @@ o DORIS, sendo considerados os aspectos físicos e lógicos do robô, entende-se
 que uma arquitetura para robô móvel descreve uma maneira de se construir o
 controle inteligente do robô, os módulos do sistema, como estes
 módulos interagem entre si e seus elementos de hardware associados.
+A evolução de arquiteturas apresentadas nesta revisão
+bibliográfica nostra que os elementos de hardware
+assumem um papel de grande importância durante o desenvolvimento dessas
+arquiteturas, por exemplo como um fator limitador.
 
 De acordo com \cite{siegwart2004autonomous}, os componentes básicos de uma
 arquitetura para robôs são classificados em três grupos: \textit{Percepção}, que
@@ -69,8 +73,8 @@ act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
 figura~\ref{BROOKS_1}.
 %TODO: Mudar essa figura
 
-De acordo com Marvin Minsky, uma máquina tenderia a criar, por si só, um modelo
-abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
+De acordo com Marvin Minsky, uma máquina deveria tender a criar, por si só, um
+modelo abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
 primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
 experimentá-las externamente. Seria como realizar uma simulação interna
 e, caso funcionasse, realizá-la no mundo real.
@@ -78,7 +82,10 @@ e, caso funcionasse, realizá-la no mundo real.
 \subsection{Robôs deliberativos}
 Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford
 criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}). Foi
-desenvolvida uma inteligência artificial chamada STRIPS.
+desenvolvida uma inteligência artificial, \textit{problem solver}, chamada
+STRIPS. Este sistema é um planejador de trajetórias que armazena as imformações
+do ambiente (mapas e obstáculos) de maneira simbólica e, se dada uma tarefa de
+deslocamento (\texit{goto}), é realizada uma busca lógica pelo sistema.
 
 Em 1977, começou a ser desenvolvido o projeto HILARE, no Laboratoire d'Automatique et
 d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
@@ -99,9 +106,9 @@ como esferas. O mundo também era representado simbolicamente por grafos.
 \end{figure}
 
 \subsection{Arquiteturas deliberativas}
-As arquiteturas deliberativas são sistemas hierárquicos com a lógica SPA. São
-utilizados em sistemas robóticos até hoje, quando a aplicação favorece seu uso e
-devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
+As arquiteturas deliberativas são sistemas hierárquicos com a lógica
+\textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
+favorece seu uso e devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
 NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
 Robot System} de Saridis.
 
@@ -143,7 +150,10 @@ entradas desses elementos são os sensores e suas saídas são os atuadores:
   \item Gerador de comportamentos: elemento que seleciona objetivos e planos,
   executa e monitora ações, e modifica planos existentes quando alguma situação
   do mundo exigir. Tarefas são decompostas em subtarefas, e subtarefas são
-  sequências de objetivos. A ordem lógica de funcionamento é: o gerador de comportamentos cria planos, o modelo do mundo predita o resultado do plano, e o julgamento de valor avalia os resultados. O gerador de comportamento seleciona o plano com a avaliação mais alta.
+  sequências de objetivos. A ordem lógica de funcionamento é: o gerador de
+  comportamentos cria planos, o modelo do mundo predita o resultado do plano, e
+  o julgamento de valor avalia os resultados. O gerador de comportamento
+  seleciona o plano com a avaliação mais alta.
 \end{itemize}
 As relações entre os elementos do sistema inteligente estão representados na
 figura~\ref{albus}.  Esses elementos e suas relações possibilitaram a criação de
@@ -208,8 +218,8 @@ local.
 Em 1991, Saridis \cite{wang1991petri} cria o \emph{Intelligent Mobile
 Robot System} (IMRS) baseado na teoria de inteligência hierárquica de controle
 \cite{saridis1988analytical}. Saridis utiliza redes de Petri como módulos
-básicos da arquitetura para traduzir os comandos
-gerados pelo nível de organização em algo compreensível para o nível de execução.
+básicos da arquitetura para traduzir os comandos gerados pelo nível de
+organização em algo compreensível para o nível de execução.
 
 O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
 \begin{itemize}
@@ -428,10 +438,10 @@ robóticas em tempo real em mundos dinâmicos e não estruturados.
 Em 1986, um dos primeiros estudos em sistemas reativos foi desenvolvido por
 Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
 trabalhos atuais que envolvem robôs reativos móveis. Os desafios de
-robôs autônomos apontados por Brooks e que ainda ilustram os problemas da atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos
-sensores}, \emph{robustez} e \emph{extensibilidade}. Esses desafios não são
-suportados pela arquitetura tradicional (paradigma hierárquico) de um sistema de
-controle.
+robôs autônomos apontados por Brooks e que ainda ilustram os problemas da
+atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos sensores},
+\emph{robustez} e \emph{extensibilidade}. Esses desafios não são suportados
+pela arquitetura tradicional (paradigma hierárquico) de um sistema de controle.
 
 Os múltiplos objetivos de robôs móveis podem:
 \begin{itemize}
