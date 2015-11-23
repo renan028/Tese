@@ -74,8 +74,8 @@ figura~\ref{BROOKS_1}.
 %TODO: Mudar essa figura
 
 De acordo com Marvin Minsky, uma máquina deveria tender a criar, por si só, um
-modelo abstrato do ambiente em que está inserido. Caso fosse dado uma tarefa, ela
-primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
+modelo abstrato do ambiente em que está inserido (defina-se \emph{mundo}).
+Caso fosse dado uma tarefa, ela primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
 experimentá-las externamente. Seria como realizar uma simulação interna
 e, caso funcionasse, realizá-la no mundo real.
 
@@ -87,22 +87,47 @@ STRIPS. Este sistema é um planejador de trajetórias que armazena as imformações
 do ambiente (mapas e obstáculos) de maneira simbólica e, se dada uma tarefa de
 deslocamento (\texit{goto}), é realizada uma busca lógica pelo sistema.
 
-Em 1977, começou a ser desenvolvido o projeto HILARE, no Laboratoire d'Automatique et
-d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
+Em 1977, começou a ser desenvolvido o projeto HILARE (figura~\ref{hilare}), no
+Laboratoire d'Automatique et d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
 medir distância, sendo possível atualizar o seu mundo com acurácia. Seu mundo
 era representado por modelos geométricos e um modelo relacional que expressava a
-conectividade dos quartos e corredores (simbólico) \cite{norelis1989control}.
+conectividade dos quartos e corredores (simbólico) \citep{norelis1989control}.
 
 Também em 1977, o Stanford Cart foi criado por Moravec para teste de visão
-para navegação e desvio de obstáculos \cite{moravec1977towards}. Os obstáculos
+para navegação e desvio de obstáculos \citep{moravec1977towards}. Os obstáculos
 eram identificados pelo robô durante a operação e representados em seu mundo
 como esferas. O mundo também era representado simbolicamente por grafos.
+
+Em 1969, Victor Scheinman, Universidade de Stanford
+\citep{scheinman1969design}, inventou o primeiro manipulador robótico
+totalmente elétrico de seis elos e com solução completa e integrada de
+cinemática inversa. Isto é, dado um ponto qualquer pertencente ao espaço de
+trabalho do manipulador, este calcula o ângulo das juntas de forma que o
+efetuador alcance o ponto especificado. Isso permitiu que o manipulador
+percorresse trajetórias arbitrárias. Até os dias atuais, 2015, é ampla a
+utilização de manipuladores industriais. A sofisticação destes sistemas já
+possibilita que estes armazenem todo o conhecimento do mundo e executem tarefas
+autônomas (figura~\ref{manipulador}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SHAKEY_1.png}
 \caption{Shakey robot}
 \label{SHAKEY_1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/HILARE.png}
+\caption{HILARE}
+\label{hilare}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/MANIPULADOR.png}
+\caption{Manipulador robótico atual}
+\label{manipulador}
 \end{figure}
 
 \subsection{Arquiteturas deliberativas}
@@ -404,12 +429,19 @@ está inserido, de maneira simbólica, geométrica ou outras.
 Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
 também, sensores que enviam suas novas informações periodicamente para o núcleo,
 (órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
-atuadores (músculos) necessários para a realização das tarefas.
+atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 
 É fácil observar que a arquitetura deliberativa é dependente do
 modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
 utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
 custosa devido às atualizações e ao replanejamento.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BRAIN.png}
+\caption{Comparativo da arquitetura deliberativa com o ser humano.}
+\label{brain}
+\end{figure}
 
 \section{Paradigma reativo}
 
@@ -452,8 +484,9 @@ Os múltiplos objetivos de robôs móveis podem:
   finalizando a operação.
   \item Ser denpendentes: objetivos de \emph{alto nível} englobam diversos
   objetivos de \emph{baixo nível}. No caso do exemplo acima, o robô que sai do
-  trilho para evitar o trêm deve se manter equilibrado para não cair. Artigos recentes separam   esses objetivos em \emph{tarefas} (objetivos
-  de \emph{alto nível}) e \emph{primitivas do veículo}.
+  trilho para evitar o trêm deve se manter equilibrado para não cair. Artigos
+  recentes, como em \citep{fryxell1996navigation} separam esses objetivos em
+  \emph{tarefas} (objetivos de \emph{alto nível}) e \emph{primitivas do veículo}.
 \end{itemize}
 
 Robôs são normalmente providos de múltiplos sensores e suas diversas
