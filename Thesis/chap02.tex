@@ -289,15 +289,16 @@ $N$ e as subtarefas de saída que podem ser usadas na tarefa;
 
 Os quatro PNT's são combinados para realizarem a tradução de tarefas no Nível
 de Coordenação: remetente, sistema de visão, desvio de obstáculo
-e controle de rastreamento, e planejamento de trajetórias.
-Será brevemente descrito o componente Remetente (\emph{Dispatcher}) do modelo de
-Nível de Coordenação para melhor entendimento do PNT.
+e controle de rastreamento, e planejamento de trajetórias. A
+figura~\ref{Saridis_2} mostra o modelo de rede de Petri para o Remetente.
+%Será brevemente descrito o componente Remetente (\emph{Dispatcher}) do modelo
+% de Nível de Coordenação para melhor entendimento do PNT.
 
-Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
-atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
-movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
-obstáculos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
-de rede de Petri para o Remetente.
+%Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
+%atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
+%movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
+%obstáculos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
+%de rede de Petri para o Remetente.
 
 \begin{figure}[H]
 \centering
@@ -307,99 +308,108 @@ Remetente}
 \label{Saridis_2}
 \end{figure}
 
-O estado inicial da rede de Petri é: $$M
-=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
-=\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
-$$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
-O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ 
-As suas transições são:
-\begin{enumerate}
-  \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
-  do Organizador. 
-  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$  
-  O lugar $P_0$ permanece com um token, logo a transição $t_s$ ainda pode ser
-  disparada. Isso faz com que o Remetente seja capaz de executar duas tarefas
-  simultaneamente: a tarefa de movimentação (ver item 7) e o planejamento de
-  trajetórias (ver item 3).
-  \item A transição $t_{wmu}$ chama o processo de atualização do mapa 3-D. O
-  sistema de visão poderá ser iniciado (token em $I_{VS}$) e a transição
-  $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
-  visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
-  $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
-  adquire um token, habilitando a transição $t_{PP}$ do Remetente. 
-  $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-  Vale observar que não é possível modelar essas características com máquinas de
-  estado sem a utilização de recursos extras como inibidores e supressores.
-  \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
-  $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
-  otimização. $t_{pp}$ não pode ser disparada novamente até completar um
-  ciclo de planejamento de trajetórias, graças ao \emph{Input Semaphore},
-  $IS_{PP}$.
-  $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
-  Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
-  Point}, $O_{PP}$, adquire um token, habilitando a transição $t_{ssd}$ do
-  Remetente.
-  $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
-  de trajetórias no valor inicial:
-  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_{mod}$ é disparada para o desvio de obstáculo em um
-  espaço especificado e provê acurácia e tempo requerido. O
-  sistema de visão poderá ser iniciado novamente (token em $I_{VS}$) e a
-  transição $t_{mod}$ não pode ser disparada novamente até completar mais um
-  ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
-  $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-  Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
-  adquire um token, habilitando a transição $t_{moac}$ do Remetente. 
-  $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-  \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
-  e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
-  o valor inicial e $t_{moac}$ não pode ser disparada novamente até completar um
-  ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
-  $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
-  Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
-  Point}, $O_{OATC}$, adquire um token, habilitando a transição $t_{mte}$ do
-  Remetente.
-  $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
-  \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
-  sistema de desvio de obstáculos e controle de rastreamento volta para o estado
-  inicial.
-  $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
-  \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
-  Organizador.
-  $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
-  robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
-  $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-  \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
-  robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
-  $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-  \item A transição $t_f$ dispara para reportar o resultado da movimentação do
-  robô ao Organizador. Volta ao item 1.
-  $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-\end{enumerate} 
-A rede de Petri evidencia o motivo do uso dos PNT, com os parâmetros aumentados
-$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. Até agora, apenas as variáveis
-diretamente ligadas à rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
-integração das redes dos coordenadores fica nítida a necessidade de parâmetros
-para especificação das tarefas.
+A modelagem do sistema utilizando redes de Petri proporcionaram, como pode ser
+visto na figura~\ref{Saridis_2}, algumas funcionalidades essenciais em uma
+arquitetura robótica: a capacidade de executar duas tarefas simultaneamente, por
+exemplo, movimentação e planejamento de trajetórias; e o \emph{Input Semaphore},
+que impede um processo de ser executado até outro ser finalizado.
+  
+% 
+% 
+% O estado inicial da rede de Petri é: $$M
+% =\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
+% =\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
+% $$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
+% O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ 
+% As suas transições são:
+% \begin{enumerate}
+%   \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
+%   do Organizador. 
+%   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$  
+%   O lugar $P_0$ permanece com um token, logo a transição $t_s$ ainda pode ser
+%   disparada. Isso faz com que o Remetente seja capaz de executar duas tarefas
+%   simultaneamente: a tarefa de movimentação (ver item 7) e o planejamento de
+%   trajetórias (ver item 3).
+%   \item A transição $t_{wmu}$ chama o processo de atualização do mapa 3-D. O
+%   sistema de visão poderá ser iniciado (token em $I_{VS}$) e a transição
+%   $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
+%   visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
+%   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
+%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+%   adquire um token, habilitando a transição $t_{PP}$ do Remetente. 
+%   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
+%   Vale observar que não é possível modelar essas características com máquinas de
+%   estado sem a utilização de recursos extras como inibidores e supressores.
+%   \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
+%   $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
+%   otimização. $t_{pp}$ não pode ser disparada novamente até completar um
+%   ciclo de planejamento de trajetórias, graças ao \emph{Input Semaphore},
+%   $IS_{PP}$.
+%   $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
+%   Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
+%   Point}, $O_{PP}$, adquire um token, habilitando a transição $t_{ssd}$ do
+%   Remetente.
+%   $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
+%   \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
+%   de trajetórias no valor inicial:
+%   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+%   \item A transição $t_{mod}$ é disparada para o desvio de obstáculo em um
+%   espaço especificado e provê acurácia e tempo requerido. O
+%   sistema de visão poderá ser iniciado novamente (token em $I_{VS}$) e a
+%   transição $t_{mod}$ não pode ser disparada novamente até completar mais um
+%   ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
+%   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
+%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+%   adquire um token, habilitando a transição $t_{moac}$ do Remetente. 
+%   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
+%   \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
+%   e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
+%   o valor inicial e $t_{moac}$ não pode ser disparada novamente até completar um
+%   ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
+%   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
+%   Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
+%   Point}, $O_{OATC}$, adquire um token, habilitando a transição $t_{mte}$ do
+%   Remetente.
+%   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
+%   \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
+%   sistema de desvio de obstáculos e controle de rastreamento volta para o estado
+%   inicial.
+%   $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+%   Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
+%   \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
+%   Organizador.
+%   $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+%   \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
+%   robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
+%   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+%   \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
+%   robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
+%   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
+%   \item A transição $t_f$ dispara para reportar o resultado da movimentação do
+%   robô ao Organizador. Volta ao item 1.
+%   $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
+% \end{enumerate} 
 
-O alfabeto de entrada do Remetente é dado pelo Organizador, dado como
-$\Sigma_0$. O alfabeto de saída ($\Delta_0$) são os alfabetos de entrada para
-cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
-$\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
-$\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
+%A rede de Petri evidencia o motivo do uso dos PNT, com os parâmetros aumentados
+%$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. %Até agora, apenas as variáveis
+%diretamente ligadas à rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
+%Quando se busca a integração das redes dos coordenadores fica nítida a
+% necessidade de parâmetros para especificação das tarefas.
 
-O parâmetro que especifica as transições para uma determinada tarefa e as
-subtarefas é o $\sigma$. Para a transição $t_{mod}$, por exemplo,
-$\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
-\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ é a acurácia requerida sobre
-objetos detectados em VS e $ptc$ é o tempo para a realização do processo. A rede
-de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
-caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
-Remetente (neste caso será a transição $t_{smd}$ de VS).
+%O alfabeto de entrada do Remetente é dado pelo Organizador, dado como
+%$\Sigma_0$. O alfabeto de saída ($\Delta_0$) são os alfabetos de entrada para
+%cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
+%$\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
+%$\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
+
+%O parâmetro que especifica as transições para uma determinada tarefa e as
+%subtarefas é o $\sigma$. Para a transição $t_{mod}$, por exemplo,
+%$\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
+%\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ é a acurácia requerida sobre
+%objetos detectados em VS e $ptc$ é o tempo para a realização do processo. A
+% rede de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
+%caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
+%Remetente (neste caso será a transição $t_{smd}$ de VS).
 
 Saridis salienta os benefícios das PNT:
 \begin{itemize}
@@ -472,8 +482,9 @@ Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
 trabalhos atuais que envolvem robôs reativos móveis. Os desafios de
 robôs autônomos apontados por Brooks e que ainda ilustram os problemas da
 atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos sensores},
-\emph{robustez} e \emph{extensibilidade}. Esses desafios não são suportados
-pela arquitetura tradicional (paradigma hierárquico) de um sistema de controle.
+\emph{robustez} e \emph{extensibilidade}. De acordo com Brooks, esses desafios
+não são suportados pela arquitetura tradicional (paradigma hierárquico) de um
+sistema de controle.
 
 Os múltiplos objetivos de robôs móveis podem:
 \begin{itemize}
@@ -511,7 +522,8 @@ de processamento do robô, já que um novo hardware (sensor) é adicionado, mas o
 processamento (computador) não é substituído e sua capacidade não é aumentada.
 
 Brooks propõe um dos primeiros sistemas baseados em comportamentos, uma
-arquitetura que tem como objetivo descentralizar a tomada de decisão de um modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
+arquitetura que tem como objetivo descentralizar a tomada de decisão de um
+modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
 O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
 diferente para sistema de controle de robôs móveis em estratégias de
 implementação a nível de hardware e com grandes vantagens em robustez,
@@ -540,7 +552,11 @@ sensor-motor foram desenvolvidos pelo psicologista Braitenberg
 \citep{braitenberg1986vehicles}, a fim de simular sentimentos, como covardia,
 agressividade e outros. 
 
-
+Em 2002 até os dias atuais, o robô iRobot Roomba ganha destaque comercial e
+executa uma simples tarefa doméstica: limpar o chão. Em sua arquitetura, o robô
+Roomba possui apenas algumas funções reativas, como esquivar-se e locomover-se,
+e, em suas versões antigas, foi constatado que não possui o modelo do mundo,
+mapa, dentro de si \citep{tribelhorn2007evaluating}.
 
 \subsection{Arquiteturas reativas}
 
@@ -611,8 +627,7 @@ móvel.
 
 A camada de controle nível zero deve garantir que o robô não entre em contato
 com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
-objetos que se aproximam ou parar se houver um objeto fixo em
-sua trajetória.
+objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória.
 Na figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
 
 \begin{figure}[H]
@@ -645,8 +660,8 @@ Segue pequena descrição de cada módulo:
 \end{itemize}
  
  A camada de controle nível 1, combinada a camada de controle nível 0, permite
- que o robô vagueie sem colisões. A
- figura~\ref{BROOKS_3} mostra o sistema de controle aumentado pelo nível da camada 1.
+ que o robô vagueie sem colisões. A figura~\ref{BROOKS_3} mostra o sistema de
+ controle aumentado pelo nível da camada 1.
 
 \begin{figure}[H]
 \centering
@@ -670,10 +685,10 @@ para integrar novas funcionalidades e fácil para implementar e debugar. Brooks
 ainda associa sistemas de eventos discretos no controle de robôs autônomos,
 utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
 State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
-encontrada por Brooks foi acrescentar registradores e
-temporizadores em suas FSM.
+encontrada por Brooks foi acrescentar registradores e temporizadores em suas
+FSM.
 
-Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
+Antes de Brooks, em 1983, Elfes, A. \citep{elfes1983distributed},já havia
 idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
 paralelo, flexibilidade de interação com os diversos sensores, distribuir
 capacidades de decisão e flexibilidade de expansão e modificação do sistema.
@@ -684,18 +699,16 @@ codificiar paralelismo, os casos das exceções e condições inesperadas.
 
 Apesar dos pontos positivos, a arquitetura de controle de um sistema
 baseado em comportamento apresenta problemas com escala e contextualização
-(\emph{situatedness}).
-O problema com escala é resultado das interconexões, que podem crescer de maneira
-fatorial em relação ao número de comportamentos. 
-A contextualização é um
-problema de sistemas de subsunção, onde subsistemas são
+(\emph{situatedness}). O problema com escala é resultado das interconexões, que
+podem crescer de maneira fatorial em relação ao número de comportamentos. 
+A contextualização é um problema de sistemas de subsunção, onde subsistemas são
 incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
 concorrentemente com os outros, o comportamento corrente é o único estado no
 qual o veículo como um todo funcionará. São sistemas também chamados de
 \emph{non-taskable systems}. Uma tarefa não pode ser designada ao
 veículo sem reprogramação de todo o sistema.  
 
-Apenas em 1996, Bellingham e Consi \cite{bellingham1994second}
+Apenas em 1996, Bellingham e Consi \citep{bellingham1994second}
 propuseram um controle por camadas (\emph{Layered Control}) a fim de resolver o
 problema de escala. A diferença entre o controle baseado em comportamento e o de
 Bellingham é a restrição de interatividade entre camadas.
@@ -708,13 +721,15 @@ paralelismo, mas resolve o problema de interconexões, já que antes as camadas
 superiores deveriam se conectar às inferiores para obter os dados dos sensores.
 
 A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
-\cite{bennett2000behavior}. No \emph{State Configured Layered Control} (SCLC),
-múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca de comportamentos e são executados em cada fase da missão. A vantagem é o número reduzido de
-comportamentos sendo executados ao mesmo tempo.
+\citep{bennett2000behavior}. No \emph{State Configured Layered Control} (SCLC),
+múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca
+de comportamentos e são executados em cada fase da missão. A vantagem é o
+número reduzido de comportamentos sendo executados ao mesmo tempo. Veremos mais
+a frente que esta estratégia é muito realizada em controle híbrido.
 
-Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e sistema de controle utilizando,
-assim como Brooks, módulos hierárquicos. A arquitetura do robô pode ser
-decomposta da seguinte forma:
+Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e
+sistema de controle utilizando, assim como Brooks, módulos hierárquicos. A
+arquitetura do robô pode ser decomposta da seguinte forma:
 \begin{itemize}
   \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
   adquiridos por um sensor são processados pelo módulo de sensor e ficam
