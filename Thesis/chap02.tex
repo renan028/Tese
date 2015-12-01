@@ -193,9 +193,10 @@ diversas arquiteturas.
 
 
 \subsubsection{NASREM}
-O NASREM \cite{albus1989nasa} foi uma arquitetura utilizada pela
+O NASREM \citep{albus1989nasa} foi uma arquitetura utilizada pela
 NASA e possuía uma arquitetura com seis níveis de
 funcionalidade(figura~\ref{nasrem}):
+
 \begin{enumerate}
   \item Servo: provê o controle dos atuadores do robô (posição, velocidade e
   etc).
@@ -209,10 +210,14 @@ funcionalidade(figura~\ref{nasrem}):
   \item Missão: decompõe o plano de missão em alto nível em compartimento de
   serviços.
 \end{enumerate}
- Vale ressaltar que no modelo NASREM, o operador tem acesso a qualquer nível
- hierárquico do robô e pode tomar o controle do robô para si, além de poder
- substituir as entradas de sensores, modelo do mundo e outros. Dessa forma, o
- nível de autonomia do robô pode ser desenvolvido de forma incremental.
+
+Vale ressaltar que no modelo NASREM, o operador tem acesso a qualquer nível
+hierárquico do robô e pode tomar o controle do robô para si, além de poder
+substituir as entradas de sensores, modelo do mundo e outros. Dessa forma, o
+nível de autonomia do robô pode ser desenvolvido de forma incremental.
+
+A arquitetura hierárquica proposta em NASREM permite modularidade e propõe uma
+metodologia de software.  
  
 \begin{figure}[H]
 \centering
@@ -444,7 +449,8 @@ atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 É fácil observar que a arquitetura deliberativa é dependente do
 modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
 utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
-custosa devido às atualizações e ao replanejamento.
+custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
+que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
 
 \begin{figure}[H]
 \centering
@@ -523,11 +529,10 @@ processamento (computador) não é substituído e sua capacidade não é aumentada.
 
 Brooks propõe um dos primeiros sistemas baseados em comportamentos, uma
 arquitetura que tem como objetivo descentralizar a tomada de decisão de um
-modelo central, como pode ser visto na figura~\ref{BROOKS_1}.
-O autor comenta que essa decomposição conduz a uma arquitetura radicalmente
-diferente para sistema de controle de robôs móveis em estratégias de
-implementação a nível de hardware e com grandes vantagens em robustez,
-desenvolvimento e teste.
+modelo central, como pode ser visto na figura~\ref{BROOKS_1}. O autor comenta
+que essa decomposição conduz a uma arquitetura radicalmente diferente para
+sistema de controle de robôs móveis em estratégias de implementação a nível de
+hardware e com grandes vantagens em robustez, desenvolvimento e teste.
 
 \begin{figure}[H]
 \centering
@@ -699,13 +704,15 @@ codificiar paralelismo, os casos das exceções e condições inesperadas.
 
 Apesar dos pontos positivos, a arquitetura de controle de um sistema
 baseado em comportamento apresenta problemas com escala e contextualização
-(\emph{situatedness}). O problema com escala é resultado das interconexões, que
+(\emph{situatedness}). 
+
+O problema com escala é resultado das interconexões, que
 podem crescer de maneira fatorial em relação ao número de comportamentos. 
 A contextualização é um problema de sistemas de subsunção, onde subsistemas são
 incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
-concorrentemente com os outros, o comportamento corrente é o único estado no
+concorrentemente com as outras, o comportamento corrente é o único estado no
 qual o veículo como um todo funcionará. São sistemas também chamados de
-\emph{non-taskable systems}. Uma tarefa não pode ser designada ao
+\emph{non-taskable systems} - uma tarefa não pode ser designada ao
 veículo sem reprogramação de todo o sistema.  
 
 Apenas em 1996, Bellingham e Consi \citep{bellingham1994second}
@@ -727,43 +734,66 @@ de comportamentos e são executados em cada fase da missão. A vantagem é o
 número reduzido de comportamentos sendo executados ao mesmo tempo. Veremos mais
 a frente que esta estratégia é muito realizada em controle híbrido.
 
-Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e
-sistema de controle utilizando, assim como Brooks, módulos hierárquicos. A
-arquitetura do robô pode ser decomposta da seguinte forma:
-\begin{itemize}
-  \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
-  adquiridos por um sensor são processados pelo módulo de sensor e ficam
-  disponíveis para os módulos de nível mais alto para seus próprios
-  processamentos e interpretaçõs.
-  \item \textbf{Unidades funcionais}: realizam uma determinada função no robô.
-  Por exemplo, localização do robô combinando sensores de visão, odometria, laser e
-  etc.
-  \item \textbf{Processos}: realiza a dinâmica de malha fechada entre percepção
-  e ação, usando unidades de função. O processo é representado por uma máquina de estado
-  finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
-  são comandos aos atuadores.
-\end{itemize}
+% Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e
+% sistema de controle utilizando, assim como Brooks, módulos hierárquicos. A
+% arquitetura do robô pode ser decomposta da seguinte forma:
+% \begin{itemize}
+%   \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
+%   adquiridos por um sensor são processados pelo módulo de sensor e ficam
+%   disponíveis para os módulos de nível mais alto para seus próprios
+%   processamentos e interpretaçõs.
+%   \item \textbf{Unidades funcionais}: realizam uma determinada função no robô.
+%   Por exemplo, localização do robô combinando sensores de visão, odometria, laser e
+%   etc.
+%   \item \textbf{Processos}: realiza a dinâmica de malha fechada entre percepção
+%   e ação, usando unidades de função. O processo é representado por uma máquina de estado
+%   finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
+%   são comandos aos atuadores.
+% \end{itemize}
+% 
+% O sistema de controle de Chatila é composto por quatro componentes: Supervisor
+% (não implementado), Módulo Executivo, Gerente de Vigilância e Módulo de
+% Diagnóstico (não implementado). Os controles funcionam como um \emph{if - then},
+% com diversas condições e ações predeterminadas. O módulo de vigilância é
+% responsável por:
+% 
+% \begin{itemize}
+%   \item Indicar estados dos sensores e tomar ações de reflexo;
+%   \item Indicar estado operacional do robô, como nível da bateria;
+%   \item Relatar plano e estado da missão que está sendo executada pelo robô;
+% \end{itemize}
+% 
+% O módulo executivo fucniona como um sistema operacional. Recebe comandos
+% (missões) predefinidas pela interface e se comunica com o módulo de vigilância.
+% 
+% Quando comparamos com Brooks, Chatila apresenta uma estrutura bem
+% rudimentar e lógicas simples de arquitetura e controle. Apesar de utilizar a
+% ideia de recursos compartilhados nos módulos de sensores, os automatos dos
+% módulos de processo são bem simplificados e dependentes de um bloco central
+% para resolver objetivos conflitantes.
 
-O sistema de controle de Chatila é composto por quatro componentes: Supervisor
-(não implementado), Módulo Executivo, Gerente de Vigilância e Módulo de
-Diagnóstico (não implementado). Os controles funcionam como um \emph{if - then},
-com diversas condições e ações predeterminadas. O módulo de vigilância é
-responsável por:
+\subsection{Análise crítica}
+Se a abordagem deliberativa simulava o processo de planejamento e tomada de
+decisão do ser humano, os sistemas de arquitetura reativa simulam. Há um núcleo
+(cérebro) que processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que está inserido, de maneira simbólica, geométrica ou outras.
+Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
+também, sensores que enviam suas novas informações periodicamente para o núcleo,
+(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
+atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 
-\begin{itemize}
-  \item Indicar estados dos sensores e tomar ações de reflexo;
-  \item Indicar estado operacional do robô, como nível da bateria;
-  \item Relatar plano e estado da missão que está sendo executada pelo robô;
-\end{itemize}
+É fácil observar que a arquitetura deliberativa é dependente do
+modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
+utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
+custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
+que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
 
-O módulo executivo fucniona como um sistema operacional. Recebe comandos
-(missões) predefinidas pela interface e se comunica com o módulo de vigilância.
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\columnwidth]{figs/BRAIN.png}
+\caption{Comparativo da arquitetura deliberativa com o ser humano.}
+\label{brain}
+\end{figure}
 
-Quando comparamos com Brooks, Chatila apresenta uma estrutura bem
-rudimentar e lógicas simples de arquitetura e controle. Apesar de utilizar a
-ideia de recursos compartilhados nos módulos de sensores, os automatos dos módulos de processo
-são bem simplificados e dependentes de um bloco central para resolver objetivos
-conflitantes.
 
 \section{Arquitetura híbrida deliberativa/reativa}
 
@@ -783,7 +813,7 @@ A ciência da computação faz o caminho inverso: um estado em uma máquina de
 estados representa um local de controle, onde variáveis mudam continuamente com
 o tempo, de acordo com leis de evolução. As ideias de controle híbrido são
 desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
-trabalhos apresentados anteriormente nesta dissertação. 
+trabalhos apresentados anteriormente neste documento. 
 
 A contribuição de Espiau foi o desenvolvimento do ORCCAD, um sistema híbrido
 para especificação, validação, simulação e implementação de aplicações
