@@ -690,8 +690,12 @@ para integrar novas funcionalidades e fácil para implementar e debugar. Brooks
 ainda associa sistemas de eventos discretos no controle de robôs autônomos,
 utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
 State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
-encontrada por Brooks foi acrescentar registradores e temporizadores em suas
-FSM.
+encontrada por Brooks foi acrescentar inibidores e supressores em suas
+FSM, chamando-as AFSM (\emph{Augmented Finite State Machine} ou máquina de
+estado aumentada). O módulo principal desta arquitetura pode ser visto na FIGURA
+%TODO Colocar figura de brooks 
+
+
 
 Antes de Brooks, em 1983, Elfes, A. \citep{elfes1983distributed},já havia
 idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
