@@ -1,128 +1,128 @@
-\chapter{RevisÃ£o BibliogrÃ¡fica}
+\chapter{Revisão Bibliográfica}
 
-A modelagem de robÃ´s de acordo com suas principais funcionalidades e o
-desenvolvimento de novas arquiteturas sÃ£o o Ã¢mago no estudo de
-controle de missÃ£o de robÃ´s mÃ³veis. Dessa forma, arquitetura robÃ³tica e controle
-de missÃ£o sÃ£o conceitos relacionados, e, portanto, o cerne desta pesquisa
-bibliogrÃ¡fica. 
+A modelagem de robôs de acordo com suas principais funcionalidades e o
+desenvolvimento de novas arquiteturas são o âmago no estudo de
+controle de missão de robôs móveis. Dessa forma, arquitetura robótica e controle
+de missão são conceitos relacionados, e, portanto, o cerne desta pesquisa
+bibliográfica.
 
-Neste capÃ­tulo, sÃ£o apresentados os fundamentos teÃ³ricos necessÃ¡rios para o
-entendimento desta dissertaÃ§Ã£o. O objetivo deste levantamento bibliogrÃ¡fico Ã©
-apresentar alguns dos principais trabalhos e pesquisas cientÃ­ficos sobre
-arquiteturas e sistemas de controle de missÃ£o de robÃ´s mÃ³veis. Por fim,
-o leitor Ã© direcionado para os conhecimentos aplicados no controle de missÃ£o do
-robÃ´ DORIS, projeto que envolve esta dissertaÃ§Ã£o.
+Neste capítulo, são apresentados os fundamentos teóricos necessários para o
+entendimento desta dissertação. O objetivo deste levantamento bibliográfico é
+apresentar alguns dos principais trabalhos e pesquisas científicos sobre
+arquiteturas e sistemas de controle de missão de robôs móveis. Por fim,
+o leitor é direcionado para os conhecimentos aplicados no controle de missão do
+robô DORIS, projeto que envolve esta dissertação.
 
-O conceito de arquitetura %do grego arkhÃ©tÃ©khton, do ingles architecture, do
+O conceito de arquitetura %do grego arkhétékhton, do ingles architecture, do
 % frances architecture
- para robÃ´s Ã© definido de diferentes formas na
-literatura. Em \cite{arkin1998behavior}, arquitetura de robÃ´ Ã©
-relacionada com arquitetura de software, em uma adaptaÃ§Ã£o Ã 
+para robôs é definido de diferentes formas na
+literatura. Em \cite{arkin1998behavior}, arquitetura de robô é
+relacionada com arquitetura de software, em uma adaptação à
 arquitetura de computadores de \cite{stone1980introduction}, e definida como:
-arquitetura de robÃ´ Ã© a disciplina dedicada ao projeto de robÃ´s altamente especÃ­ficos e individuais
-a partir de uma coleÃ§Ã£o de blocos comuns de softwares.
-Em \cite{mataric1992behavior}, a definiÃ§Ã£o aborda sistemas de controle: uma
+arquitetura de robô é a disciplina dedicada ao projeto de robôs altamente específicos e individuais
+a partir de uma coleção de blocos comuns de softwares.
+Em \cite{mataric1992behavior}, a definição aborda sistemas de controle: uma
 arquitetura fornece uma maneira principal de organizar um
-sistema de controle, contudo, a arquitetura tambÃ©m impÃµe restriÃ§Ãµes sobre a
-forma como o problema de controle pode ser resolvido. JÃ¡
+sistema de controle, contudo, a arquitetura também impõe restrições sobre a
+forma como o problema de controle pode ser resolvido. Já
 em \cite{brooks1986robust}, o autor tenta associar a arquitetura de software
 com os componentes de hardware (processadores) para compor a arquitetura
-robÃ³tica.
+robótica.
 
-O sistema robÃ³tico Ã© composto por diversos elementos de hardware e
-software que sÃ£o interdependentes e necessÃ¡rios para o funcionamento do sistema.
-Como o propÃ³sito deste trabalho Ã© o desenvolvimento de uma arquitetura robÃ³tica
-para o DORIS, sendo considerados os aspectos fÃ­sicos, lÃ³gicos e a aplicabilidade do
-robÃ´, entende-se que uma arquitetura para robÃ´ mÃ³vel descreve uma maneira de se construir o
-controle inteligente do robÃ´, os mÃ³dulos do sistema, como estes
-mÃ³dulos interagem entre si e seus elementos de hardware associados, visando sua
-aplicaÃ§Ã£o. A evoluÃ§Ã£o das arquiteturas apresentadas nesta revisÃ£o
-bibliogrÃ¡fica mostra que os elementos de hardware assumem um papel de grande
-importÃ¢ncia durante o desenvolvimento dessas arquiteturas, por exemplo como um
-fator limitador, assim como a aplicaÃ§Ã£o e o meio em que o robÃ´ estÃ¡ inserido.
+O sistema robótico é composto por diversos elementos de hardware e
+software que são interdependentes e necessários para o funcionamento do sistema.
+Como o propósito deste trabalho é o desenvolvimento de uma arquitetura robótica
+para o DORIS, sendo considerados os aspectos físicos, lógicos e a aplicabilidade do
+robô, entende-se que uma arquitetura para robô móvel descreve uma maneira de se construir o
+controle inteligente do robô, os módulos do sistema, como estes
+módulos interagem entre si e seus elementos de hardware associados, visando sua
+aplicação. A evolução das arquiteturas apresentadas nesta revisão
+bibliográfica mostra que os elementos de hardware assumem um papel de grande
+importância durante o desenvolvimento dessas arquiteturas, por exemplo como um
+fator limitador, assim como a aplicação e o meio em que o robô está inserido.
 
-De acordo com \cite{siegwart2004autonomous}, os componentes bÃ¡sicos de uma
-arquitetura para robÃ´s sÃ£o classificados em trÃªs grupos: \textit{PercepÃ§Ã£o}, que
-envolve as atividades de interpretaÃ§Ã£o e integraÃ§Ã£o dos sensores;
-\textit{Planejamento} de tarefas, sincronizaÃ§Ã£o,
-e o monitoramento da execuÃ§Ã£o de todas as atividades do robÃ´; \textit{AtuaÃ§Ã£o},
-que envolve as atividades de execuÃ§Ã£o dos movimentos, aÃ§Ãµes do robÃ´ e controle
+De acordo com \cite{siegwart2004autonomous}, os componentes básicos de uma
+arquitetura para robôs são classificados em três grupos: \textit{Percepção}, que
+envolve as atividades de interpretação e integração dos sensores;
+\textit{Planejamento} de tarefas, sincronização,
+e o monitoramento da execução de todas as atividades do robô; \textit{Atuação},
+que envolve as atividades de execução dos movimentos, ações do robô e controle
 dos atuadores.
 
-As trÃªs primeiras seÃ§Ãµes desta pesquisa bibliogrÃ¡fica abordam os paradigmas da
-robÃ³tica, isto Ã©, as trÃªs arquiteturas de operaÃ§Ã£o de um sistema robÃ³tico:
-paradigma hierÃ¡rquico/deliberativo (SPA - \emph{Sense, Plan and Act}); paradigma
-reativo; e paradigmo hÃ­brido deliberativo/reativo. As seÃ§Ãµes apresentam e
-exemplificam as arquiteturas pela Ã³tica de diversos autores, e sÃ£o
+As três primeiras seções desta pesquisa bibliográfica abordam os paradigmas da
+robótica, isto é, as três arquiteturas de operação de um sistema robótico:
+paradigma hierárquico/deliberativo (SPA - \emph{Sense, Plan and Act}); paradigma
+reativo; e paradigmo híbrido deliberativo/reativo. As seções apresentam e
+exemplificam as arquiteturas pela ótica de diversos autores, e são
 comparadas e analisadas.
 
-%TODO: acrescentar mais uma referÃªncia (arkin?)
-O controle de missÃ£o ou planejamento de missÃ£o de robÃ´s faz parte da arquitetura
-robÃ³tica, e pode ser desenvolvido para os trÃªs tipos de arquiteturas. Em
-\cite{fryxell1996navigation}, Ã© apresentada uma das primeiras definiÃ§Ãµes de
-controle de missÃ£o para robÃ´s: controle de missÃ£o Ã© um sistema que permite ao
-operador definir as missÃµes de um veÃ­culo em linguagem de alto nÃ­vel; provÃª
-ferramentas adequadas para converter planos em Progamas de MissÃµes que podem
+%TODO: acrescentar mais uma referência (arkin?)
+O controle de missão ou planejamento de missão de robôs faz parte da arquitetura
+robótica, e pode ser desenvolvido para os três tipos de arquiteturas. Em
+\cite{fryxell1996navigation}, é apresentada uma das primeiras definições de
+controle de missão para robôs: controle de missão é um sistema que permite ao
+operador definir as missões de um veículo em linguagem de alto nível; provê
+ferramentas adequadas para converter planos em Progamas de Missões que podem
 ser verificados e executados em tempo real; e permite ao operador saber o
-estado da missÃ£o enquanto esta Ã© executada, e modificÃ¡-la se for necessÃ¡rio. Em
-\cite{brumitt1996dynamic}, o conceito de planejamento de missÃ£o Ã© ampliado para
-mÃºltiplos robÃ´s: planejamento de missÃ£o Ã© o processo de determinar o
-que cada robÃ´ deve fazer para alcanÃ§ar os objetivos da missÃ£o, em um ambiente
-dinÃ¢mico. 
+estado da missão enquanto esta é executada, e modificá-la se for necessário. Em
+\cite{brumitt1996dynamic}, o conceito de planejamento de missão é ampliado para
+múltiplos robôs: planejamento de missão é o processo de determinar o
+que cada robô deve fazer para alcançar os objetivos da missão, em um ambiente
+dinâmico. 
 
-Neste trabalho, o controle de missÃ£o de robÃ´s Ã© o componente da arquitetura
-robÃ³tica que organiza e executa todas as tarefas do robÃ´ de maneira Ã³tima,
-exerce o papel de traduzir os comandos de missÃ£o do usuÃ¡rio ao robÃ´, provÃª feedback ao
-operador, e contÃ©m as diretivas do robÃ´. Como faz parte da arquitetura, as
-seÃ§Ãµes que seguem buscam, em cada arquitetura, destacar de forma exemplificada
-alguns controles de missÃ£o.
+Neste trabalho, o controle de missão de robôs é o componente da arquitetura
+robótica que organiza e executa todas as tarefas do robô de maneira ótima,
+exerce o papel de traduzir os comandos de missão do usuário ao robô, provê feedback ao
+operador, e contém as diretivas do robô. Como faz parte da arquitetura, as
+seções que seguem buscam, em cada arquitetura, destacar de forma exemplificada
+alguns controles de missão.
 
-\section{Paradigma hierÃ¡rquico/deliberativa}
-Em meados do sÃ©culo XX, sÃ£o realizados os primeiros estudos de robÃ´s autÃ´nomos,
-juntamente com o aparecimento da InteligÃªncia Artificial (IA). Em um sistema
-robÃ³tico, a IA clÃ¡ssica consiste em um modelo centralizado que coleta
-informaÃ§Ãµes usando sensores, cria um modelo do ambiente, planeja o prÃ³ximo
-movimento e executa a aÃ§Ã£o. SÃ£o sistemas do tipo \emph{Sense, Plan and
-act} (SPA). Essa arquitetura de controle Ã© clÃ¡ssica e tem abordagem
-\emph{top-down} (hierÃ¡rquica), como na decomposiÃ§Ã£o tradicional da
+\section{Paradigma hierárquico/deliberativa}
+Em meados do século XX, são realizados os primeiros estudos de robôs autônomos,
+juntamente com o aparecimento da Inteligência Artificial (IA). Em um sistema
+robótico, a IA clássica consiste em um modelo centralizado que coleta
+informações usando sensores, cria um modelo do ambiente, planeja o próximo
+movimento e executa a ação. São sistemas do tipo \emph{Sense, Plan and
+act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
+\emph{top-down} (hierárquica), como na decomposição tradicional da
 figura~\ref{BROOKS_1}.
 %TODO: Mudar essa figura
 
-De acordo com Marvin Minsky, uma mÃ¡quina deveria tender a criar, por si sÃ³, um
-modelo abstrato do ambiente em que estÃ¡ inserido (defina-se \emph{mundo}).
-Caso fosse dado uma tarefa, ela primeiro poderia explorar soluÃ§Ãµes dentro de seu modelo abstrato e, entÃ£o,
-experimentÃ¡-las externamente. Seria como realizar uma simulaÃ§Ã£o interna
-e, caso funcionasse, realizÃ¡-la no mundo real.
+De acordo com Marvin Minsky, uma máquina deveria tender a criar, por si só, um
+modelo abstrato do ambiente em que está inserido (defina-se \emph{mundo}).
+Caso fosse dado uma tarefa, ela primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
+experimentá-las externamente. Seria como realizar uma simulação interna
+e, caso funcionasse, realizá-la no mundo real.
 
-\subsection{RobÃ´s deliberativos}
+\subsection{Robôs deliberativos}
 Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford
-criaram o Shakey, primeiro robÃ´ mÃ³vel autÃ´nomo (figura~\ref{SHAKEY_1}). Foi
-desenvolvida uma inteligÃªncia artificial, \textit{problem solver}, chamada
-STRIPS. Este sistema Ã© um planejador de trajetÃ³rias que armazena as imformaÃ§Ãµes
-do ambiente (mapas e obstÃ¡culos) de maneira simbÃ³lica e, se dada uma tarefa de
-deslocamento (\textit{goto}), Ã© realizada uma busca lÃ³gica pelo sistema.
+criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}). Foi
+desenvolvida uma inteligência artificial, \textit{problem solver}, chamada
+STRIPS. Este sistema é um planejador de trajetórias que armazena as imformações
+do ambiente (mapas e obstáculos) de maneira simbólica e, se dada uma tarefa de
+deslocamento (\textit{goto}), é realizada uma busca lógica pelo sistema.
 
-Em 1977, comeÃ§ou a ser desenvolvido o projeto HILARE (figura~\ref{hilare}), no
-Laboratoire d'Automatique et d'Analyse des SystÃ¨mes (LAAS), Toulouse, France. PossuÃ­a sensores como cÃ¢mera, quatorze ultrassons e laser para
-medir distÃ¢ncia, sendo possÃ­vel atualizar o seu mundo com acurÃ¡cia. Seu mundo
-era representado por modelos geomÃ©tricos e um modelo relacional que expressava a
-conectividade dos quartos e corredores (simbÃ³lico) \cite{norelis1989control}.
+Em 1977, começou a ser desenvolvido o projeto HILARE (figura~\ref{hilare}), no
+Laboratoire d'Automatique et d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
+medir distância, sendo possível atualizar o seu mundo com acurácia. Seu mundo
+era representado por modelos geométricos e um modelo relacional que expressava a
+conectividade dos quartos e corredores (simbólico) \cite{norelis1989control}.
 
-TambÃ©m em 1977, o Stanford Cart foi criado por Moravec para teste de visÃ£o
-para navegaÃ§Ã£o e desvio de obstÃ¡culos \cite{moravec1977towards}. Os obstÃ¡culos
-eram identificados pelo robÃ´ durante a operaÃ§Ã£o e representados em seu mundo
-como esferas. O mundo tambÃ©m era representado simbolicamente por grafos.
+Também em 1977, o Stanford Cart foi criado por Moravec para teste de visão
+para navegação e desvio de obstáculos \cite{moravec1977towards}. Os obstáculos
+eram identificados pelo robô durante a operação e representados em seu mundo
+como esferas. O mundo também era representado simbolicamente por grafos.
 
 Em 1969, Victor Scheinman, Universidade de Stanford
-\cite{scheinman1969design}, inventou o primeiro manipulador robÃ³tico
-totalmente elÃ©trico de seis elos e com soluÃ§Ã£o completa e integrada de
-cinemÃ¡tica inversa. Isto Ã©, dado um ponto qualquer pertencente ao espaÃ§o de
-trabalho do manipulador, este calcula o Ã¢ngulo das juntas de forma que o
+\cite{scheinman1969design}, inventou o primeiro manipulador robótico
+totalmente elétrico de seis elos e com solução completa e integrada de
+cinemática inversa. Isto é, dado um ponto qualquer pertencente ao espaço de
+trabalho do manipulador, este calcula o ângulo das juntas de forma que o
 efetuador alcance o ponto especificado. Isso permitiu que o manipulador
-percorresse trajetÃ³rias arbitrÃ¡rias. AtÃ© os dias atuais, 2015, Ã© ampla a
-utilizaÃ§Ã£o de manipuladores industriais. A sofisticaÃ§Ã£o destes sistemas jÃ¡
+percorresse trajetórias arbitrárias. Até os dias atuais, 2015, é ampla a
+utilização de manipuladores industriais. A sofisticação destes sistemas já
 possibilita que estes armazenem todo o conhecimento do mundo e executem tarefas
-autÃ´nomas (figura~\ref{manipulador}).
+autônomas (figura~\ref{manipulador}).
 
 \begin{figure}[H]
 \centering
@@ -141,13 +141,13 @@ autÃ´nomas (figura~\ref{manipulador}).
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/MANIPULADOR.png}
-\caption{Manipulador robÃ³tico atual}
+\caption{Manipulador robótico atual}
 \label{manipulador}
 \end{figure}
 
 \subsection{Arquiteturas deliberativas}
-As arquiteturas deliberativas sÃ£o sistemas hierÃ¡rquicos com a lÃ³gica
-\textit{SPA}. SÃ£o utilizados em sistemas robÃ³ticos atÃ© hoje, quando a aplicaÃ§Ã£o
+As arquiteturas deliberativas são sistemas hierárquicos com a lógica
+\textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
 favorece seu uso e devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
 NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
 Robot System} de Saridis.
@@ -156,47 +156,47 @@ Robot System} de Saridis.
 
 Albus foi o pioneiro e mais influente autor de teorias em arquiteturas
 deliberativas, que pode ser vista em \cite{albus1991outline}. Sua
-grande contribuiÃ§Ã£o foi a formalizaÃ§Ã£o e definiÃ§Ã£o de diversos termos
-amplamente utilizados em automaÃ§Ã£o e controle. Dentre outros, destaca-se o
-teorema de que hÃ¡ quatro sistemas que compÃµem a inteligÃªncia: processamento de
-sensores, modelo do mundo, geraÃ§Ã£o de comportamentos e julgamento de valor. As
-entradas desses elementos sÃ£o os sensores e suas saÃ­das sÃ£o os atuadores:
+grande contribuição foi a formalização e definição de diversos termos
+amplamente utilizados em automação e controle. Dentre outros, destaca-se o
+teorema de que há quatro sistemas que compõem a inteligência: processamento de
+sensores, modelo do mundo, geração de comportamentos e julgamento de valor. As
+entradas desses elementos são os sensores e suas saídas são os atuadores:
 
 \begin{itemize}
-  \item Atuadores: as saÃ­das de um sistema inteligente pe produzida por
-  atuadores, como mover, posicionar braÃ§os, pernas, mÃ£os, olhos e etc. Os
-  atuadores naturais sÃ£o os mÃºsculos e as glÃ¢ndulas, jÃ¡ os atuadores de mÃ¡quinas
-  sÃ£o motores, pistÃµes e vÃ¡lvulas.
-  \item Sensores: sÃ£o as entradas de um sistema inteligente, como sensores de
-  forÃ§a, torque, posiÃ§Ã£o, velocidade, vibraÃ§Ã£o, acÃºstico, gases, temperatura e
-  muitos outros. Monitoram o mundo e o estado interno do sistema, e provÃª dados
+  \item Atuadores: as saídas de um sistema inteligente pe produzida por
+  atuadores, como mover, posicionar braços, pernas, mãos, olhos e etc. Os
+  atuadores naturais são os músculos e as glândulas, já os atuadores de máquinas
+  são motores, pistões e válvulas.
+  \item Sensores: são as entradas de um sistema inteligente, como sensores de
+  força, torque, posição, velocidade, vibração, acústico, gases, temperatura e
+  muitos outros. Monitoram o mundo e o estado interno do sistema, e provê dados
   ao sistema de processamento sensorial.
-  \item Processamento sensorial: sistema que compara novas observaÃ§Ãµes com a
-  expectativa interna do modelo do mundo. Integra e armazena as diferenÃ§as e
-  semelhanÃ§as encontradas, a fim de reconhecer padrÃµes, objetos e relaÃ§Ãµes no
+  \item Processamento sensorial: sistema que compara novas observações com a
+  expectativa interna do modelo do mundo. Integra e armazena as diferenças e
+  semelhanças encontradas, a fim de reconhecer padrões, objetos e relações no
   mundo.
-  \item Modelo do mundo: Ã© a melhor estimativa que o sistema inteligente possui
-  do mundo, e atualizado pelo processamento sensorial. Ã‰ um banco de dados com
-  todo o conhecimento do mundo e contÃ©m uma capacidade de simulaÃ§Ã£o que gera expectativas e prediÃ§Ãµes. O modelo do mundo
-  pode prover informaÃ§Ãµes do passado, presente e prevÃª estados futuros.
-  Os dados sÃ£o importantes para: o gerador de comportamentos escolher o plano
-  adequado para execuÃ§Ã£o das aÃ§Ãµes; o processamento sensorial fazer correlaÃ§Ãµes,
-  comparaÃ§Ã£o de modelos, e reconhecimento de objetos, estados e eventos; e o
-  sistema de julgamento de valor computar valores de custo, benefÃ­cio, risco,
-  incerteza, importÃ¢ncia e outros.
-  \item Julgamento de valor: este Ã© o sistema que determina o que Ã© bom ou ruim,
-  importante ou trivial, certo ou improvÃ¡vel. Computa custos, riscos e
-  benefÃ­cios de situaÃ§Ãµes observadas e atividades planejadas.
+  \item Modelo do mundo: é a melhor estimativa que o sistema inteligente possui
+  do mundo, e atualizado pelo processamento sensorial. É um banco de dados com
+  todo o conhecimento do mundo e contém uma capacidade de simulação que gera expectativas e predições. O modelo do mundo
+  pode prover informações do passado, presente e prevê estados futuros.
+  Os dados são importantes para: o gerador de comportamentos escolher o plano
+  adequado para execução das ações; o processamento sensorial fazer correlações,
+  comparação de modelos, e reconhecimento de objetos, estados e eventos; e o
+  sistema de julgamento de valor computar valores de custo, benefício, risco,
+  incerteza, importância e outros.
+  \item Julgamento de valor: este é o sistema que determina o que é bom ou ruim,
+  importante ou trivial, certo ou improvável. Computa custos, riscos e
+  benefícios de situações observadas e atividades planejadas.
   \item Gerador de comportamentos: elemento que seleciona objetivos e planos,
-  executa e monitora aÃ§Ãµes, e modifica planos existentes quando alguma situaÃ§Ã£o
-  do mundo exigir. Tarefas sÃ£o decompostas em subtarefas, e subtarefas sÃ£o
-  sequÃªncias de objetivos. A ordem lÃ³gica de funcionamento Ã©: o gerador de
+  executa e monitora ações, e modifica planos existentes quando alguma situação
+  do mundo exigir. Tarefas são decompostas em subtarefas, e subtarefas são
+  sequências de objetivos. A ordem lógica de funcionamento é: o gerador de
   comportamentos cria planos, o modelo do mundo predita o resultado do plano, e
   o julgamento de valor avalia os resultados. O gerador de comportamento
-  seleciona o plano com a avaliaÃ§Ã£o mais alta.
+  seleciona o plano com a avaliação mais alta.
 \end{itemize}
-As relaÃ§Ãµes entre os elementos do sistema inteligente estÃ£o representados na
-figura~\ref{albus}.  Esses elementos e suas relaÃ§Ãµes possibilitaram a criaÃ§Ã£o de
+As relações entre os elementos do sistema inteligente estão representados na
+figura~\ref{albus}.  Esses elementos e suas relações possibilitaram a criação de
 diversas arquiteturas.
 
 \begin{figure}[H]
@@ -209,29 +209,29 @@ diversas arquiteturas.
 
 \subsubsection{NASREM}
 O NASREM \cite{albus1989nasa} foi uma arquitetura utilizada pela
-NASA e possuÃ­a uma arquitetura com seis nÃ­veis de
+NASA e possuía uma arquitetura com seis níveis de
 funcionalidade(figura~\ref{nasrem}):
 
 \begin{enumerate}
-  \item Servo: provÃª o controle dos atuadores do robÃ´ (posiÃ§Ã£o, velocidade e
+  \item Servo: provê o controle dos atuadores do robô (posição, velocidade e
   etc).
-  \item Primitiva: determina as primitivas de movimento para gerar trajetÃ³rias
+  \item Primitiva: determina as primitivas de movimento para gerar trajetórias
   suaves.
-  \item Movimento elementar: define e planeja trajetÃ³rias livre de colisÃµes.
-  \item Tarefa: converte aÃ§Ãµes desejadas de um objeto em sequÃªncias de
+  \item Movimento elementar: define e planeja trajetórias livre de colisões.
+  \item Tarefa: converte ações desejadas de um objeto em sequências de
   movimentos elementares.
-  \item Compartimento de serviÃ§os: converte aÃ§Ãµes de grupos de objetos em
+  \item Compartimento de serviços: converte ações de grupos de objetos em
   tarefas de um objeto.
-  \item MissÃ£o: decompÃµe o plano de missÃ£o em alto nÃ­vel em compartimento de
-  serviÃ§os.
+  \item Missão: decompõe o plano de missão em alto nível em compartimento de
+  serviços.
 \end{enumerate}
 
-Vale ressaltar que no modelo NASREM, o operador tem acesso a qualquer nÃ­vel
-hierÃ¡rquico do robÃ´ e pode tomar o controle do robÃ´ para si, alÃ©m de poder
+Vale ressaltar que no modelo NASREM, o operador tem acesso a qualquer nível
+hierárquico do robô e pode tomar o controle do robô para si, além de poder
 substituir as entradas de sensores, modelo do mundo e outros. Dessa forma, o
-nÃ­vel de autonomia do robÃ´ pode ser desenvolvido de forma incremental.
+nível de autonomia do robô pode ser desenvolvido de forma incremental.
 
-A arquitetura hierÃ¡rquica proposta em NASREM permite modularidade e propÃµe uma
+A arquitetura hierárquica proposta em NASREM permite modularidade e propõe uma
 metodologia de software.  
  
 \begin{figure}[H]
@@ -242,42 +242,42 @@ metodologia de software.
 \end{figure}
 
 \subsubsection{\textit{Nested Hierarchical Controllers}}
-O \textit{Nested Hierarchical Controllers} (NHC) consiste tambÃ©m em seis
-nÃ­veis hierÃ¡rquicos: planejador da missÃ£o, navegador, piloto, monitor de
-trajetÃ³ria, controlador, e sistema de controle de baixo nÃ­vel. HÃ¡ tambÃ©m
-constante atualizaÃ§Ã£o do modelo do mundo por um sistema de sensoriamento.
+O \textit{Nested Hierarchical Controllers} (NHC) consiste também em seis
+níveis hierárquicos: planejador da missão, navegador, piloto, monitor de
+trajetória, controlador, e sistema de controle de baixo nível. Há também
+constante atualização do modelo do mundo por um sistema de sensoriamento.
 
-O planejamento Ã© decomposto em planejador da missÃ£o, navegador e piloto e seus
-mÃ³dulos sÃ£o executados sequencialmente, tornando-se mais especÃ­fico e detalhado.
-A lÃ³gica Ã© hierÃ¡rquica: o planejador de missÃ£o envia trechos da missÃ£o para o
-navegador, o qual envia trechos de trajetÃ³ria para o piloto, que determina aÃ§Ãµes
-ao controlador de baixo nÃ­vel. A utilizaÃ§Ã£o do mapa interno do robÃ´ por cada
-mÃ³dulo Ã© diferente, enquanto o planejador usa o mapa global, o piloto recebe
-informaÃ§Ãµes locais. Vale observar que, quando o modelo do mundo Ã© atualizado,
-muitas vezes nÃ£o hÃ¡ necessidade de o planejador atualizar toda a missÃ£o e
-recomeÃ§ar o ciclo de planejamento, apenas o piloto pode recalcular a trajetÃ³ria
+O planejamento é decomposto em planejador da missão, navegador e piloto e seus
+módulos são executados sequencialmente, tornando-se mais específico e detalhado.
+A lógica é hierárquica: o planejador de missão envia trechos da missão para o
+navegador, o qual envia trechos de trajetória para o piloto, que determina ações
+ao controlador de baixo nível. A utilização do mapa interno do robô por cada
+módulo é diferente, enquanto o planejador usa o mapa global, o piloto recebe
+informações locais. Vale observar que, quando o modelo do mundo é atualizado,
+muitas vezes não há necessidade de o planejador atualizar toda a missão e
+recomeçar o ciclo de planejamento, apenas o piloto pode recalcular a trajetória
 local. 
 %TODO: FIGURA 
 
 \subsubsection{\textit{Intelligent Mobile Robot System}}
 Em 1991, Saridis \cite{wang1991petri} cria o \emph{Intelligent Mobile
-Robot System} (IMRS) baseado na teoria de inteligÃªncia hierÃ¡rquica de controle
-\cite{saridis1988analytical}. Saridis utiliza redes de Petri como mÃ³dulos
-bÃ¡sicos da arquitetura para traduzir os comandos gerados pelo nÃ­vel de
-organizaÃ§Ã£o em algo compreensÃ­vel para o nÃ­vel de execuÃ§Ã£o.
+Robot System} (IMRS) baseado na teoria de inteligência hierárquica de controle
+\cite{saridis1988analytical}. Saridis utiliza redes de Petri como módulos
+básicos da arquitetura para traduzir os comandos gerados pelo nível de
+organização em algo compreensível para o nível de execução.
 
 O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
 \begin{itemize}
-  \item NÃ­vel organizacional (organizador de tarefas): gera tarefas de
-  movimentaÃ§Ã£o de alto nÃ­vel.
-  \item NÃ­vel de coordenaÃ§Ã£o: funciona como uma interface entre o nÃ­vel
-  organizacional e o de execuÃ§Ã£o. O nÃ­vel Ã© composto por um remetente e alguns
-  coordenadores. O remetente recebe o plano da tarefa do organizador, decompÃµe a
-  tarefa em aÃ§Ãµes de controle e remete aos coordenadores. Os coordenadores
-  traduzem os comandos de controle em instruÃ§Ãµes de operaÃ§Ã£o e transmite ao
-  nÃ­vel de execuÃ§Ã£o.
-  \item NÃ­vel de execuÃ§Ã£o: executa a instruÃ§Ã£o proveniente do nÃ­vel de
-  coordenaÃ§Ã£o e reporta seus resultados a ele.
+  \item Nível organizacional (organizador de tarefas): gera tarefas de
+  movimentação de alto nível.
+  \item Nível de coordenação: funciona como uma interface entre o nível
+  organizacional e o de execução. O nível é composto por um remetente e alguns
+  coordenadores. O remetente recebe o plano da tarefa do organizador, decompõe a
+  tarefa em ações de controle e remete aos coordenadores. Os coordenadores
+  traduzem os comandos de controle em instruções de operação e transmite ao
+  nível de execução.
+  \item Nível de execução: executa a instrução proveniente do nível de
+  coordenação e reporta seus resultados a ele.
 \end{itemize}
 
 \begin{figure}[H]
@@ -287,185 +287,185 @@ O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
 \label{Saridis_1} 
 \end{figure}
 
-O nÃ­vel de coordenaÃ§Ã£o do IMRS Ã© composto por um remetente
-(\emph{Dispatcher}) e trÃªs coordenadores: sistema de visÃ£o (VS), desvio de
-obstÃ¡culo e controle de rastreamento (OATC), e planejamento de trajetÃ³rias (PP).
-Com o modelo de redes de Petri nÃ£o Ã© possÃ­vel implementar o esquema de linguagem de
-decisÃ£o para descrever a traduÃ§Ã£o de tarefas entre remetente e coordenadores.
+O nível de coordenação do IMRS é composto por um remetente
+(\emph{Dispatcher}) e três coordenadores: sistema de visão (VS), desvio de
+obstáculo e controle de rastreamento (OATC), e planejamento de trajetórias (PP).
+Com o modelo de redes de Petri não é possível implementar o esquema de linguagem de
+decisão para descrever a tradução de tarefas entre remetente e coordenadores.
 Portanto, os \emph{Petri Net Transducers} (PNTs) foram introduzidos como
 tradutores de linguagem (protocolo): $PNT = (N,\Sigma,
 \Delta, \sigma, \mu, F)$. Onde:
 \begin{itemize}
 	\item A rede de Petri $N=(P,T,I,O)$, $P$ lugares, $T$
-transiÃ§Ãµes, funÃ§Ã£o de entrada $I$, funÃ§Ã£o de saÃ­da $O$, Ã© o controle da
-traduÃ§Ã£o;
-	\item $\mu$ Ã© o estado inicial de $N$;
-	\item $\Sigma$ Ã© o alfabeto de entrada, representa tarefas de entradas;
-	\item $\Delta$ Ã© o alfabeto de saÃ­da, representa tarefas de saÃ­da; 
-	\item $\sigma$ especifica, para uma dada tarefa de entrada, as transiÃ§Ãµes em
-$N$ e as subtarefas de saÃ­da que podem ser usadas na tarefa;
-	\item $F$ Ã© o estado final. Indica o fim da traduÃ§Ã£o da tarefa;
+transições, função de entrada $I$, função de saída $O$, é o controle da
+tradução;
+	\item $\mu$ é o estado inicial de $N$;
+	\item $\Sigma$ é o alfabeto de entrada, representa tarefas de entradas;
+	\item $\Delta$ é o alfabeto de saída, representa tarefas de saída; 
+	\item $\sigma$ especifica, para uma dada tarefa de entrada, as transições em
+$N$ e as subtarefas de saída que podem ser usadas na tarefa;
+	\item $F$ é o estado final. Indica o fim da tradução da tarefa;
 \end{itemize}    
 
-Os quatro PNT's sÃ£o combinados para realizarem a traduÃ§Ã£o de tarefas no NÃ­vel
-de CoordenaÃ§Ã£o: remetente, sistema de visÃ£o, desvio de obstÃ¡culo
-e controle de rastreamento, e planejamento de trajetÃ³rias. A
+Os quatro PNT's são combinados para realizarem a tradução de tarefas no Nível
+de Coordenação: remetente, sistema de visão, desvio de obstáculo
+e controle de rastreamento, e planejamento de trajetórias. A
 figura~\ref{Saridis_2} mostra o modelo de rede de Petri para o Remetente.
-%SerÃ¡ brevemente descrito o componente Remetente (\emph{Dispatcher}) do modelo
-% de NÃ­vel de CoordenaÃ§Ã£o para melhor entendimento do PNT.
+%Será brevemente descrito o componente Remetente (\emph{Dispatcher}) do modelo
+% de Nível de Coordenação para melhor entendimento do PNT.
 
-%Foram definidas quatro tarefas para o NÃ­vel de CoordenaÃ§Ã£o: 1) \emph{wmu}:
-%atualizaÃ§Ã£o da memÃ³ria 3-D do ambiente; 2) \emph{mod}: detecÃ§Ã£o de objetos em
-%movimento; 3) \emph{pp}: planejamento de trajetÃ³rias; 4) \emph{moac}: desvio de
-%obstÃ¡culos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
+%Foram definidas quatro tarefas para o Nível de Coordenação: 1) \emph{wmu}:
+%atualização da memória 3-D do ambiente; 2) \emph{mod}: detecção de objetos em
+%movimento; 3) \emph{pp}: planejamento de trajetórias; 4) \emph{moac}: desvio de
+%obstáculos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
 %de rede de Petri para o Remetente.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth,angle=90]{figs/SARIDIS_2.pdf}
-\caption{Estrutura do nÃ­vel de coordenaÃ§Ã£o com foco na rede de Petri do
+\caption{Estrutura do nível de coordenação com foco na rede de Petri do
 Remetente}
 \label{Saridis_2}
 \end{figure}
 
 A modelagem do sistema utilizando redes de Petri proporcionaram, como pode ser
 visto na figura~\ref{Saridis_2}, algumas funcionalidades essenciais em uma
-arquitetura robÃ³tica: a capacidade de executar duas tarefas simultaneamente, por
-exemplo, movimentaÃ§Ã£o e planejamento de trajetÃ³rias; e o \emph{Input Semaphore},
-que impede um processo de ser executado atÃ© outro ser finalizado.
+arquitetura robótica: a capacidade de executar duas tarefas simultaneamente, por
+exemplo, movimentação e planejamento de trajetórias; e o \emph{Input Semaphore},
+que impede um processo de ser executado até outro ser finalizado.
   
 % 
 % 
-% O estado inicial da rede de Petri Ã©: $$M
-% =\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares sÃ£o: $$M
+% O estado inicial da rede de Petri é: $$M
+% =\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
 % =\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
 % $$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
 % O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ 
-% As suas transiÃ§Ãµes sÃ£o:
+% As suas transições são:
 % \begin{enumerate}
-%   \item A transiÃ§Ã£o $t_s$ inicializa o Remetente quando uma tarefa Ã© recebida
+%   \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
 %   do Organizador. 
 %   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$  
-%   O lugar $P_0$ permanece com um token, logo a transiÃ§Ã£o $t_s$ ainda pode ser
+%   O lugar $P_0$ permanece com um token, logo a transição $t_s$ ainda pode ser
 %   disparada. Isso faz com que o Remetente seja capaz de executar duas tarefas
-%   simultaneamente: a tarefa de movimentaÃ§Ã£o (ver item 7) e o planejamento de
-%   trajetÃ³rias (ver item 3).
-%   \item A transiÃ§Ã£o $t_{wmu}$ chama o processo de atualizaÃ§Ã£o do mapa 3-D. O
-%   sistema de visÃ£o poderÃ¡ ser iniciado (token em $I_{VS}$) e a transiÃ§Ã£o
-%   $t_{wmu}$ nÃ£o pode ser disparada novamente atÃ© completar mais um ciclo de
-%   visÃ£o, graÃ§as ao \emph{Input Semaphore}, $IS_{VS}$.
+%   simultaneamente: a tarefa de movimentação (ver item 7) e o planejamento de
+%   trajetórias (ver item 3).
+%   \item A transição $t_{wmu}$ chama o processo de atualização do mapa 3-D. O
+%   sistema de visão poderá ser iniciado (token em $I_{VS}$) e a transição
+%   $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
+%   visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
 %   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do sistema de visÃ£o, o seu \emph{Output Point}, $O_{VS}$,
-%   adquire um token, habilitando a transiÃ§Ã£o $t_{PP}$ do Remetente. 
+%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+%   adquire um token, habilitando a transição $t_{PP}$ do Remetente. 
 %   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-%   Vale observar que nÃ£o Ã© possÃ­vel modelar essas caracterÃ­sticas com mÃ¡quinas de
-%   estado sem a utilizaÃ§Ã£o de recursos extras como inibidores e supressores.
-%   \item A transiÃ§Ã£o $t_{pp}$ habilita o planejamento de trajetÃ³rias (token em
-%   $I_{PP}$), com restriÃ§Ãµes de espaÃ§o, cinemÃ¡tica, dinÃ¢mica e critÃ©rio de
-%   otimizaÃ§Ã£o. $t_{pp}$ nÃ£o pode ser disparada novamente atÃ© completar um
-%   ciclo de planejamento de trajetÃ³rias, graÃ§as ao \emph{Input Semaphore},
+%   Vale observar que não é possível modelar essas características com máquinas de
+%   estado sem a utilização de recursos extras como inibidores e supressores.
+%   \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
+%   $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
+%   otimização. $t_{pp}$ não pode ser disparada novamente até completar um
+%   ciclo de planejamento de trajetórias, graças ao \emph{Input Semaphore},
 %   $IS_{PP}$.
 %   $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do planejamento de trajetÃ³rias, o seu \emph{Output
-%   Point}, $O_{PP}$, adquire um token, habilitando a transiÃ§Ã£o $t_{ssd}$ do
+%   Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
+%   Point}, $O_{PP}$, adquire um token, habilitando a transição $t_{ssd}$ do
 %   Remetente.
 %   $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
-%   \item A transiÃ§Ã£o $t_{ssd}$ Ã© disparada para colocar o estado do planejamento
-%   de trajetÃ³rias no valor inicial:
+%   \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
+%   de trajetórias no valor inicial:
 %   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transiÃ§Ã£o $t_{mod}$ Ã© disparada para o desvio de obstÃ¡culo em um
-%   espaÃ§o especificado e provÃª acurÃ¡cia e tempo requerido. O
-%   sistema de visÃ£o poderÃ¡ ser iniciado novamente (token em $I_{VS}$) e a
-%   transiÃ§Ã£o $t_{mod}$ nÃ£o pode ser disparada novamente atÃ© completar mais um
-%   ciclo de visÃ£o, graÃ§as ao \emph{Input Semaphore}, $IS_{VS}$.
+%   \item A transição $t_{mod}$ é disparada para o desvio de obstáculo em um
+%   espaço especificado e provê acurácia e tempo requerido. O
+%   sistema de visão poderá ser iniciado novamente (token em $I_{VS}$) e a
+%   transição $t_{mod}$ não pode ser disparada novamente até completar mais um
+%   ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
 %   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do sistema de visÃ£o, o seu \emph{Output Point}, $O_{VS}$,
-%   adquire um token, habilitando a transiÃ§Ã£o $t_{moac}$ do Remetente. 
+%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
+%   adquire um token, habilitando a transição $t_{moac}$ do Remetente. 
 %   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-%   \item A transiÃ§Ã£o $t_{moac}$ Ã© disparada e habilita o desvio de obstÃ¡culo
-%   e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visÃ£o volta para
-%   o valor inicial e $t_{moac}$ nÃ£o pode ser disparada novamente atÃ© completar um
-%   ciclo de desvio de obstÃ¡culo, graÃ§as ao \emph{Input Semaphore}, $IS_{OATC}$.
+%   \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
+%   e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
+%   o valor inicial e $t_{moac}$ não pode ser disparada novamente até completar um
+%   ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
 %   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
-%   Ao fim do ciclo do desvio de obstÃ¡culo, o seu \emph{Output
-%   Point}, $O_{OATC}$, adquire um token, habilitando a transiÃ§Ã£o $t_{mte}$ do
+%   Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
+%   Point}, $O_{OATC}$, adquire um token, habilitando a transição $t_{mte}$ do
 %   Remetente.
 %   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
-%   \item A transiÃ§Ã£o $t_{mte}$ realiza a tarefa de movimentaÃ§Ã£o do robÃ´. O
-%   sistema de desvio de obstÃ¡culos e controle de rastreamento volta para o estado
+%   \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
+%   sistema de desvio de obstáculos e controle de rastreamento volta para o estado
 %   inicial.
 %   $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   Caso haja falha, as transiÃ§Ãµes $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
-%   \item A transiÃ§Ã£o $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
+%   Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
+%   \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
 %   Organizador.
 %   $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transiÃ§Ã£o $t_{cmn}$ Ã© disparada em caso de falha na movimentaÃ§Ã£o do
-%   robÃ´. O robÃ´ continuarÃ¡ o seu movimento por um novo caminho. Volta ao item 2.
+%   \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
+%   robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
 %   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-%   \item A transiÃ§Ã£o $t_{cmo}$ Ã© disparada em caso de falha na movimentaÃ§Ã£o do
-%   robÃ´. O robÃ´ continuarÃ¡ o seu movimento pelo mesmo caminho. Volta ao item 5.
+%   \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
+%   robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
 %   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transiÃ§Ã£o $t_f$ dispara para reportar o resultado da movimentaÃ§Ã£o do
-%   robÃ´ ao Organizador. Volta ao item 1.
+%   \item A transição $t_f$ dispara para reportar o resultado da movimentação do
+%   robô ao Organizador. Volta ao item 1.
 %   $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
 % \end{enumerate} 
 
-%A rede de Petri evidencia o motivo do uso dos PNT, com os parÃ¢metros aumentados
-%$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. %AtÃ© agora, apenas as variÃ¡veis
-%diretamente ligadas Ã  rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
-%Quando se busca a integraÃ§Ã£o das redes dos coordenadores fica nÃ­tida a
-% necessidade de parÃ¢metros para especificaÃ§Ã£o das tarefas.
+%A rede de Petri evidencia o motivo do uso dos PNT, com os parâmetros aumentados
+%$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. %Até agora, apenas as variáveis
+%diretamente ligadas à rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
+%Quando se busca a integração das redes dos coordenadores fica nítida a
+% necessidade de parâmetros para especificação das tarefas.
 
-%O alfabeto de entrada do Remetente Ã© dado pelo Organizador, dado como
-%$\Sigma_0$. O alfabeto de saÃ­da ($\Delta_0$) sÃ£o os alfabetos de entrada para
+%O alfabeto de entrada do Remetente é dado pelo Organizador, dado como
+%$\Sigma_0$. O alfabeto de saída ($\Delta_0$) são os alfabetos de entrada para
 %cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
 %$\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
 %$\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
 
-%O parÃ¢metro que especifica as transiÃ§Ãµes para uma determinada tarefa e as
-%subtarefas Ã© o $\sigma$. Para a transiÃ§Ã£o $t_{mod}$, por exemplo,
+%O parâmetro que especifica as transições para uma determinada tarefa e as
+%subtarefas é o $\sigma$. Para a transição $t_{mod}$, por exemplo,
 %$\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
-%\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ Ã© a acurÃ¡cia requerida sobre
-%objetos detectados em VS e $ptc$ Ã© o tempo para a realizaÃ§Ã£o do processo. A
-% rede de Petri no coordenador VS pode, portanto, assumir transiÃ§Ãµes paralelas (dois
-%caminhos) e o que define qual caminho deve ser seguido Ã© o parÃªmetro do
-%Remetente (neste caso serÃ¡ a transiÃ§Ã£o $t_{smd}$ de VS).
+%\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ é a acurácia requerida sobre
+%objetos detectados em VS e $ptc$ é o tempo para a realização do processo. A
+% rede de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
+%caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
+%Remetente (neste caso será a transição $t_{smd}$ de VS).
 
-Saridis salienta os benefÃ­cios das PNT:
+Saridis salienta os benefícios das PNT:
 \begin{itemize}
-  \item Redes de Petri podem ser usadas como mÃ³dulos bÃ¡sicos para sistemas de
-  controle de missÃ£o de robÃ´s mÃ³veis.
-  \item A comunicaÃ§Ã£o e conexÃ£o de mÃ³dulos sÃ£o eficientes entre redes de Petri.
-  \item Controle e mecanismo de comunicaÃ§Ã£o para coordenaÃ§Ã£o de tarefas de um
-  robÃ´ mÃ³vel podem ser realizados com redes de Petri.
+  \item Redes de Petri podem ser usadas como módulos básicos para sistemas de
+  controle de missão de robôs móveis.
+  \item A comunicação e conexão de módulos são eficientes entre redes de Petri.
+  \item Controle e mecanismo de comunicação para coordenação de tarefas de um
+  robô móvel podem ser realizados com redes de Petri.
 \end{itemize} 
 
-A arquitetura de Saridis Ã© uma contribuiÃ§Ã£o importante por criar um nÃ­vel
-organizacional, separando o nÃ­vel do desenvolvedor de baixo nÃ­vel e um
-nÃ­vel de alto nÃ­vel para um operador (usuÃ¡rio). AlÃ©m disso, as redes de Petri
-assumem um importante papel como mÃ³dulo bÃ¡sico de controle para seu sistema
+A arquitetura de Saridis é uma contribuição importante por criar um nível
+organizacional, separando o nível do desenvolvedor de baixo nível e um
+nível de alto nível para um operador (usuário). Além disso, as redes de Petri
+assumem um importante papel como módulo básico de controle para seu sistema
 IMRS. As redes de Petri foram originalmente introduzidas para descrever as
-comunicaÃ§Ãµes de mÃ¡quinas de estado finito (FSM), possibilitando flexibilidade
-e robustez, e Ã© provado que redes de Petri sÃ£o excelente ferramenta para
+comunicações de máquinas de estado finito (FSM), possibilitando flexibilidade
+e robustez, e é provado que redes de Petri são excelente ferramenta para
 modelagem de sistemas, sobretudo quando envolvem tarefas conflitantes ou
-simultÃ¢neas, Murata \cite{murata1989petri}.
+simultâneas, Murata \cite{murata1989petri}.
 
 
-\subsection{AnÃ¡lise crÃ­tica}
+\subsection{Análise crítica}
 A abordagem deliberativa simula, de certa forma, o processo de planejamento e
-tomada de decisÃ£o do ser humano. HÃ¡ um nÃºcleo (cÃ©rebro) que
-processa todos os dados sensorias e armazena o mundo, isto Ã©, o ambiente em que
-estÃ¡ inserido, de maneira simbÃ³lica, geomÃ©trica ou outras.
-AlÃ©m disso, ele planeja todas as aÃ§Ãµes para uma determinada tarefa, consultando sua ideia de mundo intensivamente. HÃ¡,
-tambÃ©m, sensores que enviam suas novas informaÃ§Ãµes periodicamente para o nÃºcleo,
-(Ã³rgÃ£os receptivos: visÃ£o, olfato, e etc), atualizando o mundo. E hÃ¡
-atuadores (mÃºsculos) necessÃ¡rios para a realizaÃ§Ã£o das tarefas~\ref{brain}.
+tomada de decisão do ser humano. Há um núcleo (cérebro) que
+processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que
+está inserido, de maneira simbólica, geométrica ou outras.
+Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
+também, sensores que enviam suas novas informações periodicamente para o núcleo,
+(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
+atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 
-Ã‰ fÃ¡cil observar que a arquitetura deliberativa Ã© dependente do
-modelo de mundo armazenado e suas atualizaÃ§Ãµes periÃ³dicas. Portanto, a
-utilizaÃ§Ã£o da abordagem deliberativa em ambientes extremamente dinÃ¢micos pode ser muito
-custosa devido Ã s atualizaÃ§Ãµes e ao replanejamento. AlÃ©m disso, Ã© fÃ¡cil observar
-que a arquitetura SPA dificulta a criaÃ§Ã£o de sistemas em tempo real eficientes.
+É fácil observar que a arquitetura deliberativa é dependente do
+modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
+utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
+custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
+que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
 
 \begin{figure}[H]
 \centering
@@ -476,143 +476,143 @@ que a arquitetura SPA dificulta a criaÃ§Ã£o de sistemas em tempo real eficientes
 
 \section{Paradigma reativo}
 
-Sistemas de arquitetura reativa tambÃ©m sÃ£o chamados de sistemas baseados em
-comportamentos. Os robÃ´s sÃ£o programados para agir atravÃ©s de ativaÃ§Ã£o de uma
-coleÃ§Ã£o de comportamentos primitivos de baixo nÃ­vel. De acordo com
-\cite{arkin1995reactive}, as principais caracterÃ­sticas de sistemas puramente
-reativos sÃ£o:
+Sistemas de arquitetura reativa também são chamados de sistemas baseados em
+comportamentos. Os robôs são programados para agir através de ativação de uma
+coleção de comportamentos primitivos de baixo nível. De acordo com
+\cite{arkin1995reactive}, as principais características de sistemas puramente
+reativos são:
 
 \begin{itemize}
-  \item Comportamentos sÃ£o como elementos construtivos: sÃ£o um par sensor-motor,
-  onde o sensor provÃª informaÃ§Ã£o necessÃ¡ria para o motor executar uma aÃ§Ã£o
-  reativa, como desvio de obstÃ¡culo, atrair-se a objetivos, escapar de
+  \item Comportamentos são como elementos construtivos: são um par sensor-motor,
+  onde o sensor provê informação necessária para o motor executar uma ação
+  reativa, como desvio de obstáculo, atrair-se a objetivos, escapar de
   predadores e etc.
-  \item NÃ£o hÃ¡ criaÃ§Ã£o ou manutenÃ§Ã£o precisa do modelo do mundo. Os sistemas
-  reagem ao estÃ­mulo do mundo, extremamente Ãºtil para mundos dinÃ¢micos e
+  \item Não há criação ou manutenção precisa do modelo do mundo. Os sistemas
+  reagem ao estímulo do mundo, extremamente útil para mundos dinâmicos e
   hostis.
-  \item Comportamentos de animais sÃ£o normalmente utilizados para modelar esses
+  \item Comportamentos de animais são normalmente utilizados para modelar esses
   sistemas.
 \end{itemize}
 
-Dessa forma, controle reativo Ã© uma tÃ©cnica que une percepÃ§Ã£o e aÃ§Ã£o,
+Dessa forma, controle reativo é uma técnica que une percepção e ação,
 tipicamente no contexto de comportamentos motores, para produzir respostas
-robÃ³ticas em tempo real em mundos dinÃ¢micos e nÃ£o estruturados.
+robóticas em tempo real em mundos dinâmicos e não estruturados.
 
 Em 1986, um dos primeiros estudos em sistemas reativos foi desenvolvido por
-Rodney Brooks \cite{brooks1986robust}. Este estudo Ã© a base para diversos
-trabalhos atuais que envolvem robÃ´s reativos mÃ³veis. Os desafios de
-robÃ´s autÃ´nomos apontados por Brooks e que ainda ilustram os problemas da
-atualidade sÃ£o: \emph{mÃºltiplos objetivos}, \emph{mÃºltiplos sensores},
+Rodney Brooks \cite{brooks1986robust}. Este estudo é a base para diversos
+trabalhos atuais que envolvem robôs reativos móveis. Os desafios de
+robôs autônomos apontados por Brooks e que ainda ilustram os problemas da
+atualidade são: \emph{múltiplos objetivos}, \emph{múltiplos sensores},
 \emph{robustez} e \emph{extensibilidade}. De acordo com Brooks, esses desafios
-nÃ£o sÃ£o suportados pela arquitetura tradicional (paradigma hierÃ¡rquico) de um
+não são suportados pela arquitetura tradicional (paradigma hierárquico) de um
 sistema de controle.
 
-Os mÃºltiplos objetivos de robÃ´s mÃ³veis podem:
+Os múltiplos objetivos de robôs móveis podem:
 \begin{itemize}
-  \item Ser conflitantes: por exemplo, um robÃ´ pode estar tentando alcanÃ§ar um
-  determinado ponto no espaÃ§o, porÃ©m evitando obstÃ¡culos locais.
-  \item Ter relaÃ§Ãµes de prioridade: por exemplo, um robÃ´ que inspeciona trilhos
-  de trÃªm deve sair dos trilhos ao ouvir o sinal de um trÃªm chegando, mesmo se estiver
-  finalizando a operaÃ§Ã£o.
-  \item Ser denpendentes: objetivos de \emph{alto nÃ­vel} englobam diversos
-  objetivos de \emph{baixo nÃ­vel}. No caso do exemplo acima, o robÃ´ que sai do
-  trilho para evitar o trÃªm deve se manter equilibrado para nÃ£o cair. Artigos
+  \item Ser conflitantes: por exemplo, um robô pode estar tentando alcançar um
+  determinado ponto no espaço, porém evitando obstáculos locais.
+  \item Ter relações de prioridade: por exemplo, um robô que inspeciona trilhos
+  de trêm deve sair dos trilhos ao ouvir o sinal de um trêm chegando, mesmo se estiver
+  finalizando a operação.
+  \item Ser denpendentes: objetivos de \emph{alto nível} englobam diversos
+  objetivos de \emph{baixo nível}. No caso do exemplo acima, o robô que sai do
+  trilho para evitar o trêm deve se manter equilibrado para não cair. Artigos
   recentes, como em \cite{fryxell1996navigation} separam esses objetivos em
-  \emph{tarefas} (objetivos de \emph{alto nÃ­vel}) e \emph{primitivas do veÃ­culo}.
+  \emph{tarefas} (objetivos de \emph{alto nível}) e \emph{primitivas do veículo}.
 \end{itemize}
 
-RobÃ´s sÃ£o normalmente providos de mÃºltiplos sensores e suas diversas
-informaÃ§Ãµes podem ser redundantes, conflitantes ou complementares,
-podendo ser utilizadas para uma mesma tarefa do robÃ´.
-Por exemplo, encoders para odometria e cÃ¢meras fixas ao robÃ´
-podem ser utilizados para localizaÃ§Ã£o, de forma que se complementem.
-Os sensores podem apresentar erros ou resultados conflitantes, portanto a fusÃ£o
-da informaÃ§Ã£o de mÃºltiplos sensores, a determinaÃ§Ã£o de seus graus de
-confiabilidade e em quais tarefas devem ser considerados sÃ£o decisÃµes que o
-robÃ´ deve saber fazer.
+Robôs são normalmente providos de múltiplos sensores e suas diversas
+informações podem ser redundantes, conflitantes ou complementares,
+podendo ser utilizadas para uma mesma tarefa do robô.
+Por exemplo, encoders para odometria e câmeras fixas ao robô
+podem ser utilizados para localização, de forma que se complementem.
+Os sensores podem apresentar erros ou resultados conflitantes, portanto a fusão
+da informação de múltiplos sensores, a determinação de seus graus de
+confiabilidade e em quais tarefas devem ser considerados são decisões que o
+robô deve saber fazer.
 
-Um robÃ´ deve ser robusto, isto Ã©, em caso de falha de um sensor, o robÃ´
+Um robô deve ser robusto, isto é, em caso de falha de um sensor, o robô
 deve se adaptar e utilizar os outros sensores que ainda funcionam para realizar as
-tarefas. Ou em caso de alteraÃ§Ãµes no ambiente, o robÃ´ deve ser
-capaz de cumprir determinadas funÃ§Ãµes essenciais.
+tarefas. Ou em caso de alterações no ambiente, o robô deve ser
+capaz de cumprir determinadas funções essenciais.
 
 A extensibilidade constitui em acrescentar mais sensores e,
-portanto, aumentar a capacidade do robÃ´, sendo possÃ­vel a execuÃ§Ã£o de novas
-tarefas. PorÃ©m, existe um limite imposto pela limitaÃ§Ã£o
-de processamento do robÃ´, jÃ¡ que um novo hardware (sensor) Ã© adicionado, mas o
-processamento (computador) nÃ£o Ã© substituÃ­do e sua capacidade nÃ£o Ã© aumentada.
+portanto, aumentar a capacidade do robô, sendo possível a execução de novas
+tarefas. Porém, existe um limite imposto pela limitação
+de processamento do robô, já que um novo hardware (sensor) é adicionado, mas o
+processamento (computador) não é substituído e sua capacidade não é aumentada.
 
-Brooks propÃµe um dos primeiros sistemas baseados em comportamentos, uma
-arquitetura que tem como objetivo descentralizar a tomada de decisÃ£o de um
+Brooks propõe um dos primeiros sistemas baseados em comportamentos, uma
+arquitetura que tem como objetivo descentralizar a tomada de decisão de um
 modelo central, como pode ser visto na figura~\ref{BROOKS_1}. O autor comenta
-que essa decomposiÃ§Ã£o conduz a uma arquitetura radicalmente diferente para
-sistema de controle de robÃ´s mÃ³veis em estratÃ©gias de implementaÃ§Ã£o a nÃ­vel de
+que essa decomposição conduz a uma arquitetura radicalmente diferente para
+sistema de controle de robôs móveis em estratégias de implementação a nível de
 hardware e com grandes vantagens em robustez, desenvolvimento e teste.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_1.pdf}
-\caption{Arquitetura para sistema de controle de robÃ´s mÃ³veis por Brooks}
+\caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
 \label{BROOKS_1}
 \end{figure}
 
-\subsection{RobÃ´s reativos}
-Antes mesmo de Brooks, ou seja, da formalizaÃ§Ã£o de toda a teoria em sistemas
-reativos, simples robÃ´s eram criados na lÃ³gica de controle reativo e de
+\subsection{Robôs reativos}
+Antes mesmo de Brooks, ou seja, da formalização de toda a teoria em sistemas
+reativos, simples robôs eram criados na lógica de controle reativo e de
 comportamentos. Em 1953, por exemplo, Grey Walter \cite{holland1997grey}
-desenvolveu uma ``tartaruga'' elÃ©trica capaz de se movimentar pelo ambiente,
-evitando luz intensa (``ameaÃ§as'') e atraÃ­da por certos objetivos. Vale
-observar a caracterÃ­stica do robÃ´ de perceber baixo nÃ­vel de bateria e procurar
-uma estaÃ§Ã£o de recarga, comportamento que se sobrepÃµe aos outros. Os
-comportamentos sÃ£o simples e nÃ£o hÃ¡ representaÃ§Ã£o abstrata do mundo:
-dirigir-se para luz fraca; fugir de luz forte; e evitar obstÃ¡culos.
+desenvolveu uma ``tartaruga'' elétrica capaz de se movimentar pelo ambiente,
+evitando luz intensa (``ameaças'') e atraída por certos objetivos. Vale
+observar a característica do robô de perceber baixo nível de bateria e procurar
+uma estação de recarga, comportamento que se sobrepõe aos outros. Os
+comportamentos são simples e não há representação abstrata do mundo:
+dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
 
-Em 1984, veÃ­culos simples e puramente reativos com os pares clÃ¡ssicos
+Em 1984, veículos simples e puramente reativos com os pares clássicos
 sensor-motor foram desenvolvidos pelo psicologista Braitenberg
 \cite{braitenberg1986vehicles}, a fim de simular sentimentos, como covardia,
 agressividade e outros. 
 
-Em 2002 atÃ© os dias atuais, o robÃ´ iRobot Roomba ganha destaque comercial e
-executa uma simples tarefa domÃ©stica: limpar o chÃ£o. Em sua arquitetura, o robÃ´
-Roomba possui apenas algumas funÃ§Ãµes reativas, como esquivar-se e locomover-se,
-e, em suas versÃµes antigas, foi constatado que nÃ£o possui o modelo do mundo,
+Em 2002 até os dias atuais, o robô iRobot Roomba ganha destaque comercial e
+executa uma simples tarefa doméstica: limpar o chão. Em sua arquitetura, o robô
+Roomba possui apenas algumas funções reativas, como esquivar-se e locomover-se,
+e, em suas versões antigas, foi constatado que não possui o modelo do mundo,
 mapa, dentro de si \cite{tribelhorn2007evaluating}.
 
 \subsection{Arquiteturas reativas}
 
 
-\subsubsection{Arquitetura de subsunÃ§Ã£o}
-Na figura~\ref{BROOKS_1}, o autor define \emph{NÃ­veis de competÃªncia}, que sÃ£o
-classes de comportamentos desejados para o robÃ´ sobre todos os ambientes que ele
-pode encontrar. As classes definidas por Brooks sÃ£o:
+\subsubsection{Arquitetura de subsunção}
+Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
+classes de comportamentos desejados para o robô sobre todos os ambientes que ele
+pode encontrar. As classes definidas por Brooks são:
 \begin{enumerate}
 \setcounter{enumi}{-1}
-  \item Evitar contato com objetos (estacionÃ¡rios ou mÃ³veis);
+  \item Evitar contato com objetos (estacionários ou móveis);
   \item Vaguear sem rumo e sem bater em objetos;
-  \item Explorar o ambiente utilizando sensores e definir lugares alcanÃ§Ã¡veis.
-  Seguir rumo em sua direÃ§Ã£o;
-  \item Construir um mapa do ambiente e planejar trajetÃ³rias de um lugar para
+  \item Explorar o ambiente utilizando sensores e definir lugares alcançáveis.
+  Seguir rumo em sua direção;
+  \item Construir um mapa do ambiente e planejar trajetórias de um lugar para
   outro;
-  \item Observar mudanÃ§as no ambiente;
-  \item Raciocinar sobre o ambiente em termos de objetos identificÃ¡veis e
+  \item Observar mudanças no ambiente;
+  \item Raciocinar sobre o ambiente em termos de objetos identificáveis e
   realizar tarefas relacionadas a certos objetos;
   \item Formular e executar planos que envolvam mudar o estado do ambiente como
   desejado;
   \item Raciocinar sobre o comportamento de objetos no ambiente e modificar
-  planos quando necessÃ¡rio;
+  planos quando necessário;
 \end{enumerate}
 
-Vale observar que cada nÃ­vel de competÃªncia inclui, como subconjunto, os
-nÃ­veis de competÃªncia anteriores.
+Vale observar que cada nível de competência inclui, como subconjunto, os
+níveis de competência anteriores.
 
-ApÃ³s a decomposiÃ§Ã£o na nova arquitetura, Brooks define as \emph{Camadas de
-Controle}, correspondentes a cada nÃ­vel de competÃªncia. A ideia dessa abordagem
-Ã© adicionar camadas de controle a nÃ­veis de competÃªncias superiores sem precisar
-alterar a camada do nÃ­vel inferior. Inicia-se, portanto, com a camada de
-controle para o nÃ­vel zero de competÃªncia, esta serÃ¡ testada e nÃ£o mais
-alterada. ApÃ³s, Ã© criada a camanda de nÃ­vel 1, capaz de examinar os dados
-da camada de nÃ­vel 0 e injetar dados nas interfaces internas deste nÃ­vel,
-suprimindo seu trÃ¢nsito de dados, figura~\ref{BROOKS_2}.
+Após a decomposição na nova arquitetura, Brooks define as \emph{Camadas de
+Controle}, correspondentes a cada nível de competência. A ideia dessa abordagem
+é adicionar camadas de controle a níveis de competências superiores sem precisar
+alterar a camada do nível inferior. Inicia-se, portanto, com a camada de
+controle para o nível zero de competência, esta será testada e não mais
+alterada. Após, é criada a camanda de nível 1, capaz de examinar os dados
+da camada de nível 0 e injetar dados nas interfaces internas deste nível,
+suprimindo seu trânsito de dados, figura~\ref{BROOKS_2}.
 
 \begin{figure}[H]
 \centering
@@ -621,198 +621,198 @@ suprimindo seu trÃ¢nsito de dados, figura~\ref{BROOKS_2}.
 \label{BROOKS_2}
 \end{figure}
 
-Os problemas apresentados por Brooks sÃ£o solucionados pela nova arquitetura:
+Os problemas apresentados por Brooks são solucionados pela nova arquitetura:
 \begin{itemize}
-  \item MÃºltiplos objetivos: camadas individuais podem trabalhar em objetivos
-  individuais ao mesmo tempo. Os nÃ­veis das camadas de controle e o mecanismo de
-  supressÃ£o do trÃ¢nsito de dados resolvem os problemas de conflito, dependÃªncia
+  \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
+  individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
+  supressão do trânsito de dados resolvem os problemas de conflito, dependência
   e prioridade;
-  \item MÃºltiplos sensores: as camadas utilizam os dados dos sensores
-  independentemente, de forma que nÃ£o hÃ¡ necessidade de se preocupar com a
-  fusÃ£o;
-  \item Robustez: alÃ©m do uso inteligente de sensores, camadas de controle de
-  nÃ­vel inferior continuam a funcionar quando novas camadas de nÃ­vel superior
-  sÃ£o adicionadas;
-  \item Extensibilidade: cada camada de controle pode possuir o seu prÃ³prio
+  \item Múltiplos sensores: as camadas utilizam os dados dos sensores
+  independentemente, de forma que não há necessidade de se preocupar com a
+  fusão;
+  \item Robustez: além do uso inteligente de sensores, camadas de controle de
+  nível inferior continuam a funcionar quando novas camadas de nível superior
+  são adicionadas;
+  \item Extensibilidade: cada camada de controle pode possuir o seu próprio
   processador; 
 \end{itemize}
 
-A estrutura das camadas de controle foram construÃ­das por um conjunto de
+A estrutura das camadas de controle foram construídas por um conjunto de
 pequenos processadores que enviam mensagens uns para os outros. Cada processador
-Ã© uma mÃ¡quina de estado finito. A nova arquitetura e essa nova estrutura de
+é uma máquina de estado finito. A nova arquitetura e essa nova estrutura de
 camadas com eventos discretos foram a base de diversos sistemas de controle de
-missÃ£o da atualidade. A fim de melhorar o entendimento desse sistema criado
-por Brooks, serÃ£o apresentados dois nÃ­veis de seu controle em uma aplicaÃ§Ã£o de robÃ´
-mÃ³vel.
+missão da atualidade. A fim de melhorar o entendimento desse sistema criado
+por Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
+móvel.
 
-A camada de controle nÃ­vel zero deve garantir que o robÃ´ nÃ£o entre em contato
-com outros objetos, estacionÃ¡rios ou mÃ³veis. Portanto, o robÃ´ deve desviar de
-objetos que se aproximam ou parar se houver um objeto fixo em sua trajetÃ³ria.
-Na figura~\ref{BROOKS_3}, podemos observar o nÃ­vel 0 de controle do sistema.
+A camada de controle nível zero deve garantir que o robô não entre em contato
+com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
+objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória.
+Na figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_3.pdf}
-\caption{NÃ­vel 0 de controle do sistema}
+\caption{Nível 0 de controle do sistema}
 \label{BROOKS_3}
 \end{figure}
 
-Segue pequena descriÃ§Ã£o de cada mÃ³dulo:
+Segue pequena descrição de cada módulo:
 \begin{itemize}
-  \item MÃ³dulo \emph{Curva}: comunica-se diretamente com o robÃ´ (atuadores).
-  Recebe uma mensagem \emph{Dirigir} especificando um Ã¢ngulo de giro seguido por
-  uma mensagem do mÃ³dulo \emph{AvanÃ§o} com uma determinada magnitude. Isso faz
-  com que o robÃ´ realize uma curva e vÃ¡ para o estado de \emph{AvanÃ§o}.
-  \item MÃ³dulo \emph{AvanÃ§o}: comando faz robÃ´ se movimentar (atuadores), mas
-  pÃ¡ra o robÃ´ se receber mensagem do mÃ³dulo \emph{ColisÃ£o}. O robÃ´ fica inativo
-  e mensagens do encoder Ã© enviado ao mÃ³dulo \emph{Curva}, funcionando como um
+  \item Módulo \emph{Curva}: comunica-se diretamente com o robô (atuadores).
+  Recebe uma mensagem \emph{Dirigir} especificando um ângulo de giro seguido por
+  uma mensagem do módulo \emph{Avanço} com uma determinada magnitude. Isso faz
+  com que o robô realize uma curva e vá para o estado de \emph{Avanço}.
+  \item Módulo \emph{Avanço}: comando faz robô se movimentar (atuadores), mas
+  pára o robô se receber mensagem do módulo \emph{Colisão}. O robô fica inativo
+  e mensagens do encoder é enviado ao módulo \emph{Curva}, funcionando como um
   \emph{reset}, e podendo receber novos comandos.
-  \item MÃ³dulo \emph{Sonar}: recebe um vetor de informaÃ§Ãµes de sensores do robÃ´,
-  filtra os dados e produz um mapeamento de obstÃ¡culos para o robÃ´ em
+  \item Módulo \emph{Sonar}: recebe um vetor de informações de sensores do robô,
+  filtra os dados e produz um mapeamento de obstáculos para o robô em
   coordenadas polares.
-  \item MÃ³dulo \emph{ColisÃ£o}: monitora o mapa gerado pelo mÃ³dulo \emph{Sonar}
-  e, se detectar um obstÃ¡culo, envia um sinal de parada. Observe que este mÃ³dulo
-  funciona independentemente se o robÃ´ estÃ¡ em movimento ou parado.
-  \item MÃ³dulo \emph{Sentir ForÃ§a}: cada obstÃ¡culo detectado Ã© somado
-  como uma forÃ§a repulsiva, gerando uma forÃ§a resultante.
-  \item MÃ³dulo \emph{Fugir}: monitora a forÃ§a produzida pelos obstÃ¡culos e envia
-  comandos para o mÃ³dulo \emph{Curva} se a forÃ§a for significante.
+  \item Módulo \emph{Colisão}: monitora o mapa gerado pelo módulo \emph{Sonar}
+  e, se detectar um obstáculo, envia um sinal de parada. Observe que este módulo
+  funciona independentemente se o robô está em movimento ou parado.
+  \item Módulo \emph{Sentir Força}: cada obstáculo detectado é somado
+  como uma força repulsiva, gerando uma força resultante.
+  \item Módulo \emph{Fugir}: monitora a força produzida pelos obstáculos e envia
+  comandos para o módulo \emph{Curva} se a força for significante.
 \end{itemize}
  
- A camada de controle nÃ­vel 1, combinada a camada de controle nÃ­vel 0, permite
- que o robÃ´ vagueie sem colisÃµes. A figura~\ref{BROOKS_3} mostra o sistema de
- controle aumentado pelo nÃ­vel da camada 1.
+ A camada de controle nível 1, combinada a camada de controle nível 0, permite
+ que o robô vagueie sem colisões. A figura~\ref{BROOKS_3} mostra o sistema de
+ controle aumentado pelo nível da camada 1.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_4.pdf}
-\caption{NÃ­vel 0 e 1 de controle do sistema}
+\caption{Nível 0 e 1 de controle do sistema}
 \label{BROOKS_4}
 \end{figure}
 
-Segue pequena descriÃ§Ã£o de cada mÃ³dulo do nÃ­vel 1:
+Segue pequena descrição de cada módulo do nível 1:
 \begin{itemize}
-  \item MÃ³dulo \emph{Vaguear}: gera nova direÃ§Ã£o para o robÃ´ a cada 20 segundos.
-  \item MÃ³dulo \emph{Evitar}: recebe resultado da forÃ§a computada pelo nÃ­vel 0
-  de controle e combina com a direÃ§Ã£o desejada pelo mÃ³dulo \emph{Vaguear},
-  produzindo uma nova direÃ§Ã£o desejada sem obstÃ¡culos. Esse resultado presume as
-  computaÃ§Ãµes do mÃ³dulo \emph{Fugir}. Vale observar que o mÃ³dulo \emph{Evitar}
-  suprime a saÃ­da do mÃ³dulo \emph{Fugir} (mecanismo de supressÃ£o). 
+  \item Módulo \emph{Vaguear}: gera nova direção para o robô a cada 20 segundos.
+  \item Módulo \emph{Evitar}: recebe resultado da força computada pelo nível 0
+  de controle e combina com a direção desejada pelo módulo \emph{Vaguear},
+  produzindo uma nova direção desejada sem obstáculos. Esse resultado presume as
+  computações do módulo \emph{Fugir}. Vale observar que o módulo \emph{Evitar}
+  suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
 \end{itemize}
 
-A nova arquitetura de Brooks Ã© robusta, permite interaÃ§Ãµes dinÃ¢micas, Ã© flexÃ­vel
-para integrar novas funcionalidades e fÃ¡cil para implementar e debugar. Brooks
-ainda associa sistemas de eventos discretos no controle de robÃ´s autÃ´nomos,
-utilizando como mÃ³dulos bÃ¡sicos mÃ¡quinas de estados finitos (FSM - \emph{Finite
-State Machine}). Como a conexÃ£o de diversas FSM's nÃ£o Ã© uma FSM, a soluÃ§Ã£o
+A nova arquitetura de Brooks é robusta, permite interações dinâmicas, é flexível
+para integrar novas funcionalidades e fácil para implementar e debugar. Brooks
+ainda associa sistemas de eventos discretos no controle de robôs autônomos,
+utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
+State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
 encontrada por Brooks foi acrescentar inibidores e supressores em suas
-FSM, chamando-as AFSM (\emph{Augmented Finite State Machine} ou mÃ¡quina de
-estado aumentada). O mÃ³dulo principal desta arquitetura pode ser visto na FIGURA
+FSM, chamando-as AFSM (\emph{Augmented Finite State Machine} ou máquina de
+estado aumentada). O módulo principal desta arquitetura pode ser visto na FIGURA
 %TODO Colocar figura de brooks 
 
 
 
-Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},jÃ¡ havia
-idealizado uma arquitetura em mÃ³dulos e controle distribuÃ­do a fim de atingir efetividade em processamento
-paralelo, flexibilidade de interaÃ§Ã£o com os diversos sensores, distribuir
-capacidades de decisÃ£o e flexibilidade de expansÃ£o e modificaÃ§Ã£o do sistema.
-PorÃ©m o sistema de comunicaÃ§Ã£o entre mÃ³dulos era centralizado
-(\emph{Blackboard}) e sÃ³ realizavam uma determinada tarefa sob o comando de um
-Plano de Controle (\emph{Control Plan}). O usuÃ¡rio ainda deveria explicitamente
-codificiar paralelismo, os casos das exceÃ§Ãµes e condiÃ§Ãµes inesperadas.
+Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
+idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
+paralelo, flexibilidade de interação com os diversos sensores, distribuir
+capacidades de decisão e flexibilidade de expansão e modificação do sistema.
+Porém o sistema de comunicação entre módulos era centralizado
+(\emph{Blackboard}) e só realizavam uma determinada tarefa sob o comando de um
+Plano de Controle (\emph{Control Plan}). O usuário ainda deveria explicitamente
+codificiar paralelismo, os casos das exceções e condições inesperadas.
 
 Apesar dos pontos positivos, a arquitetura de controle de um sistema
-baseado em comportamento apresenta problemas com escala e contextualizaÃ§Ã£o
+baseado em comportamento apresenta problemas com escala e contextualização
 (\emph{situatedness}). 
 
-O problema com escala Ã© resultado das interconexÃµes, que
-podem crescer de maneira fatorial em relaÃ§Ã£o ao nÃºmero de comportamentos. 
-A contextualizaÃ§Ã£o Ã© um problema de sistemas de subsunÃ§Ã£o, onde subsistemas sÃ£o
-incluÃ­dos em um sistema mais amplo. Como cada comportamento Ã© uma FSM, operando
-concorrentemente com as outras, o comportamento corrente Ã© o Ãºnico estado no
-qual o veÃ­culo como um todo funcionarÃ¡. SÃ£o sistemas tambÃ©m chamados de
-\emph{non-taskable systems} - uma tarefa nÃ£o pode ser designada ao
-veÃ­culo sem reprogramaÃ§Ã£o de todo o sistema.  
+O problema com escala é resultado das interconexões, que
+podem crescer de maneira fatorial em relação ao número de comportamentos. 
+A contextualização é um problema de sistemas de subsunção, onde subsistemas são
+incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
+concorrentemente com as outras, o comportamento corrente é o único estado no
+qual o veículo como um todo funcionará. São sistemas também chamados de
+\emph{non-taskable systems} - uma tarefa não pode ser designada ao
+veículo sem reprogramação de todo o sistema.  
 
 Apenas em 1996, Bellingham e Consi \cite{bellingham1994second}
 propuseram um controle por camadas (\emph{Layered Control}) a fim de resolver o
-problema de escala. A diferenÃ§a entre o controle baseado em comportamento e o de
-Bellingham Ã© a restriÃ§Ã£o de interatividade entre camadas.
+problema de escala. A diferença entre o controle baseado em comportamento e o de
+Bellingham é a restrição de interatividade entre camadas.
 
-As camadas (que sÃ£o referenciadas como comportamentos) sÃ£o associadas com um nÃºmero de
-prioridade, de forma que saÃ­das conflitantes sÃ£o resolvidas com esse nÃºmero. HÃ¡
-um mÃ³dulo de processamento de sensores que disponibiliza os dados aos
+As camadas (que são referenciadas como comportamentos) são associadas com um número de
+prioridade, de forma que saídas conflitantes são resolvidas com esse número. Há
+um módulo de processamento de sensores que disponibiliza os dados aos
 comportamentos, como o \emph{Blackboard}, o que viola a premissa de
-paralelismo, mas resolve o problema de interconexÃµes, jÃ¡ que antes as camadas
-superiores deveriam se conectar Ã s inferiores para obter os dados dos sensores.
+paralelismo, mas resolve o problema de interconexões, já que antes as camadas
+superiores deveriam se conectar às inferiores para obter os dados dos sensores.
 
-A soluÃ§Ã£o para o problema de contextualidade sÃ³ foi resolvido em 2000 por Bennet
+A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
 \cite{bennett2000behavior}. No \emph{State Configured Layered Control} (SCLC),
-mÃºltiplos conjuntos de comportamentos simples sÃ£o escolhidos de uma biblioteca
-de comportamentos e sÃ£o executados em cada fase da missÃ£o. A vantagem Ã© o
-nÃºmero reduzido de comportamentos sendo executados ao mesmo tempo. Veremos mais
-a frente que esta estratÃ©gia Ã© muito realizada em controle hÃ­brido.
+múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca
+de comportamentos e são executados em cada fase da missão. A vantagem é o
+número reduzido de comportamentos sendo executados ao mesmo tempo. Veremos mais
+a frente que esta estratégia é muito realizada em controle híbrido.
 
 % Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e
-% sistema de controle utilizando, assim como Brooks, mÃ³dulos hierÃ¡rquicos. A
-% arquitetura do robÃ´ pode ser decomposta da seguinte forma:
+% sistema de controle utilizando, assim como Brooks, módulos hierárquicos. A
+% arquitetura do robô pode ser decomposta da seguinte forma:
 % \begin{itemize}
-%   \item \textbf{MÃ³dulos de sensores}: processam as saÃ­das dos sensores. Os dados
-%   adquiridos por um sensor sÃ£o processados pelo mÃ³dulo de sensor e ficam
-%   disponÃ­veis para os mÃ³dulos de nÃ­vel mais alto para seus prÃ³prios
-%   processamentos e interpretaÃ§Ãµs.
-%   \item \textbf{Unidades funcionais}: realizam uma determinada funÃ§Ã£o no robÃ´.
-%   Por exemplo, localizaÃ§Ã£o do robÃ´ combinando sensores de visÃ£o, odometria, laser e
+%   \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
+%   adquiridos por um sensor são processados pelo módulo de sensor e ficam
+%   disponíveis para os módulos de nível mais alto para seus próprios
+%   processamentos e interpretaçõs.
+%   \item \textbf{Unidades funcionais}: realizam uma determinada função no robô.
+%   Por exemplo, localização do robô combinando sensores de visão, odometria, laser e
 %   etc.
-%   \item \textbf{Processos}: realiza a dinÃ¢mica de malha fechada entre percepÃ§Ã£o
-%   e aÃ§Ã£o, usando unidades de funÃ§Ã£o. O processo Ã© representado por uma mÃ¡quina de estado
-%   finito, onde suas entradas sÃ£o os dados dos mÃ³dulos dos sensores e suas saÃ­das
-%   sÃ£o comandos aos atuadores.
+%   \item \textbf{Processos}: realiza a dinâmica de malha fechada entre percepção
+%   e ação, usando unidades de função. O processo é representado por uma máquina de estado
+%   finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
+%   são comandos aos atuadores.
 % \end{itemize}
 % 
-% O sistema de controle de Chatila Ã© composto por quatro componentes: Supervisor
-% (nÃ£o implementado), MÃ³dulo Executivo, Gerente de VigilÃ¢ncia e MÃ³dulo de
-% DiagnÃ³stico (nÃ£o implementado). Os controles funcionam como um \emph{if - then},
-% com diversas condiÃ§Ãµes e aÃ§Ãµes predeterminadas. O mÃ³dulo de vigilÃ¢ncia Ã©
-% responsÃ¡vel por:
+% O sistema de controle de Chatila é composto por quatro componentes: Supervisor
+% (não implementado), Módulo Executivo, Gerente de Vigilância e Módulo de
+% Diagnóstico (não implementado). Os controles funcionam como um \emph{if - then},
+% com diversas condições e ações predeterminadas. O módulo de vigilância é
+% responsável por:
 % 
 % \begin{itemize}
-%   \item Indicar estados dos sensores e tomar aÃ§Ãµes de reflexo;
-%   \item Indicar estado operacional do robÃ´, como nÃ­vel da bateria;
-%   \item Relatar plano e estado da missÃ£o que estÃ¡ sendo executada pelo robÃ´;
+%   \item Indicar estados dos sensores e tomar ações de reflexo;
+%   \item Indicar estado operacional do robô, como nível da bateria;
+%   \item Relatar plano e estado da missão que está sendo executada pelo robô;
 % \end{itemize}
 % 
-% O mÃ³dulo executivo fucniona como um sistema operacional. Recebe comandos
-% (missÃµes) predefinidas pela interface e se comunica com o mÃ³dulo de vigilÃ¢ncia.
+% O módulo executivo fucniona como um sistema operacional. Recebe comandos
+% (missões) predefinidas pela interface e se comunica com o módulo de vigilância.
 % 
 % Quando comparamos com Brooks, Chatila apresenta uma estrutura bem
-% rudimentar e lÃ³gicas simples de arquitetura e controle. Apesar de utilizar a
-% ideia de recursos compartilhados nos mÃ³dulos de sensores, os automatos dos
-% mÃ³dulos de processo sÃ£o bem simplificados e dependentes de um bloco central
+% rudimentar e lógicas simples de arquitetura e controle. Apesar de utilizar a
+% ideia de recursos compartilhados nos módulos de sensores, os automatos dos
+% módulos de processo são bem simplificados e dependentes de um bloco central
 % para resolver objetivos conflitantes.
 
-\subsection{AnÃ¡lise crÃ­tica}
+\subsection{Análise crítica}
 Se a abordagem deliberativa simulava o processo de planejamento e tomada de
-decisÃ£o do ser humano, os sistemas de arquitetura reativa simulam outra
-importante funÃ§Ã£o da medula espinhal, pertencente ao nosso sistema nervoso
-central: o circuito reflexivo, ou arco reflexo. O reflexo Ã© uma resposta
-involuntÃ¡ria rÃ¡pida, consciente ou nÃ£o, originado de um estÃ­mulo externo e
-realizada antes mesmo de o cÃ©rebro tomar conhecimento do estÃ­mulo perifÃ©rico.
+decisão do ser humano, os sistemas de arquitetura reativa simulam outra
+importante função da medula espinhal, pertencente ao nosso sistema nervoso
+central: o circuito reflexivo, ou arco reflexo. O reflexo é uma resposta
+involuntária rápida, consciente ou não, originado de um estímulo externo e
+realizada antes mesmo de o cérebro tomar conhecimento do estímulo periférico.
 
 
 
-Dessa forma, nÃ£o hÃ¡ planejamento,  HÃ¡ um nÃºcleo (cÃ©rebro) que processa todos os
-dados sensorias e armazena o mundo, isto Ã©, o ambiente em que estÃ¡ inserido, de maneira simbÃ³lica, geomÃ©trica ou outras.
-AlÃ©m disso, ele planeja todas as aÃ§Ãµes para uma determinada tarefa, consultando sua ideia de mundo intensivamente. HÃ¡,
-tambÃ©m, sensores que enviam suas novas informaÃ§Ãµes periodicamente para o nÃºcleo,
-(Ã³rgÃ£os receptivos: visÃ£o, olfato, e etc), atualizando o mundo. E hÃ¡
-atuadores (mÃºsculos) necessÃ¡rios para a realizaÃ§Ã£o das tarefas~\ref{brain}.
+Dessa forma, não há planejamento,  Há um núcleo (cérebro) que processa todos os
+dados sensorias e armazena o mundo, isto é, o ambiente em que está inserido, de maneira simbólica, geométrica ou outras.
+Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
+também, sensores que enviam suas novas informações periodicamente para o núcleo,
+(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
+atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 
-Ã‰ fÃ¡cil observar que a arquitetura deliberativa Ã© dependente do
-modelo de mundo armazenado e suas atualizaÃ§Ãµes periÃ³dicas. Portanto, a
-utilizaÃ§Ã£o da abordagem deliberativa em ambientes extremamente dinÃ¢micos pode ser muito
-custosa devido Ã s atualizaÃ§Ãµes e ao replanejamento. AlÃ©m disso, Ã© fÃ¡cil observar
-que a arquitetura SPA dificulta a criaÃ§Ã£o de sistemas em tempo real eficientes.
+É fácil observar que a arquitetura deliberativa é dependente do
+modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
+utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
+custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
+que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
 
 \begin{figure}[H]
 \centering
@@ -822,228 +822,228 @@ que a arquitetura SPA dificulta a criaÃ§Ã£o de sistemas em tempo real eficientes
 \end{figure}
 
 
-\section{Arquitetura hÃ­brida deliberativa/reativa}
+\section{Arquitetura híbrida deliberativa/reativa}
 
 
 
-A partir de 1995, os autores comeÃ§am a introduzir formalismo e terminologias
-para os sistemas que visam o controle de missÃ£o de robÃ´s. 
+A partir de 1995, os autores começam a introduzir formalismo e terminologias
+para os sistemas que visam o controle de missão de robôs. 
 
-Em 1995, Espiau, B. [9] (INRIA, FranÃ§a), define sistemas hÃ­bridos como sistemas
-que nem sÃ£o puramente tempo contÃ­nuo, nem mÃ¡quina de estado finito, mas que
-combinam eventos discretos e componentes contÃ­nuos. Esses sistemas foram
-estudados por duas comunidades distintas: ciÃªncia da computaÃ§Ã£o e controle e
-automaÃ§Ã£o. Engenheiros de controle e automaÃ§Ã£o estudam sistemas dinÃ¢micos
-(modelos) com Ãªnfase nas teorias de estabilidade, convergÃªncia, robustez e
-introduzem sistemas de eventos discretos para mudanÃ§as no controle ou no modelo.
-A ciÃªncia da computaÃ§Ã£o faz o caminho inverso: um estado em uma mÃ¡quina de
-estados representa um local de controle, onde variÃ¡veis mudam continuamente com
-o tempo, de acordo com leis de evoluÃ§Ã£o. As ideias de controle hÃ­brido sÃ£o
+Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
+que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
+combinam eventos discretos e componentes contínuos. Esses sistemas foram
+estudados por duas comunidades distintas: ciência da computação e controle e
+automação. Engenheiros de controle e automação estudam sistemas dinâmicos
+(modelos) com ênfase nas teorias de estabilidade, convergência, robustez e
+introduzem sistemas de eventos discretos para mudanças no controle ou no modelo.
+A ciência da computação faz o caminho inverso: um estado em uma máquina de
+estados representa um local de controle, onde variáveis mudam continuamente com
+o tempo, de acordo com leis de evolução. As ideias de controle híbrido são
 desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
 trabalhos apresentados anteriormente neste documento. 
 
-A contribuiÃ§Ã£o de Espiau foi o desenvolvimento do ORCCAD, um sistema hÃ­brido
-para especificaÃ§Ã£o, validaÃ§Ã£o, simulaÃ§Ã£o e implementaÃ§Ã£o de aplicaÃ§Ãµes
-robÃ³ticas. O sistema possui os seguintes princÃ­pios:
+A contribuição de Espiau foi o desenvolvimento do ORCCAD, um sistema híbrido
+para especificação, validação, simulação e implementação de aplicações
+robóticas. O sistema possui os seguintes princípios:
 
 \begin{itemize}
-  \item Tarefas fÃ­sicas podem ser tratadas como problemas de controle, os quais
-  sÃ£o resolvidos em tempo real utilizando tÃ©cnicas de realimentaÃ§Ã£o em controle.
+  \item Tarefas físicas podem ser tratadas como problemas de controle, os quais
+  são resolvidos em tempo real utilizando técnicas de realimentação em controle.
   A abordagem \emph{Task-Function} foi desenvolvida em [10].
-  \item A caracterizaÃ§Ã£o de uma aÃ§Ã£o fÃ­sica nÃ£o Ã© suficiente para definir
-  completamente a aÃ§Ã£o de um robÃ´: tempo inicial e final devem ser considerados,
-  assim como as aÃ§Ãµes que o robÃ´ deve tomar em caso de eventos observados
-  durante a execuÃ§Ã£o de alguma tarefa.
-  \item Como a performance de um sistema depende da eficiÃªncia de mecanismos em
-  tempo real no nÃ­vel de operaÃ§Ã£o, deve-se ter atenÃ§Ã£o particular em sua
-  especificaÃ§Ã£o e verificaÃ§Ã£o.
+  \item A caracterização de uma ação física não é suficiente para definir
+  completamente a ação de um robô: tempo inicial e final devem ser considerados,
+  assim como as ações que o robô deve tomar em caso de eventos observados
+  durante a execução de alguma tarefa.
+  \item Como a performance de um sistema depende da eficiência de mecanismos em
+  tempo real no nível de operação, deve-se ter atenção particular em sua
+  especificação e verificação.
 \end{itemize}
 
-No sistema hÃ­brido, o interesse do usuÃ¡rio final Ã© em sua aplicaÃ§Ã£o, portanto
-o sistema deve prover formalismo de alto nÃ­vel para o usuÃ¡rio focar em
-especificaÃ§Ã£o e verificaÃ§Ã£o de tarefas. Por outro lado, o engenheiro
-de controle necessitarÃ¡ de um ambiente de programaÃ§Ã£o, desenvolvimento e
-simulaÃ§Ã£o para expressar suas leis de controle, as quais sÃ£o encapsuladas para
-o usuÃ¡rio final. No ORCCAD, duas entidades foram definidas: Tarefa do RobÃ´ (RT
-- \emph{Robot-task}) e Processo do RobÃ´ (RP - \emph{Robot Procedures}), as
-quais estÃ£o respectivamente ligadas aos dois tipos de usuÃ¡rios.
+No sistema híbrido, o interesse do usuário final é em sua aplicação, portanto
+o sistema deve prover formalismo de alto nível para o usuário focar em
+especificação e verificação de tarefas. Por outro lado, o engenheiro
+de controle necessitará de um ambiente de programação, desenvolvimento e
+simulação para expressar suas leis de controle, as quais são encapsuladas para
+o usuário final. No ORCCAD, duas entidades foram definidas: Tarefa do Robô (RT
+- \emph{Robot-task}) e Processo do Robô (RP - \emph{Robot Procedures}), as
+quais estão respectivamente ligadas aos dois tipos de usuários.
 
-A Tarefa do RobÃ´ Ã© definida como a especificaÃ§Ã£o paramÃ©trica de uma lei de
-controle elementar, i.e., a ativaÃ§Ã£o de um esquema de controle invariante ao
-longo de uma tarefa, e um comportamento lÃ³gico associado com um conjunto de
-sinais (eventos) que podem ocorrer antes, durante ou apÃ³s a execuÃ§Ã£o da tarefa.
-A RT Ã© composta por funÃ§Ãµes, modelos e parÃ¢metros que aparecem em uma expressÃ£o
-analÃ­tica, em tempo contÃ­nuo, que serÃ¡ aplicada aos atuadores do robÃ´ para a
-execuÃ§Ã£o de determinada aÃ§Ã£o fÃ­sica, e o comportamento lÃ³gico associado aos
+A Tarefa do Robô é definida como a especificação paramétrica de uma lei de
+controle elementar, i.e., a ativação de um esquema de controle invariante ao
+longo de uma tarefa, e um comportamento lógico associado com um conjunto de
+sinais (eventos) que podem ocorrer antes, durante ou após a execução da tarefa.
+A RT é composta por funções, modelos e parâmetros que aparecem em uma expressão
+analítica, em tempo contínuo, que será aplicada aos atuadores do robô para a
+execução de determinada ação física, e o comportamento lógico associado aos
 eventos, os quais podem ser:
 
 \begin{itemize}
-  \item PrÃ©-condiÃ§Ãµes: ocorrÃªncia necessÃ¡ria para a tarefa comeÃ§ar, como
-  condiÃ§Ãµes de sincronizaÃ§Ã£o ou medida de sensores.
-  \item ExceÃ§Ãµes: executadas durante a execuÃ§Ã£o da tarefa e pode indicar falha.
-  A aÃ§Ã£o tomada pode ser alteraÃ§Ã£o de algum parÃ¢metro, acionar outra RT
-  (matando a atual) ou fatal, levando o robÃ´ a uma Ã¡rea segura.
-  \item PÃ³s-condiÃ§Ã£o: normalmente associadas ao ambiente (final do curso do
-  robÃ´). 
+  \item Pré-condições: ocorrência necessária para a tarefa começar, como
+  condições de sincronização ou medida de sensores.
+  \item Exceções: executadas durante a execução da tarefa e pode indicar falha.
+  A ação tomada pode ser alteração de algum parâmetro, acionar outra RT
+  (matando a atual) ou fatal, levando o robô a uma área segura.
+  \item Pós-condição: normalmente associadas ao ambiente (final do curso do
+  robô). 
 \end{itemize}
 
-O Processo do RobÃ´ especifica de forma estruturada um arranjo lÃ³gico e temporal
-de RTs de forma que um determinado objetivo seja alcanÃ§ado.
+O Processo do Robô especifica de forma estruturada um arranjo lógico e temporal
+de RTs de forma que um determinado objetivo seja alcançado.
 
-O sistema ORCCAD foi utilizado no robÃ´ submarino Vortex, em conjunto com o
+O sistema ORCCAD foi utilizado no robô submarino Vortex, em conjunto com o
 IFREMER \emph{Subsea Robotics Laboratory}.
 
 Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
-California), aplica tÃ©cnicas de controle hÃ­brido em seu trabalho de
-desenvolvimento do AUV Phoenix.  Ã‰ a partir de Healey
-que sÃ£o criados formalismo e terminologia apropriados nesse campo. O
-controle hÃ­brido serÃ¡ responsÃ¡vel tanto pela movimentaÃ§Ã£o do veÃ­culo, contÃ­nuo
-e sÃ­ncrono, quanto pela sequÃªncia lÃ³gica das fases das missÃµes, eventos
-discreto com transiÃ§Ãµes assÃ­ncronas.  
+California), aplica técnicas de controle híbrido em seu trabalho de
+desenvolvimento do AUV Phoenix.  É a partir de Healey
+que são criados formalismo e terminologia apropriados nesse campo. O
+controle híbrido será responsável tanto pela movimentação do veículo, contínuo
+e síncrono, quanto pela sequência lógica das fases das missões, eventos
+discreto com transições assíncronas.  
 
-Haley propÃµe uma arquitetura de software hÃ­brida com trÃªs nÃ­veis organizacionais
-e hierÃ¡rquicos, figura~\ref{HEALEY_1}: 
+Haley propõe uma arquitetura de software híbrida com três níveis organizacionais
+e hierárquicos, figura~\ref{HEALEY_1}: 
 \begin{itemize}
-  \item \textbf{EstratÃ©gico}: utiliza Prolog como linguagem de controle de
-  missÃ£o. Desenvolve os comandos que levam o veÃ­culo a executar determinada
-  missÃ£o.
-  \item \textbf{TÃ¡tico}: funÃ§Ãµes na linguagem C que faz interface com os
-  predicados de Prolog e retorna \emph{TRUE / FALSE}. Este nÃ­vel funciona de
-  maneira assÃ­ncrona e retÃ©m os dados da missÃ£o, alÃ©m de se comunicar com o
-  nÃ­vel de execuÃ§Ã£o.
-  \item \textbf{Operacional}: comanda os subsistemas do veÃ­culo a ativar funÃ§Ãµes
-  de controle relacionadas ao nÃ­vel tÃ¡tico.
+  \item \textbf{Estratégico}: utiliza Prolog como linguagem de controle de
+  missão. Desenvolve os comandos que levam o veículo a executar determinada
+  missão.
+  \item \textbf{Tático}: funções na linguagem C que faz interface com os
+  predicados de Prolog e retorna \emph{TRUE / FALSE}. Este nível funciona de
+  maneira assíncrona e retém os dados da missão, além de se comunicar com o
+  nível de execução.
+  \item \textbf{Operacional}: comanda os subsistemas do veículo a ativar funções
+  de controle relacionadas ao nível tático.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/HEALEY_1.pdf}
-\caption{Arquitetura do RobÃ´ Phoenix de Healey}
+\caption{Arquitetura do Robô Phoenix de Healey}
 \label{HEALEY_1}
 \end{figure}
 
 A terminologia de Healey, essencial para os trabalhos futuros em controle de
-missÃ£o, Ã© apresentada a seguir. Assumindo o conjunto de todos os atuadores
-disponÃ­veis no veÃ­culo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
-contÃ­nuos como $X$:
+missão, é apresentada a seguir. Assumindo o conjunto de todos os atuadores
+disponíveis no veículo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
+contínuos como $X$:
 
-\textbf{DefiniÃ§Ã£o}: Uma FunÃ§Ã£o de Controle (CF) Ã© o uso de um subconjunto
-especÃ­fico de atuadores $a_i \subset A$ com um subconjunto particular de
-sensores $s_i \subset S$ para estimar um subconjunto de estados contÃ­nuos $x_i
-\subset X$ e levar um certo subconjunto de erros $e_i$ para zero. Onde erro Ã©
-definido como a diferenÃ§a entre um valor de comando (\emph{Set Point}) e um
-estado atual estimado. A definiÃ§Ã£o Ã© anÃ¡loga com a definiÃ§Ã£o de Tarefa do RobÃ´
-(\emph{Robot Task}), em Espiau, B. [9] (INRIA, FranÃ§a).
+\textbf{Definição}: Uma Função de Controle (CF) é o uso de um subconjunto
+específico de atuadores $a_i \subset A$ com um subconjunto particular de
+sensores $s_i \subset S$ para estimar um subconjunto de estados contínuos $x_i
+\subset X$ e levar um certo subconjunto de erros $e_i$ para zero. Onde erro é
+definido como a diferença entre um valor de comando (\emph{Set Point}) e um
+estado atual estimado. A definição é análoga com a definição de Tarefa do Robô
+(\emph{Robot Task}), em Espiau, B. [9] (INRIA, França).
 
-\textbf{DefiniÃ§Ã£o}: Primitiva de VeÃ­culo Ã© uma \emph{string} na linguagem de
-programaÃ§Ã£o, associada a uma FunÃ§Ã£o de Controle. Por exemplo,
-$Forward_Speed_Control$, controle de velocidade do veÃ­culo.
+\textbf{Definição}: Primitiva de Veículo é uma \emph{string} na linguagem de
+programação, associada a uma Função de Controle. Por exemplo,
+$Forward_Speed_Control$, controle de velocidade do veículo.
 
-\textbf{DefiniÃ§Ã£o}: O TÃ©rmino de uma funÃ§Ã£o de controle ocorre nas seguintes
-condiÃ§Ãµes:
+\textbf{Definição}: O Término de uma função de controle ocorre nas seguintes
+condições:
 \begin{itemize}
   \item Em um tempo especificado;
-  \item Quando a funÃ§Ã£o positiva definida do erro, $P(\cdot)$, assume valores
-  limites especificados. Quando $b$ Ã© um limite positivo e $F(\cdot)$ Ã© um
-  filtro passa-baixa, a TerminaÃ§Ã£o ocorre se
+  \item Quando a função positiva definida do erro, $P(\cdot)$, assume valores
+  limites especificados. Quando $b$ é um limite positivo e $F(\cdot)$ é um
+  filtro passa-baixa, a Terminação ocorre se
   $$F(P(e)) < b$$
 \end{itemize}  
-\textbf{DefiniÃ§Ã£o}: Um Comportamento (B) Ã© descrito como a execuÃ§Ã£o de uma
-sequÃªncia particular de CFs, cada uma com sua terminaÃ§Ã£o. O estado de realizar
-uma certa CF Ã© um estado discreto do sistema. Um Comportamento pode ser
+\textbf{Definição}: Um Comportamento (B) é descrito como a execução de uma
+sequência particular de CFs, cada uma com sua terminação. O estado de realizar
+uma certa CF é um estado discreto do sistema. Um Comportamento pode ser
 representado como uma rede de Petri, por exemplo.
 
-\textbf{DefiniÃ§Ã£o}: Um Sistema de Controle HÃ­brido Ã© um sistema de controle de
-elementos de hardware e software capaz de conduzir o veÃ­culo por um conjunto de
+\textbf{Definição}: Um Sistema de Controle Híbrido é um sistema de controle de
+elementos de hardware e software capaz de conduzir o veículo por um conjunto de
 Comportamentos.
 
-\textbf{DefiniÃ§Ã£o}: Um Plano de MissÃ£o Ã© a sequÃªncia de Comportamentos
-conduzidos durante cada fase da missÃ£o, com tratamento de falhas.
+\textbf{Definição}: Um Plano de Missão é a sequência de Comportamentos
+conduzidos durante cada fase da missão, com tratamento de falhas.
 
-Healey define diversas Primitivas de VeÃ­culo para AUVs, mas serÃ£o estudadas as
-Primitivas do RobÃ´ MARIUS, de Silva, V., que Ã© semelhante ao robÃ´ DORIS,
-objeto de estudo desta dissertaÃ§Ã£o.
+Healey define diversas Primitivas de Veículo para AUVs, mas serão estudadas as
+Primitivas do Robô MARIUS, de Silva, V., que é semelhante ao robô DORIS,
+objeto de estudo desta dissertação.
 
 Em 1996, Silva, V. et al [6] (Institute for Systems and Robotics, Lisboa),
-projetaram, desenvolveram e testaram um sistema de controle de missÃ£o para o
-MARIUS, robÃ´ autÃ´nomo submarino. \emph{A Mission Control System} (MCS), o
+projetaram, desenvolveram e testaram um sistema de controle de missão para o
+MARIUS, robô autônomo submarino. \emph{A Mission Control System} (MCS), o
 conceito, aparece pela primeira vez na nomenclatura como um sistema que:
-\emph{i)} habilita o operador a definir uma missÃ£o ao veÃ­culo em uma linguagem
-de alto nÃ­vel, que serÃ¡ traduzida em um plano de missÃ£o; \emph{ii)} provÃª
-ferramentas adequadas para converter um plano de missÃ£o em um programa de
-missÃ£o que pode ser verificado e executado em tempo real; \emph{iii)} fornece
-ao operador a capacidade de seguir o progresso do programa de missÃ£o enquanto
-ele Ã© executado, e modificÃ¡-lo se necessÃ¡rio;
+\emph{i)} habilita o operador a definir uma missão ao veículo em uma linguagem
+de alto nível, que será traduzida em um plano de missão; \emph{ii)} provê
+ferramentas adequadas para converter um plano de missão em um programa de
+missão que pode ser verificado e executado em tempo real; \emph{iii)} fornece
+ao operador a capacidade de seguir o progresso do programa de missão enquanto
+ele é executado, e modificá-lo se necessário;
 
 O trabalho de Silva, V. [6], introduz novos e importantes conceitos chave para o
 MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do
-VeÃ­culo (\emph{Vechicle Primitive}), Procedimento de MissÃ£o (\emph{Mission Procedure})
-e Programa de MissÃ£o (\emph{Mission Program}). AlÃ©m disso, a arquitetura do
-veÃ­culo, por ser um AUV, possui sistemas e interconexÃµes
-semelhantes ao robÃ´ DORIS, estudo desta dissertaÃ§Ã£o.
+Veículo (\emph{Vechicle Primitive}), Procedimento de Missão (\emph{Mission Procedure})
+e Programa de Missão (\emph{Mission Program}). Além disso, a arquitetura do
+veículo, por ser um AUV, possui sistemas e interconexões
+semelhantes ao robô DORIS, estudo desta dissertação.
 
-A arquitetura do veÃ­culo DORIS teve grande influÃªncia da organizaÃ§Ã£o do veÃ­culo
+A arquitetura do veículo DORIS teve grande influência da organização do veículo
 MARIUS descrita abaixo, figura~\ref{SILVA_1}:
 \begin{itemize}
-  \item \emph{Vehicle Support System} (VSS) - Controla a distribuiÃ§Ã£o de energia
-  aos hardwares instalados no veÃ­culo, monitora consumo de energia e detecta
-  falhas de hardware, podendo enviar comandos de emergÃªncia.
-  \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotaÃ§Ã£o
-  dos propulsores e posiÃ§Ã£o dos ailerions e lemes. Os \emph{Set Points} dos
-  atuadores sÃ£o dados pelo \emph{Vehicle Guidance and Control System} (VGCS) e
-  os dados dos atuadores sÃ£o transmitidos para o \emph{Mission Control System}.
-  \item \emph{Navigation System} (NS) - Estima posiÃ§Ã£o linear e velocidade do
-  veÃ­culo, orientaÃ§Ã£o e velocidade angular. O sistema funde informaÃ§Ãµes do
+  \item \emph{Vehicle Support System} (VSS) - Controla a distribuição de energia
+  aos hardwares instalados no veículo, monitora consumo de energia e detecta
+  falhas de hardware, podendo enviar comandos de emergência.
+  \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotação
+  dos propulsores e posição dos ailerions e lemes. Os \emph{Set Points} dos
+  atuadores são dados pelo \emph{Vehicle Guidance and Control System} (VGCS) e
+  os dados dos atuadores são transmitidos para o \emph{Mission Control System}.
+  \item \emph{Navigation System} (NS) - Estima posição linear e velocidade do
+  veículo, orientação e velocidade angular. O sistema funde informações do
   \emph{Positioning System} (\emph{Long Baseline unit}) e \emph{Motion Sensor
-  Integration System}, o qual inclui diversos sensores. As saÃ­das do NS sÃ£o
+  Integration System}, o qual inclui diversos sensores. As saídas do NS são
   entradas do VGCS, e enviadas ao MCS.
   \item \emph{Vehicle Guidance and Control System} (VGCS) - Recebe como entrada
-  as trajetÃ³rias de referÃªncia pelo MCS, e os dados de navegaÃ§Ã£o do NS. Suas
-  saÃ­das sÃ£o \emph{Set Points} para velocidade de rotaÃ§Ã£o e outros atuadores do
-  ACS, tal que o veÃ­culo siga a trajetÃ³ria desejada mesmo com incertezas e
-  distÃºrbios.
+  as trajetórias de referência pelo MCS, e os dados de navegação do NS. Suas
+  saídas são \emph{Set Points} para velocidade de rotação e outros atuadores do
+  ACS, tal que o veículo siga a trajetória desejada mesmo com incertezas e
+  distúrbios.
   \item \emph{Communication System} (COMS) - Controla o link bidirecional usado
-  pelo operador para passar missÃµes ao MCS, e pelo veÃ­culo para passar status de
-  missÃ£o ou estados do veÃ­culo.
+  pelo operador para passar missões ao MCS, e pelo veículo para passar status de
+  missão ou estados do veículo.
   \item \emph{Environmental Inspection System} (EIS) - Coleta dados do ambiente
-  com diversos sensores (inclusive cÃ¢meras), como temperatura, pressÃ£o, pH. Ã‰
+  com diversos sensores (inclusive câmeras), como temperatura, pressão, pH. É
   controlado pelo MCS.
-  \item \emph{Data Logging System} (DLS) - Adquiri e armazena dados do veÃ­culo.
-  \item \emph{Mission Control System} (MCS) - Sequencia e sincroniza a execuÃ§Ã£o
-  das tarefas bÃ¡sicas do veÃ­culo para uma determinada missÃ£o e provÃª a
-  recuperaÃ§Ã£o em caso de falhas.
+  \item \emph{Data Logging System} (DLS) - Adquiri e armazena dados do veículo.
+  \item \emph{Mission Control System} (MCS) - Sequencia e sincroniza a execução
+  das tarefas básicas do veículo para uma determinada missão e provê a
+  recuperação em caso de falhas.
 \end{itemize}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SILVA_1.pdf}
-\caption{Arquitetura do VeÃ­culo MARIUS}
+\caption{Arquitetura do Veículo MARIUS}
 \label{SILVA_1}
 \end{figure}
 
-A seguir, serÃ£o apresentados os conceitos chave de Silva, inpirados nos
+A seguir, serão apresentados os conceitos chave de Silva, inpirados nos
 trabalhos de Espiau e Healey:\\
 
-\textbf{Tarefa do Sistema} (ST): Ã© a especificaÃ§Ã£o paramÃ©trica de uma classe
-de algoritmos ou processos que implementam uma funcionalidade bÃ¡sica em um robÃ´.
-Reque a implementaÃ§Ã£o de dois mÃ³dulos: \textit{i}) um \emph{mÃ³dulo Funcional}
-que contÃ©m um determinado algoritmo e precesso, e transfere dados com outras
-Tarefas do Sistema e dispositivos fÃ­sicos; \textit{ii}) um \emph{mÃ³dulo
-Comando}, mÃ¡quina de estado finito, que recebe comandos externos, produz
-mensagens de saÃ­da, e controla a seleÃ§Ã£o de algoritmos, processos, e caminhos
-dos dados para/de mÃ³dulos Funcionais.
+\textbf{Tarefa do Sistema} (ST): é a especificação paramétrica de uma classe
+de algoritmos ou processos que implementam uma funcionalidade básica em um robô.
+Reque a implementação de dois módulos: \textit{i}) um \emph{módulo Funcional}
+que contém um determinado algoritmo e precesso, e transfere dados com outras
+Tarefas do Sistema e dispositivos físicos; \textit{ii}) um \emph{módulo
+Comando}, máquina de estado finito, que recebe comandos externos, produz
+mensagens de saída, e controla a seleção de algoritmos, processos, e caminhos
+dos dados para/de módulos Funcionais.
 
-Na modelagem do sistema em redes de Petri, quando uma transiÃ§Ã£o Ã©
-disparada, uma ST Ã© executada, chamada atravÃ©s do seguinte cabeÃ§alho:
-$STname(D_{mode},Din_{st},P_m)$, onde $STname$ Ã© o nome da ST, $D_{mode}$ Ã© uma
+Na modelagem do sistema em redes de Petri, quando uma transição é
+disparada, uma ST é executada, chamada através do seguinte cabeçalho:
+$STname(D_{mode},Din_{st},P_m)$, onde $STname$ é o nome da ST, $D_{mode}$ é uma
 string de dados de entrada que especifica um determinado algoritmo ou processo a
-ser executado, e $Din_{st}$ Ã© um conjunto de dados numÃ©ricos que sÃ£o entrada
-desses algoritmos ou processos. $P_m$ Ã© um parÃ¢metro para associar ST com
-Primitivas do VeÃ­culo (descritos abaixo), indicando um nÃºmero finito de lugares
-na rede de Petri que devem ser marcados de acordo com o tipo da saÃ­da das
+ser executado, e $Din_{st}$ é um conjunto de dados numéricos que são entrada
+desses algoritmos ou processos. $P_m$ é um parâmetro para associar ST com
+Primitivas do Veículo (descritos abaixo), indicando um número finito de lugares
+na rede de Petri que devem ser marcados de acordo com o tipo da saída das
 mensagens das STs.
 
-As STs do MARIUS sÃ£o semelhantes aos blocos da organizaÃ§Ã£o do veÃ­culo,
+As STs do MARIUS são semelhantes aos blocos da organização do veículo,
 figura~\ref{SILVA_2}:
 \emph{Vehicle Support Task} (VST), \emph{Actuator Control Task} (ACT),
 \emph{Vehicle Navigation Task} (VNT), \emph{Motion Sensor Task} (MST),
@@ -1053,137 +1053,137 @@ figura~\ref{SILVA_2}:
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SILVA_2.pdf}
-\caption{Tarefas de Sistema do veÃ­culo MARIUS}
+\caption{Tarefas de Sistema do veículo MARIUS}
 \label{SILVA_2}
 \end{figure}
 
-O exemplo de um cabeÃ§alho que chama uma ST seria:
-$GCT(YAW\_AUTO,\psi,p_{yaw\_auto})$, onde $GCT$ Ã© o nome da ST, $YAW\_AUTO$
-seleciona um modo de operaÃ§Ã£o particular que implementa um controle automÃ¡tico
-para guinada (\emph{yaw}), e $\psi$ Ã© Ã¢ngulo \emph{set-Point}.
+O exemplo de um cabeçalho que chama uma ST seria:
+$GCT(YAW\_AUTO,\psi,p_{yaw\_auto})$, onde $GCT$ é o nome da ST, $YAW\_AUTO$
+seleciona um modo de operação particular que implementa um controle automático
+para guinada (\emph{yaw}), e $\psi$ é ângulo \emph{set-Point}.
 
-\textbf{Primitiva do VeÃ­culo} (VP): Ã© a especificaÃ§Ã£o paramÃ©trica de um modo
-de operaÃ§Ã£o elementar em um robÃ´. Corresponde a ativaÃ§Ã£o lÃ³gica e sincronizada
-de um nÃºmero de STs, as quais conduzem a um comportamento lÃ³gico e estrututrado
-do veÃ­culo. Existe um conjunto de prÃ©-condiÃ§Ãµes, recursos alocados, exceÃ§Ãµes e
-pÃ³s-condiÃ§Ãµes associados Ã s VPs, assim como as RT (Robot-Task) definidas em
+\textbf{Primitiva do Veículo} (VP): é a especificação paramétrica de um modo
+de operação elementar em um robô. Corresponde a ativação lógica e sincronizada
+de um número de STs, as quais conduzem a um comportamento lógico e estrututrado
+do veículo. Existe um conjunto de pré-condições, recursos alocados, exceções e
+pós-condições associados às VPs, assim como as RT (Robot-Task) definidas em
 Espiau.
 
-A rede de Petri associada Ã  VP Ã© uma tupla de 5 parÃ¢metros
-$(P_{VP},T_{VP},A_{VP},\omega_{VP},X_{VP})$, onde $P_{VP},T_{VP}$ e $A_{VP}$ sÃ£o
-os conjuntos de lugares, transiÃ§Ãµes e arcos, respectivamente, $\omega_{VP}$ Ã©
-uma funÃ§Ã£o peso, e $X_{VP_{0}}$ Ã© a condiÃ§Ã£o inicial da rede de Petri. O
+A rede de Petri associada à VP é uma tupla de 5 parâmetros
+$(P_{VP},T_{VP},A_{VP},\omega_{VP},X_{VP})$, onde $P_{VP},T_{VP}$ e $A_{VP}$ são
+os conjuntos de lugares, transições e arcos, respectivamente, $\omega_{VP}$ é
+uma função peso, e $X_{VP_{0}}$ é a condição inicial da rede de Petri. O
 conjunto dos lugares pode ser decomposto em $P_{VP}=P_{pre}\cup P_{res}\cup
 P_{err}\cup P_{loc}\cup P{pos}$, onde $P_{pre}$, $P_{res}$, $P_{err}$,
-$P_{loc}$ e $P{pos}$ denotam os subconjuntos de lugares das prÃ©-condiÃ§Ãµes,
-recursos alocados, erros, pÃ³s-condiÃ§Ãµes, e os outros estados da rede de Petri,
+$P_{loc}$ e $P{pos}$ denotam os subconjuntos de lugares das pré-condições,
+recursos alocados, erros, pós-condições, e os outros estados da rede de Petri,
 respectivamente.
 
-A transiÃ§Ã£o em um Processo de MissÃ£o (descrito abaixo) inicializa a execuÃ§Ã£o de
-uma VP, chamada com o seguinte cabeÃ§alho: $VPname(Din_{vp},P_m)$, onde
-$Din_{vp}$ Ã© o conjunto de dados numÃ©ricos que sÃ£o entrada da VP e $P_m$ Ã© o
-parÃ¢metro que associa a VP ao Processo de MissÃ£o.
+A transição em um Processo de Missão (descrito abaixo) inicializa a execução de
+uma VP, chamada com o seguinte cabeçalho: $VPname(Din_{vp},P_m)$, onde
+$Din_{vp}$ é o conjunto de dados numéricos que são entrada da VP e $P_m$ é o
+parâmetro que associa a VP ao Processo de Missão.
 
-\textbf{Processo de MissÃ£o} (MP): Ã© a especificaÃ§Ã£o paramÃ©trica de uma AÃ§Ã£o de
-um sistema robÃ³tico. MP corresponde Ã  cadeia lÃ³gica e temporal de VPs e,
-possivelmente, outras MPs, as quais, em conjunto, executam uma determinada AÃ§Ã£o.
+\textbf{Processo de Missão} (MP): é a especificação paramétrica de uma Ação de
+um sistema robótico. MP corresponde à cadeia lógica e temporal de VPs e,
+possivelmente, outras MPs, as quais, em conjunto, executam uma determinada Ação.
 
-A modelagem de MPs tambÃ©m pode ser em redes de Petri e Ã© semelhante Ã  VP, porÃ©m
-em maior alto nÃ­vel. O cabeÃ§alho Ã©: $MPname(Din_{mp},P_m)$, onde
-$Din_{mp}$ Ã© o conjunto de dados numÃ©ricos que sÃ£o entrada do MP e $P_m$ Ã©
-similar Ã  VP.
+A modelagem de MPs também pode ser em redes de Petri e é semelhante à VP, porém
+em maior alto nível. O cabeçalho é: $MPname(Din_{mp},P_m)$, onde
+$Din_{mp}$ é o conjunto de dados numéricos que são entrada do MP e $P_m$ é
+similar à VP.
 
-As VPs e MPs apresentadas por Silva, em [6], serÃ£o abordadas ao longo desta
-dissertaÃ§Ã£o de metrado, por ter grande semelhanÃ§a Ã s caracterÃ­sticas do robÃ´
+As VPs e MPs apresentadas por Silva, em [6], serão abordadas ao longo desta
+dissertação de metrado, por ter grande semelhança às características do robô
 DORIS, apesar de ter como enfoque AUVs. A fim de exemplificar todo o formalismo
 apresentado, a modelagem da VP
-$KeepHeading(\psi,p_{\textrm{Exit}},p_{\textrm{End}})$ serÃ¡ avaliada. A
-VP Ã© responsÃ¡vel por levar o robÃ´ a um determinado \emph{Set-Point} ($\psi$),
-$p_{\textrm{Exit}}$ Ã© um lugar na rede de Petri que deve ser marcado como parada
-da execuÃ§Ã£o da VP e $p_{\textrm{End}}$ Ã© um lugar que tem a informaÃ§Ã£o de
-tÃ©rmino da execuÃ§Ã£o da VP. A Ãºnica prÃ©-condiÃ§Ã£o para a execuÃ§Ã£o da VP Ã© a
-inicializaÃ§Ã£o de todas as ST: comando
-$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. NÃ£o hÃ¡ pÃ³s-condiÃ§Ãµes e o recurso
-alocado para a VP Ã© o leme: $P_{\textrm{pre}}=\{p_{\textrm{Init}}\}$, e
+$KeepHeading(\psi,p_{\textrm{Exit}},p_{\textrm{End}})$ será avaliada. A
+VP é responsável por levar o robô a um determinado \emph{Set-Point} ($\psi$),
+$p_{\textrm{Exit}}$ é um lugar na rede de Petri que deve ser marcado como parada
+da execução da VP e $p_{\textrm{End}}$ é um lugar que tem a informação de
+término da execução da VP. A única pré-condição para a execução da VP é a
+inicialização de todas as ST: comando
+$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. Não há pós-condições e o recurso
+alocado para a VP é o leme: $P_{\textrm{pre}}=\{p_{\textrm{Init}}\}$, e
 $P_{res}=\{p_{\textrm{Rudder}}\}$.
 A rede de Petri da VP pode ser vista na figura~\ref{SILVA_3}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.87\columnwidth]{figs/SILVA_3.png}
-\caption{Rede de Petri da Primitiva de VeÃ­culo KeepHeading do robÃ´ MARIUS}
+\caption{Rede de Petri da Primitiva de Veículo KeepHeading do robô MARIUS}
 \label{SILVA_3}
 \end{figure}
 
-O estado inicial da rede de Petri Ã©: $$M
+O estado inicial da rede de Petri é: $$M
 =\{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$, cujos lugares
-sÃ£o:
+são:
 $$M
 =\{P_{\textrm{KeepHeading}},P_{\textrm{Rudder}},P_{\textrm{Init}},P_0,P_1,P_{\textrm{cmmd\_on}},P_2,P_3,P_{\textrm{yaw\_auto}},P_4,P_5,P_{\textrm{auto\_on}},\ldots$$
 $$P_6,P_{\textrm{yaw\_on}},P_{\textrm{Exit}},P_7,P_8,P_{\textrm{yaw\_off}},P_9,P{10},P_{\textrm{yaw\_manual}},P_{11},P_{12},P_{\textrm{manual\_on}},\ldots$$
 $$P_{13},P_{\textrm{cmmd\_off}},P_{\textrm{success}},P_{\textrm{Rudder}},P_{\textrm{End}}\}$$
 
-As suas transiÃ§Ãµes sÃ£o:
+As suas transições são:
 \begin{enumerate}
-  \item A transiÃ§Ã£o $T0$ sÃ³ pode ser disparada quando o recurso leme fica
-  disponÃ­vel e as ST sÃ£o inicializadas:
+  \item A transição $T0$ só pode ser disparada quando o recurso leme fica
+  disponível e as ST são inicializadas:
  $$M
 =\{1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-ApÃ³s a transiÃ§Ã£o $T0$:
+Após a transição $T0$:
   $$M
 =\{0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$  
-  \item A transiÃ§Ã£o $VCT(RUDDER\_CMMD,ON,P_{\textrm{cmmd\_on}})$
-  (\emph{Vehicle Communications Task}) Ã© ST para desabilitar comandos diretos ao
+  \item A transição $VCT(RUDDER\_CMMD,ON,P_{\textrm{cmmd\_on}})$
+  (\emph{Vehicle Communications Task}) é ST para desabilitar comandos diretos ao
   leme do console (operador).
 $$M
 =\{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$ 
-  \item A transiÃ§Ã£o $T1$ Ã© habilitada apÃ³s a alteraÃ§Ã£o da ST VCT for concluÃ­da
+  \item A transição $T1$ é habilitada após a alteração da ST VCT for concluída
   e $P_{\textrm{cmmd\_on}}$ for marcada (token). $$M
 =\{0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-ApÃ³s a transiÃ§Ã£o $T1$:
+Após a transição $T1$:
 $$M
 =\{0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item As transiÃ§Ãµes $ACT(AUTO\_RUDDER,P_{\textrm{auto\_on}})$
+  \item As transições $ACT(AUTO\_RUDDER,P_{\textrm{auto\_on}})$
   (\emph{Actuator Control Task}) e $GCT(YAW\_AUTO,\Psi,P_{\textrm{yaw\_auto}})$
-  (\emph{Guidance and Control Task}) sÃ£o ativadas paralelamente. A primeira estÃ¡
-  associada Ã  ST para habilitar o leme a receber comandos diretamente do
-  controlador. A ST GCT Ã© requisitada para ativar o controle de guinada
+  (\emph{Guidance and Control Task}) são ativadas paralelamente. A primeira está
+  associada à ST para habilitar o leme a receber comandos diretamente do
+  controlador. A ST GCT é requisitada para ativar o controle de guinada
   (\emph{Yaw}) e recebe como argumento o \emph{set-point} $\psi$.
 $$M
 =\{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transiÃ§Ã£o $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$ (\emph{Motion
-  Sensor Task}) Ã© habilitada apÃ³s as alteraÃ§Ãµes das STs ACT e GCT serem
-  concluÃ­das.
-  $P_{\textrm{yaw\_auto}}$ e $P_{\textrm{autoon}}$ sÃ£o marcados (tokens):
+  \item A transição $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$ (\emph{Motion
+  Sensor Task}) é habilitada após as alterações das STs ACT e GCT serem
+  concluídas.
+  $P_{\textrm{yaw\_auto}}$ e $P_{\textrm{autoon}}$ são marcados (tokens):
   $$M
 =\{0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-A ST MST Ã© chamada para enviar dados dos sensores de Ã¢ngulo de guinada
+A ST MST é chamada para enviar dados dos sensores de ângulo de guinada
 periodicamente para a ST GCT.
-ApÃ³s a transiÃ§Ã£o
+Após a transição
 $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$:
   $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transiÃ§Ã£o $T2$ sÃ³ Ã© habilitada quando a alteraÃ§Ã£o da ST MST for
-  concluÃ­da e, assim, $P_{\textrm{yaw\_on}}$ adquire um token:
+  \item A transição $T2$ só é habilitada quando a alteração da ST MST for
+  concluída e, assim, $P_{\textrm{yaw\_on}}$ adquire um token:
     $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-ApÃ³s transiÃ§Ã£o de $T2$:
+Após transição de $T2$:
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item Em $P_7$, o robÃ´ permanece em sistema de controle em malha fechada da VP
-  KeepHeading atÃ© que o lugar $P_{\textrm{Exit}}$ seja marcado:
+  \item Em $P_7$, o robô permanece em sistema de controle em malha fechada da VP
+  KeepHeading até que o lugar $P_{\textrm{Exit}}$ seja marcado:
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-A transiÃ§Ã£o $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$ Ã©, entÃ£o, habilitada. A
-ST MST Ã©, novamente, chamada para desabilitar o envio de mensagens Ã  GCT. ApÃ³s a
-transiÃ§Ã£o da $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$:
+A transição $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$ é, então, habilitada. A
+ST MST é, novamente, chamada para desabilitar o envio de mensagens à GCT. Após a
+transição da $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$:
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item As transiÃ§Ãµes $T3$, $GCT(YAW\_MANUAL,P_{\textrm{yaw\_manual}})$,
+  \item As transições $T3$, $GCT(YAW\_MANUAL,P_{\textrm{yaw\_manual}})$,
   $ACT(MANUAL\_RUDDER,P_{\textrm{manual\_on}})$ e
   $VCT(RUDDER\_CMMD,OFF,P_{\textrm{cmmd\_off}})$ alteram as STs GCT, ACT e VCT
   para levarem ao estados manual, como era inicialmente. Os estados para isso
-  sÃ£o:
+  são:
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0\}$$
 $$M
@@ -1198,15 +1198,15 @@ $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0\}$$
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\}$$  
-  \item A Ãºltima transiÃ§Ã£o $T5$ libera o recurso $P_{\textrm{Rudder}}$ e
+  \item A última transição $T5$ libera o recurso $P_{\textrm{Rudder}}$ e
   finaliza a VP no lugar $P_{\textrm{End}}$:
 $$M
 =\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1\}$$
 \end{enumerate} 
 
-Silva desenvolveu os softwares CORAL e ATOL para implementaÃ§Ã£o das VPs e STs em
-redes de Petri de forma que um usuÃ¡rio final, como um operador, pudesse
-facilmente criar seus MPs. A grande contribuiÃ§Ã£o 
+Silva desenvolveu os softwares CORAL e ATOL para implementação das VPs e STs em
+redes de Petri de forma que um usuário final, como um operador, pudesse
+facilmente criar seus MPs. A grande contribuição 
 
 
 
