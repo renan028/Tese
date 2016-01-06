@@ -221,7 +221,7 @@ o papel de controlador de missão.
 \subsubsection{NASREM}
 O NASREM \cite{albus1989nasa} foi uma arquitetura utilizada pela
 NASA e possuía uma arquitetura com seis níveis de
-funcionalidade(figura~\ref{nasrem}):
+funcionalidade (figura~\ref{nasrem}):
 
 \begin{enumerate}
   \item Servo: provê o controle dos atuadores do robô (posição, velocidade e
@@ -468,9 +468,10 @@ tomada de decisão do ser humano. Há um núcleo (cérebro) que
 processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que
 o robô está inserido, de maneira simbólica, geométrica ou outros tipos de
 mapeamento. Além disso, o núcleo planeja todas as ações para uma determinada
-tarefa, consultando sua ideia de mundo intensivamente. Há, também, sensores que enviam suas novas informações periodicamente para o núcleo,
-(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
-atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
+tarefa, consultando sua ideia de mundo intensivamente. Há, também, sensores que
+enviam suas novas informações periodicamente para o núcleo, (órgãos receptivos:
+visão, olfato, e etc), atualizando o mundo. E há atuadores (músculos)
+necessários para a realização das tarefas (figura~\ref{brain}).
 
 É fácil observar que a arquitetura deliberativa é dependente do
 modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
@@ -478,7 +479,8 @@ utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode se
 custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
 que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
 Dessa forma, robôs móveis em ambientes muito dinâmicos, como o carro autônomo da
-google~\ref{googlecar}, não são aplicações favoráveis para esta arquitetura.
+google (figura~\ref{googlecar}), não são aplicações favoráveis para esta
+arquitetura.
 
 \begin{figure}[h]
 \centering
@@ -600,11 +602,40 @@ e, em suas versões antigas, foi constatado que não possui o modelo do mundo,
 mapa, dentro de si \cite{tribelhorn2007evaluating}.
 
 \subsection{Arquiteturas reativas}
-%TODO: mini texto introdutorio, como  o deliberativo, exemplo: As arquiteturas deliberativas são sistemas hierárquicos com a lógica
-%\textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
-%favorece seu uso e o poder computacional não é uma restrição.
-%Destacam-se os modelos de Albus, NASREM, \textit{Nested Hierarchical
-% Controllers} e o \emph{Intelligent Mobile Robot System}.
+As arquiteturas reativas foram formalmente introduzidas em 1986 por
+Roodney Brooks. O roboticista, futuro fundador da empresa iRobot, vivenciou uma
+época de processadores lentos e de alto custo, dificultando o uso de diversos
+sensores e a armazenagem do modelo do mundo no robô. Simulações de tarefas,
+atualizações do mundo e análise de sensores como câmeras eram extremamente
+complexas para robôs e impossíveis de serem executadas em tempo real. Brooks
+vislumbrou como solução o processamento paralelo, evitar o uso de um modelo do
+mundo e criar módulos puramente reativos, pares sensor-motor, que juntos compõem
+o robô. 
+
+O sistema de controle de arquiteturas reativas utilizam informações locais
+do meio, obtidas pelos sensores do robô. Estas são simplificadamente tratadas,
+de forma que a ação ao estímulo é tomada rapidamente e, assim, os robôs reativos
+podem responder de forma mais rápida a variações do ambiente. A arquitetura
+define como a informação é mapeada em uma ação e como é feita a coordenação dos
+pares estímulo-ação (comportamentos reativos).
+
+De acordo com Arkin \cite{arkin1998behavior}, há duas classes predominantes
+para a função de coordenação: competitiva e cooperativa.
+
+Um conflito ocorre quando dois ou mais comportamentos estão ativos ao mesmo
+tempo e possuem respostas diferentes. Nesse caso, a coordenação de forma
+competitiva entra em ação, escolhendo um dos comportamentos para a ação final do
+robô. A prioridade de um comportamento sobre os demais pode ser definida
+explicitamente em uma hierarquia entre os comportamentos, ou pode haver uma
+votação por uma ação, ou outros métodos. O exemplo de sistema reativo com
+coordenação do tipo competitiva é o desenvolvido por Brooks, arquitetura de
+subsunção.
+
+Na arquitetura cooperativa, a ação do robô é a fusão da resposta de todos os
+comportamentos ativos. A arquitetura reativa esquema motor de Arkin é um exemplo
+claro deste tipo de coordenação, onde cada comportamento influencia o movimento
+do robô por meio de um vetor de força artificial e a ação resultante é
+determinada pela soma vetoria de todos os vetores de força.
 
 
 \subsubsection{Arquitetura de subsunção}
@@ -650,32 +681,6 @@ suprimindo seu trânsito de dados, figura~\ref{BROOKS_2}.
 \caption{Camadas de controle de Brooks}
 \label{BROOKS_2}
 \end{figure}
-
-Os problemas anteriormente da arquitetura hierárquica apontados por Brooks
-são solucionados pela nova arquitetura:
-\begin{itemize}
-  \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
-  individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
-  supressão do trânsito de dados resolvem os problemas de conflito, dependência
-  e prioridade;
-  \item Múltiplos sensores: as camadas utilizam os dados dos sensores
-  independentemente, de forma que não há necessidade de se preocupar com a
-  fusão;
-  \item Robustez: além do uso inteligente de sensores, camadas de controle de
-  nível inferior continuam a funcionar quando novas camadas de nível superior
-  são adicionadas;
-  \item Extensibilidade: cada camada de controle pode possuir o seu próprio
-  processador, resolvendo o problema de adicionar sensores indefinidamente e
-  consumir o processamento;
-\end{itemize}
-
-A estrutura das camadas de controle foram construídas por um conjunto de
-pequenos processadores que enviam mensagens uns para os outros. Cada processador
-é uma máquina de estado finito. A nova arquitetura e essa nova estrutura de
-camadas com eventos discretos foram a base de diversos sistemas de controle de
-missão da atualidade. A fim de melhorar o entendimento desse sistema criado
-por Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
-móvel.
 
 A camada de controle nível zero deve garantir que o robô não entre em contato
 com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
@@ -732,24 +737,43 @@ Segue pequena descrição de cada módulo do nível 1:
   suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
 \end{itemize}
 
+Os problemas anteriormente da arquitetura hierárquica apontados por Brooks
+são solucionados pela nova arquitetura:
+\begin{itemize}
+  \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
+  individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
+  supressão do trânsito de dados resolvem os problemas de conflito, dependência
+  e prioridade;
+  \item Múltiplos sensores: as camadas utilizam os dados dos sensores
+  independentemente, de forma que não há necessidade de se preocupar com a
+  fusão;
+  \item Robustez: além do uso inteligente de sensores, camadas de controle de
+  nível inferior continuam a funcionar quando novas camadas de nível superior
+  são adicionadas;
+  \item Extensibilidade: cada camada de controle pode possuir o seu próprio
+  processador, resolvendo o problema de adicionar sensores indefinidamente e
+  consumir o processamento;
+\end{itemize}
+
+A estrutura das camadas de controle foram construídas por um conjunto de
+pequenos processadores que enviam mensagens uns para os outros. Cada processador
+é uma máquina de estado finito. A nova arquitetura e essa nova estrutura de
+camadas com eventos discretos foram a base de diversos sistemas de controle de
+missão da atualidade. A fim de melhorar o entendimento desse sistema criado
+por Brooks, serão apresentados dois níveis de seu controle em uma aplicação de robô
+móvel.
+
 A nova arquitetura de Brooks é robusta, permite interações dinâmicas, é flexível
-para integrar novas funcionalidades e fácil para implementar e debugar. Brooks
-ainda associa sistemas de eventos discretos no controle de robôs autônomos,
+para integrar novas funcionalidades, em camadas superiores, e fácil para
+implementar e debugar.
+Brooks ainda associa sistemas de eventos discretos no controle de robôs autônomos,
 utilizando como módulos básicos máquinas de estados finitos (FSM - \emph{Finite
 State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
 encontrada por Brooks foi acrescentar inibidores e supressores em suas
 FSM, chamando-as AFSM (\emph{Augmented Finite State Machine} ou máquina de
-estado aumentada). O módulo principal desta arquitetura pode ser visto na FIGURA
+estado aumentada, FIGURA). Porém, o modelo hierárquico dos níveis cria uma certa
+inflexibilidade nos níveis inferiores.
 %TODO Colocar figura do modulo basico de brooks 
-
-Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
-idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
-paralelo, flexibilidade de interação com os diversos sensores, distribuir
-capacidades de decisão e flexibilidade de expansão e modificação do sistema.
-Porém o sistema de comunicação entre módulos era centralizado
-(\emph{Blackboard}) e só realizavam uma determinada tarefa sob o comando de um
-Plano de Controle (\emph{Control Plan}). O usuário ainda deveria explicitamente
-codificiar paralelismo, os casos das exceções e condições inesperadas.
 
 Apesar dos pontos positivos, a arquitetura de controle de um sistema
 baseado em comportamento apresenta problemas com escala e contextualização
@@ -760,68 +784,30 @@ podem crescer de maneira fatorial em relação ao número de comportamentos.
 A contextualização é um problema de sistemas de subsunção, onde subsistemas são
 incluídos em um sistema mais amplo. Como cada comportamento é uma FSM, operando
 concorrentemente com as outras, o comportamento corrente é o único estado no
-qual o veículo como um todo funcionará. São sistemas também chamados de
-\emph{non-taskable systems} - uma tarefa não pode ser designada ao
-veículo sem reprogramação de todo o sistema.  
+qual o veículo como um todo funcionará, apesar de todos os estados estarem sendo
+executados.
 
 Apenas em 1996, Bellingham e Consi \cite{bellingham1994second}
 propuseram um controle por camadas (\emph{Layered Control}) a fim de resolver o
-problema de escala. A diferença entre o controle baseado em comportamento e o de
-Bellingham é a restrição de interatividade entre camadas.
-
-As camadas (que são referenciadas como comportamentos) são associadas com um número de
-prioridade, de forma que saídas conflitantes são resolvidas com esse número. Há
-um módulo de processamento de sensores que disponibiliza os dados aos
-comportamentos, como o \emph{Blackboard}, o que viola a premissa de
-paralelismo, mas resolve o problema de interconexões, já que antes as camadas
-superiores deveriam se conectar às inferiores para obter os dados dos sensores.
+problema de escala. Há um módulo de processamento de sensores que
+disponibiliza os dados aos comportamentos, resolvendo o problema de
+interconexões, já que antes as camadas superiores deveriam se conectar às
+inferiores para obter os dados dos sensores. Porém, Bellingham não resolveu o
+problema utilizando uma arquitetura do tipo subsunção: as camadas são associadas
+com um número de prioridade, de forma que saídas conflitantes são resolvidas
+com esse número. Esta solução pode gerar uma certa inflexibilidade, visto que
+que uma nova ação pode alterar toda a estrutura de prioridades previamente
+estabelecida.
 
 A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
 \cite{bennett2000behavior}. No \emph{State Configured Layered Control} (SCLC),
 múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca
 de comportamentos e são executados em cada fase da missão. A vantagem é o
-número reduzido de comportamentos sendo executados ao mesmo tempo. Veremos mais
-a frente que esta estratégia é muito realizada em controle híbrido.
-
-% Em 1989, Chatila \cite{norelis1989control} descreve uma nova arquitetura e
-% sistema de controle utilizando, assim como Brooks, módulos hierárquicos. A
-% arquitetura do robô pode ser decomposta da seguinte forma:
-% \begin{itemize}
-%   \item \textbf{Módulos de sensores}: processam as saídas dos sensores. Os dados
-%   adquiridos por um sensor são processados pelo módulo de sensor e ficam
-%   disponíveis para os módulos de nível mais alto para seus próprios
-%   processamentos e interpretaçõs.
-%   \item \textbf{Unidades funcionais}: realizam uma determinada função no robô.
-%   Por exemplo, localização do robô combinando sensores de visão, odometria, laser e
-%   etc.
-%   \item \textbf{Processos}: realiza a dinâmica de malha fechada entre percepção
-%   e ação, usando unidades de função. O processo é representado por uma máquina de estado
-%   finito, onde suas entradas são os dados dos módulos dos sensores e suas saídas
-%   são comandos aos atuadores.
-% \end{itemize}
-% 
-% O sistema de controle de Chatila é composto por quatro componentes: Supervisor
-% (não implementado), Módulo Executivo, Gerente de Vigilância e Módulo de
-% Diagnóstico (não implementado). Os controles funcionam como um \emph{if - then},
-% com diversas condições e ações predeterminadas. O módulo de vigilância é
-% responsável por:
-% 
-% \begin{itemize}
-%   \item Indicar estados dos sensores e tomar ações de reflexo;
-%   \item Indicar estado operacional do robô, como nível da bateria;
-%   \item Relatar plano e estado da missão que está sendo executada pelo robô;
-% \end{itemize}
-% 
-% O módulo executivo fucniona como um sistema operacional. Recebe comandos
-% (missões) predefinidas pela interface e se comunica com o módulo de vigilância.
-% 
-% Quando comparamos com Brooks, Chatila apresenta uma estrutura bem
-% rudimentar e lógicas simples de arquitetura e controle. Apesar de utilizar a
-% ideia de recursos compartilhados nos módulos de sensores, os automatos dos
-% módulos de processo são bem simplificados e dependentes de um bloco central
-% para resolver objetivos conflitantes.
+número reduzido de comportamentos executados ao mesmo tempo. Esta é
+uma estratégia comum em arquiteturas de controle híbrido.
 
 \subsubsection{Arquitetura esquema motor}
+%TODO fazer esquema motor de Arkin
 
 \subsection{Análise crítica}
 Se a abordagem deliberativa simulava o processo de planejamento e tomada de
@@ -831,35 +817,10 @@ central: o circuito reflexivo, ou arco reflexo. O reflexo é uma resposta
 involuntária rápida, consciente ou não, originado de um estímulo externo e
 realizada antes mesmo de o cérebro tomar conhecimento do estímulo periférico.
 
-
-
-Dessa forma, não há planejamento,  Há um núcleo (cérebro) que processa todos os
-dados sensorias e armazena o mundo, isto é, o ambiente em que está inserido, de maneira simbólica, geométrica ou outras.
-Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
-também, sensores que enviam suas novas informações periodicamente para o núcleo,
-(órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
-atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
-
-É fácil observar que a arquitetura deliberativa é dependente do
-modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
-utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
-custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
-que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\columnwidth]{figs/BRAIN.png}
-\caption{Comparativo da arquitetura deliberativa com o ser humano.}
-\label{brain}
-\end{figure}
-
+Dessa forma, não há planejamento,
+%TODO fechar análise
 
 \section{Arquitetura híbrida deliberativa/reativa}
-
-
-
-A partir de 1995, os autores começam a introduzir formalismo e terminologias
-para os sistemas que visam o controle de missão de robôs. 
 
 Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
 que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
@@ -1240,5 +1201,13 @@ Silva desenvolveu os softwares CORAL e ATOL para implementação das VPs e STs em
 redes de Petri de forma que um usuário final, como um operador, pudesse
 facilmente criar seus MPs. A grande contribuição 
 
-
-
+%TODO falar de blackboard quando for falar de ROS
+Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
+idealizado uma arquitetura em módulos e controle distribuído a fim de atingir
+efetividade em processamento paralelo, flexibilidade de interação com os
+diversos sensores, distribuir capacidades de decisão e flexibilidade de
+expansão e modificação do sistema.
+Porém o sistema de comunicação entre módulos era centralizado
+(\emph{Blackboard}) e só realizavam uma determinada tarefa sob o comando de um
+Plano de Controle (\emph{Control Plan}). O usuário ainda deveria explicitamente
+codificiar paralelismo, os casos das exceções e condições inesperadas.
