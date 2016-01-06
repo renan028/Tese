@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: dedic.aux
+A level-1 auxiliary file: thanks.aux
+A level-1 auxiliary file: resumo.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: chap01.aux
+A level-1 auxiliary file: chap02.aux
+A level-1 auxiliary file: chap03.aux
+A level-1 auxiliary file: chap04.aux
+A level-1 auxiliary file: chap05.aux
+The style file: coppe-unsrt.bst
+A level-1 auxiliary file: appenA.aux
+Database file #1: thesis.bib
+Repeated entry---line 213 of file thesis.bib
+ : @inproceedings{norelis1989control
+ :                                  ,
+I'm skipping whatever remains of this entry
+Warning--empty pages in moravec1977towards
+Warning--empty journal in arkin1995reactive
+You've used 25 entries,
+            2438 wiz_defined-function locations,
+            761 strings with 8857 characters,
+and the built_in function-call counts, 5919 in all, are:
+= -- 505
+> -- 148
+< -- 15
++ -- 72
+- -- 47
+* -- 507
+:= -- 800
+add.period$ -- 56
+call.type$ -- 25
+change.case$ -- 2
+chr.to.int$ -- 0
+cite$ -- 27
+duplicate$ -- 358
+empty$ -- 655
+format.name$ -- 47
+if$ -- 1319
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 27
+newline$ -- 91
+num.names$ -- 25
+pop$ -- 101
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 141
+stack$ -- 0
+substring$ -- 440
+swap$ -- 144
+text.length$ -- 15
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 64
+width$ -- 27
+write$ -- 233
+(There was 1 error message)

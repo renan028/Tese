@@ -1,0 +1,136 @@
+\begin{thebibliography}{10}
+\newcommand{\enquote}[1]{``#1''}
+
+\bibitem{arkin1998behavior}
+\MakeUppercase{ Arkin, R.~C.}, {\em Behavior-based robotics\/}.
+\newblock MIT press, 1998.
+
+\bibitem{stone1980introduction}
+\MakeUppercase{ Stone, H.~S.}, {\em Introduction to computer architecture\/}.
+\newblock Sra, 1980.
+
+\bibitem{mataric1992behavior}
+\MakeUppercase{ Mataric, M.~J.}, \enquote{Behavior-based control: Main
+  properties and implications}.
+\newblock In: {\em Proceedings, IEEE International Conference on Robotics and
+  Automation, Workshop on Architectures for Intelligent Control Systems\/}, pp.
+  46--54, 1992.
+
+\bibitem{brooks1986robust}
+\MakeUppercase{ Brooks, R.~A.}, \enquote{A robust layered control system for a
+  mobile robot}, {\em Robotics and Automation, IEEE Journal of\/}, v.~2, n.~1,
+  pp.~14--23, 1986.
+
+\bibitem{siegwart2004autonomous}
+\MakeUppercase{ Siegwart, R., Nourbakhsh, I.~R.}, \enquote{Autonomous mobile
+  robots}, {\em Massachusetts Institute of Technology\/}, 2004.
+
+\bibitem{fryxell1996navigation}
+\MakeUppercase{ Fryxell, D., Oliveira, P., Pascoal, A.,
+  \MakeLowercase{et~al.}}, \enquote{Navigation, guidance and control of AUVs:
+  an application to the MARIUS vehicle}, {\em Control Engineering Practice\/},
+  v.~4, n.~3, pp.~401--409, 1996.
+
+\bibitem{brumitt1996dynamic}
+\MakeUppercase{ Brumitt, B.~L., Stentz, A.}, \enquote{Dynamic mission planning
+  for multiple mobile robots}.
+\newblock In: {\em Robotics and Automation, 1996. Proceedings., 1996 IEEE
+  International Conference on\/}, v.~3, pp. 2396--2401, 1996.
+
+\bibitem{norelis1989control}
+\MakeUppercase{ Norelis, F., Chatila, R.~G.}, \enquote{Control of mobile robot
+  actions}.
+\newblock In: {\em Robotics and Automation, 1989. Proceedings., 1989 IEEE
+  International Conference on\/}, pp. 701--707, 1989.
+
+\bibitem{moravec1977towards}
+\MakeUppercase{ Moravec, H.~P.}, \enquote{TOWARDS AUTOMATIC VISUAL BBSTACLE
+  AVOIDANCE}.
+\newblock In: {\em International Conference on Artificial Intelligence (5th:
+  1977: Massachusetts Institute of Technology)\/}, 1977.
+
+\bibitem{scheinman1969design}
+\MakeUppercase{ Scheinman, V.~D.}, {\em Design of a computer controlled
+  manipulator.\/}, Tech. rep., DTIC Document, 1969.
+
+\bibitem{albus1991outline}
+\MakeUppercase{ Albus, J.~S.}, \enquote{Outline for a theory of intelligence},
+  {\em Systems, Man and Cybernetics, IEEE Transactions on\/}, v.~21, n.~3,
+  pp.~473--509, 1991.
+
+\bibitem{albus1989nasa}
+\MakeUppercase{ Albus, J.~S., McCain, H.~G., Lumia, R.}, {\em NASA/NBS standard
+  reference model for telerobot control system architecture (NASREM)\/}.
+\newblock National Institute of Standards and Technology Gaithersburg, MD,
+  1989.
+
+\bibitem{wang1991petri}
+\MakeUppercase{ Wang, F.~Y., Kyriakopoulos, K.~J., Tsolkas, A.,
+  \MakeLowercase{et~al.}}, \enquote{A Petri-net coordination model for an
+  intelligent mobile robot}, {\em Systems, Man and Cybernetics, IEEE
+  Transactions on\/}, v.~21, n.~4, pp.~777--789, 1991.
+
+\bibitem{saridis1988analytical}
+\MakeUppercase{ Saridis, G.~N., Valavanis, K.~P.}, \enquote{Analytical design
+  of intelligent machines}, {\em Automatica\/}, v.~24, n.~2, pp.~123--133,
+  1988.
+
+\bibitem{murata1989petri}
+\MakeUppercase{ Murata, T.}, \enquote{Petri nets: Properties, analysis and
+  applications}, {\em Proceedings of the IEEE\/}, v.~77, n.~4, pp.~541--580,
+  1989.
+
+\bibitem{arkin1995reactive}
+\MakeUppercase{ Arkin, R.}, \enquote{Reactive Robotic Systems Ronald C. Arkin
+  College of Computing Georgia Institute of Technology Atlanta, Georgia}, 1995.
+
+\bibitem{holland1997grey}
+\MakeUppercase{ Holland, O.}, \enquote{Grey Walter: the pioneer of real
+  artificial life}.
+\newblock In: {\em Proc. 5th Int. Workshop Synthesis Simulation Living Syst\/},
+  pp. 34--41, 1997.
+
+\bibitem{braitenberg1986vehicles}
+\MakeUppercase{ Braitenberg, V.}, {\em Vehicles: Experiments in synthetic
+  psychology\/}.
+\newblock MIT press, 1986.
+
+\bibitem{tribelhorn2007evaluating}
+\MakeUppercase{ Tribelhorn, B., Dodds, Z.}, \enquote{Evaluating the Roomba: A
+  low-cost, ubiquitous platform for robotics research and education}.
+\newblock In: {\em Robotics and Automation, 2007 IEEE International Conference
+  on\/}, pp. 1393--1399, 2007.
+
+\bibitem{elfes1983distributed}
+\MakeUppercase{ Elfes, A., Talukdar, S.~N.}, {\em A Distributed Control System
+  for the CMU Rover.\/}, Tech. rep., DTIC Document, 1983.
+
+\bibitem{bellingham1994second}
+\MakeUppercase{ Bellingham, J., Goudey, C., Consi, T., \MakeLowercase{et~al.}},
+  \enquote{A second generation survey AUV}.
+\newblock In: {\em Autonomous Underwater Vehicle Technology, 1994. AUV'94.,
+  Proceedings of the 1994 Symposium on\/}, pp. 148--155, 1994.
+
+\bibitem{bennett2000behavior}
+\MakeUppercase{ Bennett, A., Leonard, J.~J., others}, \enquote{A behavior-based
+  approach to adaptive feature detection and following with autonomous
+  underwater vehicles}, {\em Oceanic Engineering, IEEE Journal of\/}, v.~25,
+  n.~2, pp.~213--226, 2000.
+
+\bibitem{martin2006mission}
+\MakeUppercase{ Martin, S.~C., Whitcomb, L.~L., Yoerger, D.,
+  \MakeLowercase{et~al.}}, \enquote{A mission controller for high level control
+  of autonomous and semi-autonomous underwater vehicles}.
+\newblock In: {\em OCEANS 2006\/}, pp. 1--6, 2006.
+
+\bibitem{Arn51a}
+\MakeUppercase{ Arnoldi, W.~E.}, \enquote{The principle of minimized iteration
+  in the solution of the matrix eigenvalue problem}, {\em Quart. Appl.
+  Math.\/}, v.~9, pp.~17--29, 1951.
+
+\bibitem{Lan50a}
+\MakeUppercase{ Lanczos, C.}, \enquote{An iteration method for the solution of
+  the eigenvalue problem of linear differential and integral operators}, {\em
+  J. Research Nat. Bur. Standards\/}, v.~45, pp.~255--282, 1950.
+
+\end{thebibliography}

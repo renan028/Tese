@@ -57,18 +57,18 @@ exemplificam as arquiteturas pela ótica de diversos autores, e são
 comparadas e analisadas.
 
 %TODO: acrescentar mais uma referência (arkin?)
-O controle de missão ou planejamento de missão de robôs faz parte da arquitetura
-robótica, e pode ser desenvolvido para os três tipos de arquiteturas. Em
-\cite{fryxell1996navigation}, é apresentada uma das primeiras definições de
-controle de missão para robôs: controle de missão é um sistema que permite ao
-operador definir as missões de um veículo em linguagem de alto nível; provê
-ferramentas adequadas para converter planos em Progamas de Missões que podem
-ser verificados e executados em tempo real; e permite ao operador saber o
-estado da missão enquanto esta é executada, e modificá-la se for necessário. Em
-\cite{brumitt1996dynamic}, o conceito de planejamento de missão é ampliado para
-múltiplos robôs: planejamento de missão é o processo de determinar o
-que cada robô deve fazer para alcançar os objetivos da missão, em um ambiente
-dinâmico. 
+O controle de missão (\textit{Mission Control}) ou planejamento de missão
+(\textit{Mission Planning}) ou planejamento de tarefas (\textit{Task Planning})
+de robôs faz parte da arquitetura robótica, e pode ser desenvolvido para os
+três tipos de arquiteturas. Em \cite{fryxell1996navigation}, o conceito é bem
+introduzido como: controle de missão é um sistema que permite ao operador
+definir as missões de um veículo em linguagem de alto nível; provê ferramentas adequadas para converter planos em
+Progamas de Missões que podem ser verificados e executados em tempo real; e
+permite ao operador saber o estado da missão enquanto esta é executada, e
+modificá-la se for necessário. Em \cite{brumitt1996dynamic}, o conceito de
+planejamento de missão é ampliado para múltiplos robôs: planejamento de missão
+é o processo de determinar o que cada robô deve fazer para alcançar, de uma
+maneira conjunta, os objetivos da missão, em um ambiente dinâmico.
 
 Neste trabalho, o controle de missão de robôs é o componente da arquitetura
 robótica que organiza e executa todas as tarefas do robô de maneira ótima,
@@ -84,12 +84,19 @@ robótico, a IA clássica consiste em um modelo centralizado que coleta
 informações usando sensores, cria um modelo do ambiente, planeja o próximo
 movimento e executa a ação. São sistemas do tipo \emph{Sense, Plan and
 act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
-\emph{top-down} (hierárquica), como na decomposição tradicional da
-figura~\ref{BROOKS_1}.
-%TODO: Mudar essa figura
+\emph{top-down} (hierárquica), como na decomposição tradicional,
+figura~\ref{hierarquica}.
 
-De acordo com Marvin Minsky, uma máquina deveria tender a criar, por si só, um
-modelo abstrato do ambiente em que está inserido (defina-se \emph{mundo}).
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{figs/Hierarchical.png}
+\caption{Arquitetura hierárquica tradicional.}
+\label{hierarquica}
+\end{figure}
+
+De acordo com Marvin Minsky, uma máquina (robô) deveria tender a criar, por si
+só, um modelo abstrato do ambiente em que está inserido (define-se
+\emph{mundo}).
 Caso fosse dado uma tarefa, ela primeiro poderia explorar soluções dentro de seu modelo abstrato e, então,
 experimentá-las externamente. Seria como realizar uma simulação interna
 e, caso funcionasse, realizá-la no mundo real.
@@ -99,19 +106,21 @@ Entre 1966 e 1972, Charles Rosen e Nils Nisson da Universidade de Stanford
 criaram o Shakey, primeiro robô móvel autônomo (figura~\ref{SHAKEY_1}). Foi
 desenvolvida uma inteligência artificial, \textit{problem solver}, chamada
 STRIPS. Este sistema é um planejador de trajetórias que armazena as imformações
-do ambiente (mapas e obstáculos) de maneira simbólica e, se dada uma tarefa de
-deslocamento (\textit{goto}), é realizada uma busca lógica pelo sistema.
+do ambiente (mapas e obstáculos) de maneira simbólica, e se dada uma tarefa de
+deslocamento (\textit{goto}), é realizada uma busca lógica pelo sistema. 
 
 Em 1977, começou a ser desenvolvido o projeto HILARE (figura~\ref{hilare}), no
-Laboratoire d'Automatique et d'Analyse des Systèmes (LAAS), Toulouse, France. Possuía sensores como câmera, quatorze ultrassons e laser para
-medir distância, sendo possível atualizar o seu mundo com acurácia. Seu mundo
-era representado por modelos geométricos e um modelo relacional que expressava a
+Laboratoire d'Automatique et d'Analyse des Systèmes (LAAS), Toulouse, France.
+O robô possuía sensores como câmera, ultrassons e laser para medir
+distância, sendo possível atualizar o seu mundo com acurácia. Seu mundo era
+representado por modelos geométricos e um modelo relacional que expressava a
 conectividade dos quartos e corredores (simbólico) \cite{norelis1989control}.
 
-Também em 1977, o Stanford Cart foi criado por Moravec para teste de visão
-para navegação e desvio de obstáculos \cite{moravec1977towards}. Os obstáculos
-eram identificados pelo robô durante a operação e representados em seu mundo
-como esferas. O mundo também era representado simbolicamente por grafos.
+Também em 1977, o Stanford Cart foi criado por Moravec para navegação e desvio
+de obstáculos \cite{moravec1977towards}. Os obstáculos eram identificados pelo
+robô durante a operação e representados em seu mundo interno como
+esferas. O robô possuía uma segunda representação do mundo, simbólica por
+grafos.
 
 Em 1969, Victor Scheinman, Universidade de Stanford
 \cite{scheinman1969design}, inventou o primeiro manipulador robótico
@@ -124,23 +133,23 @@ utilização de manipuladores industriais. A sofisticação destes sistemas já
 possibilita que estes armazenem todo o conhecimento do mundo e executem tarefas
 autônomas (figura~\ref{manipulador}).
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SHAKEY_1.png}
 \caption{Shakey robot}
 \label{SHAKEY_1}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=1\columnwidth]{figs/HILARE.png}
+\includegraphics[width=1\columnwidth]{figs/HILARE.jpg}
 \caption{HILARE}
 \label{hilare}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
-\includegraphics[width=1\columnwidth]{figs/MANIPULADOR.png}
+\includegraphics[width=1\columnwidth]{figs/MANIPULADOR.jpg}
 \caption{Manipulador robótico atual}
 \label{manipulador}
 \end{figure}
@@ -148,16 +157,15 @@ autônomas (figura~\ref{manipulador}).
 \subsection{Arquiteturas deliberativas}
 As arquiteturas deliberativas são sistemas hierárquicos com a lógica
 \textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
-favorece seu uso e devido ao grande poder computacional atual. Destacam-se os modelos de Albus,
-NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
-Robot System} de Saridis.
+favorece seu uso e o poder computacional não é uma restrição.
+Destacam-se os modelos de Albus, NASREM, \textit{Nested Hierarchical Controllers} e o \emph{Intelligent Mobile
+Robot System}.
 
 \subsubsection{Modelo de Albus}
 
 Albus foi o pioneiro e mais influente autor de teorias em arquiteturas
-deliberativas, que pode ser vista em \cite{albus1991outline}. Sua
-grande contribuição foi a formalização e definição de diversos termos
-amplamente utilizados em automação e controle. Dentre outros, destaca-se o
+deliberativas, \cite{albus1991outline}. Sua grande contribuição foi a
+formalização e definição de diversos termos amplamente utilizados em automação e controle. Dentre outros, destaca-se o
 teorema de que há quatro sistemas que compõem a inteligência: processamento de
 sensores, modelo do mundo, geração de comportamentos e julgamento de valor. As
 entradas desses elementos são os sensores e suas saídas são os atuadores:
@@ -195,17 +203,20 @@ entradas desses elementos são os sensores e suas saídas são os atuadores:
   o julgamento de valor avalia os resultados. O gerador de comportamento
   seleciona o plano com a avaliação mais alta.
 \end{itemize}
+
 As relações entre os elementos do sistema inteligente estão representados na
 figura~\ref{albus}.  Esses elementos e suas relações possibilitaram a criação de
 diversas arquiteturas.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/albus.pdf}
 \caption{Arquitetura de Albus para sistemas deliberativos.}
 \label{albus}
 \end{figure}
 
+Vale ressaltar que, nesta arquitetura, o \textit{gerador de comportamentos} faz
+o papel de controlador de missão.
 
 \subsubsection{NASREM}
 O NASREM \cite{albus1989nasa} foi uma arquitetura utilizada pela
@@ -226,7 +237,7 @@ funcionalidade(figura~\ref{nasrem}):
   serviços.
 \end{enumerate}
 
-Vale ressaltar que no modelo NASREM, o operador tem acesso a qualquer nível
+Vale ressaltar que, no modelo NASREM, o operador tem acesso a qualquer nível
 hierárquico do robô e pode tomar o controle do robô para si, além de poder
 substituir as entradas de sensores, modelo do mundo e outros. Dessa forma, o
 nível de autonomia do robô pode ser desenvolvido de forma incremental.
@@ -234,7 +245,7 @@ nível de autonomia do robô pode ser desenvolvido de forma incremental.
 A arquitetura hierárquica proposta em NASREM permite modularidade e propõe uma
 metodologia de software.  
  
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/NASREM.pdf}
 \caption{Arquitetura NASREM.}
@@ -280,7 +291,7 @@ O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
   coordenação e reporta seus resultados a ele.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SARIDIS_1.pdf}
 \caption{IMRS}
@@ -320,7 +331,7 @@ figura~\ref{Saridis_2} mostra o modelo de rede de Petri para o Remetente.
 %obstáculos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
 %de rede de Petri para o Remetente.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth,angle=90]{figs/SARIDIS_2.pdf}
 \caption{Estrutura do nível de coordenação com foco na rede de Petri do
@@ -446,18 +457,18 @@ nível de alto nível para um operador (usuário). Além disso, as redes de Petri
 assumem um importante papel como módulo básico de controle para seu sistema
 IMRS. As redes de Petri foram originalmente introduzidas para descrever as
 comunicações de máquinas de estado finito (FSM), possibilitando flexibilidade
-e robustez, e é provado que redes de Petri são excelente ferramenta para
+e robustez, e é provado que redes de Petri são uma excelente ferramenta para
 modelagem de sistemas, sobretudo quando envolvem tarefas conflitantes ou
-simultâneas, Murata \cite{murata1989petri}.
+simultâneas \cite{murata1989petri}.
 
 
 \subsection{Análise crítica}
 A abordagem deliberativa simula, de certa forma, o processo de planejamento e
 tomada de decisão do ser humano. Há um núcleo (cérebro) que
 processa todos os dados sensorias e armazena o mundo, isto é, o ambiente em que
-está inserido, de maneira simbólica, geométrica ou outras.
-Além disso, ele planeja todas as ações para uma determinada tarefa, consultando sua ideia de mundo intensivamente. Há,
-também, sensores que enviam suas novas informações periodicamente para o núcleo,
+o robô está inserido, de maneira simbólica, geométrica ou outros tipos de
+mapeamento. Além disso, o núcleo planeja todas as ações para uma determinada
+tarefa, consultando sua ideia de mundo intensivamente. Há, também, sensores que enviam suas novas informações periodicamente para o núcleo,
 (órgãos receptivos: visão, olfato, e etc), atualizando o mundo. E há
 atuadores (músculos) necessários para a realização das tarefas~\ref{brain}.
 
@@ -466,12 +477,21 @@ modelo de mundo armazenado e suas atualizações periódicas. Portanto, a
 utilização da abordagem deliberativa em ambientes extremamente dinâmicos pode ser muito
 custosa devido às atualizações e ao replanejamento. Além disso, é fácil observar
 que a arquitetura SPA dificulta a criação de sistemas em tempo real eficientes.
+Dessa forma, robôs móveis em ambientes muito dinâmicos, como o carro autônomo da
+google~\ref{googlecar}, não são aplicações favoráveis para esta arquitetura.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BRAIN.png}
 \caption{Comparativo da arquitetura deliberativa com o ser humano.}
 \label{brain}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{figs/googlecar.jpg}
+\caption{Projeto da google 2011- para o desenvolvimento de um carro autônomo.}
+\label{googlecar}
 \end{figure}
 
 \section{Paradigma reativo}
@@ -538,9 +558,10 @@ capaz de cumprir determinadas funções essenciais.
 
 A extensibilidade constitui em acrescentar mais sensores e,
 portanto, aumentar a capacidade do robô, sendo possível a execução de novas
-tarefas. Porém, existe um limite imposto pela limitação
-de processamento do robô, já que um novo hardware (sensor) é adicionado, mas o
-processamento (computador) não é substituído e sua capacidade não é aumentada.
+tarefas. Porém, esta afirmação é normalmente criticada por alguns autores já que
+existe um limite imposto pelo processamento do robô, já que um novo hardware
+(sensor) é adicionado, mas o processamento (computador) não é substituído e sua
+capacidade não é aumentada.
 
 Brooks propõe um dos primeiros sistemas baseados em comportamentos, uma
 arquitetura que tem como objetivo descentralizar a tomada de decisão de um
@@ -549,7 +570,7 @@ que essa decomposição conduz a uma arquitetura radicalmente diferente para
 sistema de controle de robôs móveis em estratégias de implementação a nível de
 hardware e com grandes vantagens em robustez, desenvolvimento e teste.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_1.pdf}
 \caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
@@ -557,12 +578,12 @@ hardware e com grandes vantagens em robustez, desenvolvimento e teste.
 \end{figure}
 
 \subsection{Robôs reativos}
-Antes mesmo de Brooks, ou seja, da formalização de toda a teoria em sistemas
-reativos, simples robôs eram criados na lógica de controle reativo e de
+Antes mesmo de Brooks, ou seja, antes da formalização de toda a teoria em
+sistemas reativos, simples robôs eram criados na lógica de controle reativo e de
 comportamentos. Em 1953, por exemplo, Grey Walter \cite{holland1997grey}
 desenvolveu uma ``tartaruga'' elétrica capaz de se movimentar pelo ambiente,
 evitando luz intensa (``ameaças'') e atraída por certos objetivos. Vale
-observar a característica do robô de perceber baixo nível de bateria e procurar
+observar a característica de perceber baixo nível de bateria e procurar
 uma estação de recarga, comportamento que se sobrepõe aos outros. Os
 comportamentos são simples e não há representação abstrata do mundo:
 dirigir-se para luz fraca; fugir de luz forte; e evitar obstáculos.
@@ -579,20 +600,29 @@ e, em suas versões antigas, foi constatado que não possui o modelo do mundo,
 mapa, dentro de si \cite{tribelhorn2007evaluating}.
 
 \subsection{Arquiteturas reativas}
+%TODO: mini texto introdutorio, como  o deliberativo, exemplo: As arquiteturas deliberativas são sistemas hierárquicos com a lógica
+%\textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
+%favorece seu uso e o poder computacional não é uma restrição.
+%Destacam-se os modelos de Albus, NASREM, \textit{Nested Hierarchical
+% Controllers} e o \emph{Intelligent Mobile Robot System}.
 
 
 \subsubsection{Arquitetura de subsunção}
-Na figura~\ref{BROOKS_1}, o autor define \emph{Níveis de competência}, que são
+A arquitetura de subsunção é, neste trabalho, destacada, exemplificada e
+minuciosamente comentada, já que sua lógica será o cerne da implementação da
+camada reativa da DORIS.
+
+Na figura~\ref{BROOKS_1}, Brooks define \emph{Níveis de competência}, que são
 classes de comportamentos desejados para o robô sobre todos os ambientes que ele
 pode encontrar. As classes definidas por Brooks são:
 \begin{enumerate}
 \setcounter{enumi}{-1}
   \item Evitar contato com objetos (estacionários ou móveis);
   \item Vaguear sem rumo e sem bater em objetos;
-  \item Explorar o ambiente utilizando sensores e definir lugares alcançáveis.
-  Seguir rumo em sua direção;
-  \item Construir um mapa do ambiente e planejar trajetórias de um lugar para
-  outro;
+  \item Explorar o ambiente utilizando sensores, definir lugares alcançáveis, e
+  seguir rumo em suas direções;
+  \item Construir um mini-mapa do ambiente e planejar trajetórias de um lugar
+  para outro;
   \item Observar mudanças no ambiente;
   \item Raciocinar sobre o ambiente em termos de objetos identificáveis e
   realizar tarefas relacionadas a certos objetos;
@@ -602,7 +632,7 @@ pode encontrar. As classes definidas por Brooks são:
   planos quando necessário;
 \end{enumerate}
 
-Vale observar que cada nível de competência inclui, como subconjunto, os
+Cada nível de competência inclui, como subconjunto, os
 níveis de competência anteriores.
 
 Após a decomposição na nova arquitetura, Brooks define as \emph{Camadas de
@@ -614,14 +644,15 @@ alterada. Após, é criada a camanda de nível 1, capaz de examinar os dados
 da camada de nível 0 e injetar dados nas interfaces internas deste nível,
 suprimindo seu trânsito de dados, figura~\ref{BROOKS_2}.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_2.pdf}
 \caption{Camadas de controle de Brooks}
 \label{BROOKS_2}
 \end{figure}
 
-Os problemas apresentados por Brooks são solucionados pela nova arquitetura:
+Os problemas anteriormente da arquitetura hierárquica apontados por Brooks
+são solucionados pela nova arquitetura:
 \begin{itemize}
   \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
   individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
@@ -634,7 +665,8 @@ Os problemas apresentados por Brooks são solucionados pela nova arquitetura:
   nível inferior continuam a funcionar quando novas camadas de nível superior
   são adicionadas;
   \item Extensibilidade: cada camada de controle pode possuir o seu próprio
-  processador; 
+  processador, resolvendo o problema de adicionar sensores indefinidamente e
+  consumir o processamento;
 \end{itemize}
 
 A estrutura das camadas de controle foram construídas por um conjunto de
@@ -650,7 +682,7 @@ com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
 objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória.
 Na figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
 
-\begin{figure}[H]
+\begin{figure}[h]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_3.pdf}
 \caption{Nível 0 de controle do sistema}
@@ -708,9 +740,7 @@ State Machine}). Como a conexão de diversas FSM's não é uma FSM, a solução
 encontrada por Brooks foi acrescentar inibidores e supressores em suas
 FSM, chamando-as AFSM (\emph{Augmented Finite State Machine} ou máquina de
 estado aumentada). O módulo principal desta arquitetura pode ser visto na FIGURA
-%TODO Colocar figura de brooks 
-
-
+%TODO Colocar figura do modulo basico de brooks 
 
 Antes de Brooks, em 1983, Elfes, A. \cite{elfes1983distributed},já havia
 idealizado uma arquitetura em módulos e controle distribuído a fim de atingir efetividade em processamento
@@ -790,6 +820,8 @@ a frente que esta estratégia é muito realizada em controle híbrido.
 % ideia de recursos compartilhados nos módulos de sensores, os automatos dos
 % módulos de processo são bem simplificados e dependentes de um bloco central
 % para resolver objetivos conflitantes.
+
+\subsubsection{Arquitetura esquema motor}
 
 \subsection{Análise crítica}
 Se a abordagem deliberativa simulava o processo de planejamento e tomada de
