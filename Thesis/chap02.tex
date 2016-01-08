@@ -87,7 +87,7 @@ act} (SPA). Essa arquitetura de controle é clássica e tem abordagem
 \emph{top-down} (hierárquica), como na decomposição tradicional,
 figura~\ref{hierarquica}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/Hierarchical.png}
 \caption{Arquitetura hierárquica tradicional.}
@@ -133,21 +133,21 @@ utilização de manipuladores industriais. A sofisticação destes sistemas já
 possibilita que estes armazenem todo o conhecimento do mundo e executem tarefas
 autônomas (figura~\ref{manipulador}).
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SHAKEY_1.png}
 \caption{Shakey robot}
 \label{SHAKEY_1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/HILARE.jpg}
 \caption{HILARE}
 \label{hilare}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/MANIPULADOR.jpg}
 \caption{Manipulador robótico atual}
@@ -208,7 +208,7 @@ As relações entre os elementos do sistema inteligente estão representados na
 figura~\ref{albus}.  Esses elementos e suas relações possibilitaram a criação de
 diversas arquiteturas.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/albus.pdf}
 \caption{Arquitetura de Albus para sistemas deliberativos.}
@@ -245,7 +245,7 @@ nível de autonomia do robô pode ser desenvolvido de forma incremental.
 A arquitetura hierárquica proposta em NASREM permite modularidade e propõe uma
 metodologia de software.  
  
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/NASREM.pdf}
 \caption{Arquitetura NASREM.}
@@ -291,7 +291,7 @@ O IMRS possui a seguinte arquitetura (figura~\ref{Saridis_1}):
   coordenação e reporta seus resultados a ele.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SARIDIS_1.pdf}
 \caption{IMRS}
@@ -331,7 +331,7 @@ figura~\ref{Saridis_2} mostra o modelo de rede de Petri para o Remetente.
 %obstáculos e controle de rastreamento. A figura~\ref{Saridis_2} mostra o modelo
 %de rede de Petri para o Remetente.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth,angle=90]{figs/SARIDIS_2.pdf}
 \caption{Estrutura do nível de coordenação com foco na rede de Petri do
@@ -385,14 +385,14 @@ Dessa forma, robôs móveis em ambientes muito dinâmicos, como o carro autônomo da
 google (figura~\ref{googlecar}), não são aplicações favoráveis para esta
 arquitetura.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BRAIN.png}
 \caption{Comparativo da arquitetura deliberativa com o ser humano.}
 \label{brain}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/googlecar.jpg}
 \caption{Projeto da google 2011- para o desenvolvimento de um carro autônomo.}
@@ -475,7 +475,7 @@ que essa decomposição conduz a uma arquitetura radicalmente diferente para
 sistema de controle de robôs móveis em estratégias de implementação a nível de
 hardware e com grandes vantagens em robustez, desenvolvimento e teste.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_1.pdf}
 \caption{Arquitetura para sistema de controle de robôs móveis por Brooks}
@@ -578,7 +578,7 @@ alterada. Após, é criada a camanda de nível 1, capaz de examinar os dados
 da camada de nível 0 e injetar dados nas interfaces internas deste nível,
 suprimindo seu trânsito de dados, figura~\ref{BROOKS_2}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_2.pdf}
 \caption{Camadas de controle de Brooks}
@@ -623,7 +623,7 @@ objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória. A 
  
  
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/BROOKS_4.pdf}
 \caption{Nível 0 e 1 de controle do sistema}
@@ -788,7 +788,7 @@ Planejamento                                                                    
 % non hard-wired
 %TODO fechar análise
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/brain2.jpg}
 \caption{Analogia de sistemas reativos com o ser humano.}
@@ -796,6 +796,24 @@ Planejamento                                                                    
 \end{figure}
 
 \section{Arquitetura híbrida deliberativa/reativa}
+
+Arquiteturas deliberativas e reativas apresentam vantagens e
+desvantagens e que muitas vezes se opõe. Por exemplo, é muito ineficiente
+utilizar uma arquitetura deliberativa em um ambiente extremamente dinâmico,
+assim como é ineficiente utilizar arquitetura reativa em uma linha de montagem
+(manipuladores industriais). É natural pensar que integrando, de alguma forma,
+as duas arquiteturas, formando uma arquitetura híbrida, será possível absorver
+as vantagens de ambas.
+
+Atualmente, os robôs com arquitetura híbrida predominam. Em muitas
+aplicações de robôs móveis mais complexas, fica claro que formas de conhecimento
+do mundo na arquitetura robótica permitem que a navegação dos robôs seja mais
+flexível, eficiente e geral. A arquitetura híbrida tenta combinar os
+métodos simbólicos da IA e seu uso de representação abstrata do modelo do mundo,
+mas mantem o objetivo de prover robustez, resposta em tempo real e flexibilidade
+dos sistemas puramente reativos. Arquiteturas híbridas podem permitir a
+reconfiguração de controles reativos baseado no conhecimento do mundo através da
+sua capacidade de raciocinar sobre os componentes comportamentais subjacentes.
 
 Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
 que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
@@ -883,7 +901,7 @@ e hierárquicos, figura~\ref{HEALEY_1}:
   de controle relacionadas ao nível tático.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/HEALEY_1.pdf}
 \caption{Arquitetura do Robô Phoenix de Healey}
@@ -982,7 +1000,7 @@ MARIUS descrita abaixo, figura~\ref{SILVA_1}:
   recuperação em caso de falhas.
 \end{itemize}
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SILVA_1.pdf}
 \caption{Arquitetura do Veículo MARIUS}
@@ -1018,7 +1036,7 @@ figura~\ref{SILVA_2}:
 \emph{Guidance and Control Task} (GCT), \emph{Vehicle Communications Task}
 (VCT), \emph{Space and Time Task} (STT), \emph{Vehicle Log Taks} (VLT). 
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1\columnwidth]{figs/SILVA_2.pdf}
 \caption{Tarefas de Sistema do veículo MARIUS}
@@ -1076,7 +1094,7 @@ alocado para a VP é o leme: $P_{\textrm{pre}}=\{p_{\textrm{Init}}\}$, e
 $P_{res}=\{p_{\textrm{Rudder}}\}$.
 A rede de Petri da VP pode ser vista na figura~\ref{SILVA_3}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.87\columnwidth]{figs/SILVA_3.png}
 \caption{Rede de Petri da Primitiva de Veículo KeepHeading do robô MARIUS}
