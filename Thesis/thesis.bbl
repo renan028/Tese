@@ -101,10 +101,6 @@
 \newblock In: {\em Robotics and Automation, 2007 IEEE International Conference
   on\/}, pp. 1393--1399, 2007.
 
-\bibitem{elfes1983distributed}
-\MakeUppercase{ Elfes, A., Talukdar, S.~N.}, {\em A Distributed Control System
-  for the CMU Rover.\/}, Tech. rep., DTIC Document, 1983.
-
 \bibitem{bellingham1994second}
 \MakeUppercase{ Bellingham, J., Goudey, C., Consi, T., \MakeLowercase{et~al.}},
   \enquote{A second generation survey AUV}.
@@ -116,6 +112,20 @@
   approach to adaptive feature detection and following with autonomous
   underwater vehicles}, {\em Oceanic Engineering, IEEE Journal of\/}, v.~25,
   n.~2, pp.~213--226, 2000.
+
+\bibitem{elfes1983distributed}
+\MakeUppercase{ Elfes, A., Talukdar, S.~N.}, {\em A Distributed Control System
+  for the CMU Rover.\/}, Tech. rep., DTIC Document, 1983.
+
+\bibitem{arbib1992schema}
+\MakeUppercase{ Arbib, M.~A.}, \enquote{Schema theory}, {\em The Encyclopedia
+  of Artificial Intelligence\/}, v.~2, pp.~1427--1443, 1992.
+
+\bibitem{arkin1987aura}
+\MakeUppercase{ Arkin, R.~C., Riseman, E.~M., Hanson, A.~R.}, \enquote{AuRA: An
+  architecture for vision-based robot navigation}.
+\newblock In: {\em proceedings of the DARPA Image Understanding Workshop\/},
+  pp. 417--431, 1987.
 
 \bibitem{martin2006mission}
 \MakeUppercase{ Martin, S.~C., Whitcomb, L.~L., Yoerger, D.,

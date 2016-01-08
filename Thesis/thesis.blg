@@ -13,51 +13,51 @@ A level-1 auxiliary file: chap05.aux
 The style file: coppe-unsrt.bst
 A level-1 auxiliary file: appenA.aux
 Database file #1: thesis.bib
-Repeated entry---line 213 of file thesis.bib
+Repeated entry---line 231 of file thesis.bib
  : @inproceedings{norelis1989control
  :                                  ,
 I'm skipping whatever remains of this entry
 Warning--empty pages in moravec1977towards
 Warning--empty journal in arkin1995reactive
-You've used 25 entries,
+You've used 27 entries,
             2438 wiz_defined-function locations,
-            761 strings with 8857 characters,
-and the built_in function-call counts, 5919 in all, are:
-= -- 505
-> -- 148
-< -- 15
-+ -- 72
-- -- 47
-* -- 507
-:= -- 800
-add.period$ -- 56
-call.type$ -- 25
+            773 strings with 9162 characters,
+and the built_in function-call counts, 6522 in all, are:
+= -- 563
+> -- 160
+< -- 16
++ -- 78
+- -- 51
+* -- 558
+:= -- 877
+add.period$ -- 61
+call.type$ -- 27
 change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 358
-empty$ -- 655
-format.name$ -- 47
-if$ -- 1319
+cite$ -- 29
+duplicate$ -- 392
+empty$ -- 718
+format.name$ -- 51
+if$ -- 1456
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 27
-newline$ -- 91
-num.names$ -- 25
-pop$ -- 101
+int.to.str$ -- 27
+missing$ -- 29
+newline$ -- 98
+num.names$ -- 27
+pop$ -- 108
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 141
+skip$ -- 158
 stack$ -- 0
-substring$ -- 440
-swap$ -- 144
-text.length$ -- 15
+substring$ -- 505
+swap$ -- 160
+text.length$ -- 16
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 64
-width$ -- 27
-write$ -- 233
+while$ -- 71
+width$ -- 29
+write$ -- 252
 (There was 1 error message)

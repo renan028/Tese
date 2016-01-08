@@ -345,103 +345,6 @@ arquitetura robótica: a capacidade de executar duas tarefas simultaneamente, por
 exemplo, movimentação e planejamento de trajetórias; e o \emph{Input Semaphore},
 que impede um processo de ser executado até outro ser finalizado.
   
-% 
-% 
-% O estado inicial da rede de Petri é: $$M
-% =\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$, cujos lugares são: $$M
-% =\{P_0,P_1,P_2,P_3,P_4,P_5,P_6,P_7,P_8,I_{PP},IS_{PP},\ldots$$
-% $$OS_{PP},O_{PP},I_{VS},IS_{VS},OS_{VS},
-% O_{VS},I_{OATC},IS_{OATC},OS_{OATC},O_{OATC}\}$$ 
-% As suas transições são:
-% \begin{enumerate}
-%   \item A transição $t_s$ inicializa o Remetente quando uma tarefa é recebida
-%   do Organizador. 
-%   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$  
-%   O lugar $P_0$ permanece com um token, logo a transição $t_s$ ainda pode ser
-%   disparada. Isso faz com que o Remetente seja capaz de executar duas tarefas
-%   simultaneamente: a tarefa de movimentação (ver item 7) e o planejamento de
-%   trajetórias (ver item 3).
-%   \item A transição $t_{wmu}$ chama o processo de atualização do mapa 3-D. O
-%   sistema de visão poderá ser iniciado (token em $I_{VS}$) e a transição
-%   $t_{wmu}$ não pode ser disparada novamente até completar mais um ciclo de
-%   visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
-%   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
-%   adquire um token, habilitando a transição $t_{PP}$ do Remetente. 
-%   $$M=\{1,0,1,0,0,0,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-%   Vale observar que não é possível modelar essas características com máquinas de
-%   estado sem a utilização de recursos extras como inibidores e supressores.
-%   \item A transição $t_{pp}$ habilita o planejamento de trajetórias (token em
-%   $I_{PP}$), com restrições de espaço, cinemática, dinâmica e critério de
-%   otimização. $t_{pp}$ não pode ser disparada novamente até completar um
-%   ciclo de planejamento de trajetórias, graças ao \emph{Input Semaphore},
-%   $IS_{PP}$.
-%   $$M=\{1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do planejamento de trajetórias, o seu \emph{Output
-%   Point}, $O_{PP}$, adquire um token, habilitando a transição $t_{ssd}$ do
-%   Remetente.
-%   $$M=\{1,0,0,1,0,0,0,0,0,0,1,0,1,0,1,1,0,0,1,1,0\}$$
-%   \item A transição $t_{ssd}$ é disparada para colocar o estado do planejamento
-%   de trajetórias no valor inicial:
-%   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transição $t_{mod}$ é disparada para o desvio de obstáculo em um
-%   espaço especificado e provê acurácia e tempo requerido. O
-%   sistema de visão poderá ser iniciado novamente (token em $I_{VS}$) e a
-%   transição $t_{mod}$ não pode ser disparada novamente até completar mais um
-%   ciclo de visão, graças ao \emph{Input Semaphore}, $IS_{VS}$.
-%   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,1,0,1,0,0,1,1,0\}$$
-%   Ao fim do ciclo do sistema de visão, o seu \emph{Output Point}, $O_{VS}$,
-%   adquire um token, habilitando a transição $t_{moac}$ do Remetente. 
-%   $$M=\{1,0,0,0,0,1,0,0,0,0,1,1,0,0,1,0,1,0,1,1,0\}$$
-%   \item A transição $t_{moac}$ é disparada e habilita o desvio de obstáculo
-%   e controle de rastreamento (token em $I_{OATC}$). O estado do sistema de visão volta para
-%   o valor inicial e $t_{moac}$ não pode ser disparada novamente até completar um
-%   ciclo de desvio de obstáculo, graças ao \emph{Input Semaphore}, $IS_{OATC}$.
-%   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,1,0,1,0\}$$
-%   Ao fim do ciclo do desvio de obstáculo, o seu \emph{Output
-%   Point}, $O_{OATC}$, adquire um token, habilitando a transição $t_{mte}$ do
-%   Remetente.
-%   $$M=\{1,0,0,0,0,0,1,0,0,0,1,1,0,0,1,1,0,0,1,0,1\}$$
-%   \item A transição $t_{mte}$ realiza a tarefa de movimentação do robô. O
-%   sistema de desvio de obstáculos e controle de rastreamento volta para o estado
-%   inicial.
-%   $$M=\{1,0,0,0,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   Caso haja falha, as transições $t_{cmo}$ ou $t_{cmn}$ podem ser disparadas.
-%   \item A transição $t_{fbo}$ dispara para o envio de \emph{feedbacks} ao
-%   Organizador.
-%   $$M=\{1,0,0,0,0,0,0,0,1,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transição $t_{cmn}$ é disparada em caso de falha na movimentação do
-%   robô. O robô continuará o seu movimento por um novo caminho. Volta ao item 2.
-%   $$M=\{1,1,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-%   \item A transição $t_{cmo}$ é disparada em caso de falha na movimentação do
-%   robô. O robô continuará o seu movimento pelo mesmo caminho. Volta ao item 5.
-%   $$M=\{1,0,0,0,1,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$
-%   \item A transição $t_f$ dispara para reportar o resultado da movimentação do
-%   robô ao Organizador. Volta ao item 1.
-%   $$M=\{2,0,0,0,0,0,0,0,0,0,1,1,0,0,1,1,0,0,1,1,0\}$$ 
-% \end{enumerate} 
-
-%A rede de Petri evidencia o motivo do uso dos PNT, com os parâmetros aumentados
-%$PNT = (N,\Sigma, \Delta, \sigma, \mu, F)$. %Até agora, apenas as variáveis
-%diretamente ligadas à rede: $N$ e $\mu$ foram analisadas, mas quando se busca a
-%Quando se busca a integração das redes dos coordenadores fica nítida a
-% necessidade de parâmetros para especificação das tarefas.
-
-%O alfabeto de entrada do Remetente é dado pelo Organizador, dado como
-%$\Sigma_0$. O alfabeto de saída ($\Delta_0$) são os alfabetos de entrada para
-%cada coordenador (PP, VS e OATC): $\Sigma_p = \{path\}$,
-%$\Sigma_m=\{\textrm{freemove}, \textrm{move}\}$ e
-%$\Sigma_v=\{\textrm{sendinfo.detection}, \textrm{terrain}\}$.
-
-%O parâmetro que especifica as transições para uma determinada tarefa e as
-%subtarefas é o $\sigma$. Para a transição $t_{mod}$, por exemplo,
-%$\sigma(t_{mod},mod)=\{\textrm{detection.sendinfo}(ard_i,ptc_i),
-%\textrm{sendinfo}(ard_i,ptc_i)\}$, onde $ard$ é a acurácia requerida sobre
-%objetos detectados em VS e $ptc$ é o tempo para a realização do processo. A
-% rede de Petri no coordenador VS pode, portanto, assumir transições paralelas (dois
-%caminhos) e o que define qual caminho deve ser seguido é o parêmetro do
-%Remetente (neste caso será a transição $t_{smd}$ de VS).
-
 Saridis salienta os benefícios das PNT:
 \begin{itemize}
   \item Redes de Petri podem ser usadas como módulos básicos para sistemas de
@@ -684,41 +587,41 @@ suprimindo seu trânsito de dados, figura~\ref{BROOKS_2}.
 
 A camada de controle nível zero deve garantir que o robô não entre em contato
 com outros objetos, estacionários ou móveis. Portanto, o robô deve desviar de
-objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória.
-Na figura~\ref{BROOKS_3}, podemos observar o nível 0 de controle do sistema.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=1\columnwidth]{figs/BROOKS_3.pdf}
-\caption{Nível 0 de controle do sistema}
-\label{BROOKS_3}
-\end{figure}
-
-Segue pequena descrição de cada módulo:
-\begin{itemize}
-  \item Módulo \emph{Curva}: comunica-se diretamente com o robô (atuadores).
-  Recebe uma mensagem \emph{Dirigir} especificando um ângulo de giro seguido por
-  uma mensagem do módulo \emph{Avanço} com uma determinada magnitude. Isso faz
-  com que o robô realize uma curva e vá para o estado de \emph{Avanço}.
-  \item Módulo \emph{Avanço}: comando faz robô se movimentar (atuadores), mas
-  pára o robô se receber mensagem do módulo \emph{Colisão}. O robô fica inativo
-  e mensagens do encoder é enviado ao módulo \emph{Curva}, funcionando como um
-  \emph{reset}, e podendo receber novos comandos.
-  \item Módulo \emph{Sonar}: recebe um vetor de informações de sensores do robô,
-  filtra os dados e produz um mapeamento de obstáculos para o robô em
-  coordenadas polares.
-  \item Módulo \emph{Colisão}: monitora o mapa gerado pelo módulo \emph{Sonar}
-  e, se detectar um obstáculo, envia um sinal de parada. Observe que este módulo
-  funciona independentemente se o robô está em movimento ou parado.
-  \item Módulo \emph{Sentir Força}: cada obstáculo detectado é somado
-  como uma força repulsiva, gerando uma força resultante.
-  \item Módulo \emph{Fugir}: monitora a força produzida pelos obstáculos e envia
-  comandos para o módulo \emph{Curva} se a força for significante.
-\end{itemize}
- 
- A camada de controle nível 1, combinada a camada de controle nível 0, permite
- que o robô vagueie sem colisões. A figura~\ref{BROOKS_3} mostra o sistema de
+objetos que se aproximam ou parar se houver um objeto fixo em sua trajetória. A camada de controle nível 1, combinada a camada de controle nível 0, permite
+ que o robô vagueie sem colisões. A figura~\ref{BROOKS_4} mostra o sistema de
  controle aumentado pelo nível da camada 1.
+
+
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=1\columnwidth]{figs/BROOKS_3.pdf}
+% \caption{Nível 0 de controle do sistema}
+% \label{BROOKS_3}
+% \end{figure}
+% 
+% Segue pequena descrição de cada módulo:
+% \begin{itemize}
+%   \item Módulo \emph{Curva}: comunica-se diretamente com o robô (atuadores).
+%   Recebe uma mensagem \emph{Dirigir} especificando um ângulo de giro seguido por
+%   uma mensagem do módulo \emph{Avanço} com uma determinada magnitude. Isso faz
+%   com que o robô realize uma curva e vá para o estado de \emph{Avanço}.
+%   \item Módulo \emph{Avanço}: comando faz robô se movimentar (atuadores), mas
+%   pára o robô se receber mensagem do módulo \emph{Colisão}. O robô fica inativo
+%   e mensagens do encoder é enviado ao módulo \emph{Curva}, funcionando como um
+%   \emph{reset}, e podendo receber novos comandos.
+%   \item Módulo \emph{Sonar}: recebe um vetor de informações de sensores do robô,
+%   filtra os dados e produz um mapeamento de obstáculos para o robô em
+%   coordenadas polares.
+%   \item Módulo \emph{Colisão}: monitora o mapa gerado pelo módulo \emph{Sonar}
+%   e, se detectar um obstáculo, envia um sinal de parada. Observe que este módulo
+%   funciona independentemente se o robô está em movimento ou parado.
+%   \item Módulo \emph{Sentir Força}: cada obstáculo detectado é somado
+%   como uma força repulsiva, gerando uma força resultante.
+%   \item Módulo \emph{Fugir}: monitora a força produzida pelos obstáculos e envia
+%   comandos para o módulo \emph{Curva} se a força for significante.
+% \end{itemize}
+ 
+ 
 
 \begin{figure}[H]
 \centering
@@ -727,33 +630,33 @@ Segue pequena descrição de cada módulo:
 \label{BROOKS_4}
 \end{figure}
 
-Segue pequena descrição de cada módulo do nível 1:
-\begin{itemize}
-  \item Módulo \emph{Vaguear}: gera nova direção para o robô a cada 20 segundos.
-  \item Módulo \emph{Evitar}: recebe resultado da força computada pelo nível 0
-  de controle e combina com a direção desejada pelo módulo \emph{Vaguear},
-  produzindo uma nova direção desejada sem obstáculos. Esse resultado presume as
-  computações do módulo \emph{Fugir}. Vale observar que o módulo \emph{Evitar}
-  suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
-\end{itemize}
-
-Os problemas anteriormente da arquitetura hierárquica apontados por Brooks
-são solucionados pela nova arquitetura:
-\begin{itemize}
-  \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
-  individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
-  supressão do trânsito de dados resolvem os problemas de conflito, dependência
-  e prioridade;
-  \item Múltiplos sensores: as camadas utilizam os dados dos sensores
-  independentemente, de forma que não há necessidade de se preocupar com a
-  fusão;
-  \item Robustez: além do uso inteligente de sensores, camadas de controle de
-  nível inferior continuam a funcionar quando novas camadas de nível superior
-  são adicionadas;
-  \item Extensibilidade: cada camada de controle pode possuir o seu próprio
-  processador, resolvendo o problema de adicionar sensores indefinidamente e
-  consumir o processamento;
-\end{itemize}
+% Segue pequena descrição de cada módulo do nível 1:
+% \begin{itemize}
+%   \item Módulo \emph{Vaguear}: gera nova direção para o robô a cada 20 segundos.
+%   \item Módulo \emph{Evitar}: recebe resultado da força computada pelo nível 0
+%   de controle e combina com a direção desejada pelo módulo \emph{Vaguear},
+%   produzindo uma nova direção desejada sem obstáculos. Esse resultado presume as
+%   computações do módulo \emph{Fugir}. Vale observar que o módulo \emph{Evitar}
+%   suprime a saída do módulo \emph{Fugir} (mecanismo de supressão). 
+% \end{itemize}
+% 
+% Os problemas anteriormente da arquitetura hierárquica apontados por Brooks
+% são solucionados pela nova arquitetura:
+% \begin{itemize}
+%   \item Múltiplos objetivos: camadas individuais podem trabalhar em objetivos
+%   individuais ao mesmo tempo. Os níveis das camadas de controle e o mecanismo de
+%   supressão do trânsito de dados resolvem os problemas de conflito, dependência
+%   e prioridade;
+%   \item Múltiplos sensores: as camadas utilizam os dados dos sensores
+%   independentemente, de forma que não há necessidade de se preocupar com a
+%   fusão;
+%   \item Robustez: além do uso inteligente de sensores, camadas de controle de
+%   nível inferior continuam a funcionar quando novas camadas de nível superior
+%   são adicionadas;
+%   \item Extensibilidade: cada camada de controle pode possuir o seu próprio
+%   processador, resolvendo o problema de adicionar sensores indefinidamente e
+%   consumir o processamento;
+% \end{itemize}
 
 A estrutura das camadas de controle foram construídas por um conjunto de
 pequenos processadores que enviam mensagens uns para os outros. Cada processador
@@ -804,10 +707,38 @@ A solução para o problema de contextualidade só foi resolvido em 2000 por Bennet
 múltiplos conjuntos de comportamentos simples são escolhidos de uma biblioteca
 de comportamentos e são executados em cada fase da missão. A vantagem é o
 número reduzido de comportamentos executados ao mesmo tempo. Esta é
-uma estratégia comum em arquiteturas de controle híbrido.
+uma estratégia comum em arquiteturas de controle híbrido. 
 
-\subsubsection{Arquitetura esquema motor}
-%TODO fazer esquema motor de Arkin
+\subsubsection{Arquitetura Esquema Motor}
+Em 1987, Arkin \cite{arkin1987aura} utiliza a teoria de esquemas (psicologia)
+proposta por \cite{arbib1992schema} para desenvolver sua função de coordenação
+cooperativa para sistemas reativos, chamado de Esquema Motor. Neste sistema, as
+respostas dos comportamentos aos estímulos são representadas por vetores
+(magnitude e orientação) e a coordenação é alcançada pela adição dos vetores,
+produzindo um vetor resultante. Não há hierarquia pré-definida entre
+comportamentos, todos os comportamentos ativos contribuem
+para a saída do sistema com sua resposta individual (vetor) e ganho
+associado. O ganho do vetor (ou peso) é um parâmetro para dar flexibilidade,
+possibilidade de aprendizado e adaptação do robô caso este não seja fixo.
+
+
+Em uma tarefa de navegação, é fácil imaginar como funciona o método do Esquema
+Motor. São definidos alguns esquemas motor (comportamentos), como mover-se em
+direção ao objetivo, evitar obstáculos, desviar, escapar, e outros, e cada
+comportamento responde com um vetor que representa velocidade (magnitude) e
+direção (orientação) que o robô deve seguir. A soma dos vetores resulta
+na direção e velocidade final do robô. Ao perceber um obstáculo, por
+exemplo, os vetores do comportamento \textit{desvio de obstáculos} possuem
+magnitude superior aos outros e orientação para fora do obstáculo (vetor de
+repulsão), de forma que o robô executa o desvio, em vez de colidir.
+
+Assim como a arquitetura de subsunção, no Esquema Motor, os esquemas agem de
+maneira distribuída, paralela e são modulares. O sistema apresenta vantagem em
+relação à arquitetura de camadas por sua dinâmica, já que os esquemas podem ser instanciados e desinstanciados a
+qualquer momento, e fácil reconfiguração. Apesar do importante e atraente
+resultado em tarefas de navegação, os esquemas motores dominaram apenas esse
+nicho da robótica e, mesmo neste nicho, outras tarefas normalmente não são
+executadas com esta arquitetura.
 
 \subsection{Análise crítica}
 Se a abordagem deliberativa simulava o processo de planejamento e tomada de
@@ -817,8 +748,52 @@ central: o circuito reflexivo, ou arco reflexo. O reflexo é uma resposta
 involuntária rápida, consciente ou não, originado de um estímulo externo e
 realizada antes mesmo de o cérebro tomar conhecimento do estímulo periférico.
 
-Dessa forma, não há planejamento,
+Dessa forma, não há planejamento, não há modelo de mundo, apenas uma reação ao
+estímulo. Esse comportamento é extremamente importante e necessário para a
+sobrevivência do ser humano. Por exemplo, quando encostamos a mão em
+uma panela quente temos a reação imediata de retirar a mão sem intervenção do
+cérebro, sem replanejamento, cujo processamento levaria tempo suficiente para
+causar danos severos. É fácil, portanto, perceber que tais comportamentos devem
+ser necessário também em robôs.
+
+Robôs simples, como por exemplo um robô para limpar trilhos de trêm, ou robôs
+para limpar o chão, podem ter o custo reduzido e executar extraordinariamente
+bem suas tarefas sem a necessidade de planejamento e modelos complexos do mundo.
+Durante a execução de sua tarefa, um robô limpador de trilhos só precisa saber
+que é necessário sair do trilho ao avistar um trêm, e para isso basta um par
+estímulo-motor e uma supressão de tarefa (no caso, a tarefa de continuar
+limpando o trilho). 
+
+A tabela\ref{comparativa} mostra a compração das arquiteturas analisadas até
+agora.
+
+\begin{table}[]
+\centering
+\caption{Tabela comparativa de arquitetura deliberativa e reativa}
+\label{comparativa}
+\begin{tabular}{ll}
+\hline
+\multicolumn{1}{|l|}{Arquiteturas deliberativas}                                                   & \multicolumn{1}{l|}{Arquiteturas reativas}                                                            \\ \hline
+Modelo interno completo e preciso                                                                  & Informações sensoriais locais                                                                         \\
+Planejamento                                                                                       & \begin{tabular}[c]{@{}l@{}}Ações pré-definidas às informações \\ sensoriais\end{tabular}              \\
+\begin{tabular}[c]{@{}l@{}}Maior flexibilidade na definição de \\ tarefas e objetivos\end{tabular} & \begin{tabular}[c]{@{}l@{}}Sistemas mais dedicados às tarefas \\ e problemas específicos\end{tabular} \\
+\begin{tabular}[c]{@{}l@{}}Resposta lenta às mudanças no \\ ambiente\end{tabular}                  & \begin{tabular}[c]{@{}l@{}}Resposta rápida às mudanças do \\ ambiente\end{tabular}                   
+\end{tabular}
+\end{table}
+
+% Por outro lado, robôs de inspeção necessitam conhecer todo o ambiente, mundo,
+% para identificar irregularidades e, por vezes, planejar sua locomoção em
+% terrenos mais acidentados. A aplicação muitas vezes dita qual a arquitetura
+% deverá ser usada
+% non hard-wired
 %TODO fechar análise
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\columnwidth]{figs/brain2.jpg}
+\caption{Analogia de sistemas reativos com o ser humano.}
+\label{brain2}
+\end{figure}
 
 \section{Arquitetura híbrida deliberativa/reativa}
 
