@@ -77,7 +77,7 @@ operador, e contém as diretivas do robô. Como faz parte da arquitetura, as
 seções que seguem buscam, em cada arquitetura, destacar de forma exemplificada
 alguns controles de missão.
 
-\section{Paradigma hierárquico/deliberativa}
+\section{Paradigma hierárquico/deliberativo}
 Em meados do século XX, são realizados os primeiros estudos de robôs autônomos,
 juntamente com o aparecimento da Inteligência Artificial (IA). Em um sistema
 robótico, a IA clássica consiste em um modelo centralizado que coleta
@@ -154,6 +154,7 @@ autônomas (figura~\ref{manipulador}).
 \label{manipulador}
 \end{figure}
 
+%TODO: Verificar controle de missão dos modelos
 \subsection{Arquiteturas deliberativas}
 As arquiteturas deliberativas são sistemas hierárquicos com a lógica
 \textit{SPA}. São utilizados em sistemas robóticos até hoje, quando a aplicação
@@ -504,6 +505,7 @@ Roomba possui apenas algumas funções reativas, como esquivar-se e locomover-se,
 e, em suas versões antigas, foi constatado que não possui o modelo do mundo,
 mapa, dentro de si \cite{tribelhorn2007evaluating}.
 
+%TODO: Verificar controle de missão dos modelos
 \subsection{Arquiteturas reativas}
 As arquiteturas reativas foram formalmente introduzidas em 1986 por
 Roodney Brooks. O roboticista, futuro fundador da empresa iRobot, vivenciou uma
@@ -795,7 +797,7 @@ Planejamento                                                                    
 \label{brain2}
 \end{figure}
 
-\section{Arquitetura híbrida deliberativa/reativa}
+\section{Paradigma híbrido ou deliberativo/reativo}
 
 Arquiteturas deliberativas e reativas apresentam vantagens e
 desvantagens e que muitas vezes se opõe. Por exemplo, é muito ineficiente
@@ -815,77 +817,41 @@ dos sistemas puramente reativos. Arquiteturas híbridas podem permitir a
 reconfiguração de controles reativos baseado no conhecimento do mundo através da
 sua capacidade de raciocinar sobre os componentes comportamentais subjacentes.
 
-Em 1995, Espiau, B. [9] (INRIA, França), define sistemas híbridos como sistemas
-que nem são puramente tempo contínuo, nem máquina de estado finito, mas que
-combinam eventos discretos e componentes contínuos. Esses sistemas foram
-estudados por duas comunidades distintas: ciência da computação e controle e
-automação. Engenheiros de controle e automação estudam sistemas dinâmicos
-(modelos) com ênfase nas teorias de estabilidade, convergência, robustez e
-introduzem sistemas de eventos discretos para mudanças no controle ou no modelo.
-A ciência da computação faz o caminho inverso: um estado em uma máquina de
-estados representa um local de controle, onde variáveis mudam continuamente com
-o tempo, de acordo com leis de evolução. As ideias de controle híbrido são
-desenvolvidas desde Brooks e aparece, mesmo que de forma rudimentar, nos
-trabalhos apresentados anteriormente neste documento. 
+O principal problema no paradigma híbrido é em como desenvolver uma
+metodologia unificada de arquiteturas que garantem um sistema capaz de executar
+planos de uma maneira robusta, como a arquitetura reativa, e, ao mesmo tempo,
+ter um entendimento de alto nível da natureza do mundo e um modelo da intenção
+do usuário.  
 
-A contribuição de Espiau foi o desenvolvimento do ORCCAD, um sistema híbrido
-para especificação, validação, simulação e implementação de aplicações
-robóticas. O sistema possui os seguintes princípios:
+\subsection{Robôs híbridos}
+
+\subsection{Aquitetura híbrida}
+Em \cite{arkin1998behavior}, Arkin aponta quatro estratégias para o
+projeto de arquiteturas híbridas:
 
 \begin{itemize}
-  \item Tarefas físicas podem ser tratadas como problemas de controle, os quais
-  são resolvidos em tempo real utilizando técnicas de realimentação em controle.
-  A abordagem \emph{Task-Function} foi desenvolvida em [10].
-  \item A caracterização de uma ação física não é suficiente para definir
-  completamente a ação de um robô: tempo inicial e final devem ser considerados,
-  assim como as ações que o robô deve tomar em caso de eventos observados
-  durante a execução de alguma tarefa.
-  \item Como a performance de um sistema depende da eficiência de mecanismos em
-  tempo real no nível de operação, deve-se ter atenção particular em sua
-  especificação e verificação.
+  \item Seleção: o planejador é visto como um configurador. O planejador
+  determina a composição de comportamentos e parâmetros usados durante a
+  execução. O planejador pode reconfigurá-los quando necessário devido a falhas
+  no sistema.
+  \item Conselho: o planejador é visto como um aconselhador. O planejador sugere
+  mudanças que o controle reativo pode ou não usar.
+  \item Adaptação: o planejador é visto como um adaptador. O planejador
+  continuamente altera os componentes reativos ativos de acordo com as mudanças
+  nas condições do mundo e requisitos de tarefas.
+  \item Adiamento: o planejador é visto como um recurso para ser usado em último
+  caso. Neste caso, os planos só são elaborados quando necessários.
 \end{itemize}
 
-No sistema híbrido, o interesse do usuário final é em sua aplicação, portanto
-o sistema deve prover formalismo de alto nível para o usuário focar em
-especificação e verificação de tarefas. Por outro lado, o engenheiro
-de controle necessitará de um ambiente de programação, desenvolvimento e
-simulação para expressar suas leis de controle, as quais são encapsuladas para
-o usuário final. No ORCCAD, duas entidades foram definidas: Tarefa do Robô (RT
-- \emph{Robot-task}) e Processo do Robô (RP - \emph{Robot Procedures}), as
-quais estão respectivamente ligadas aos dois tipos de usuários.
 
-A Tarefa do Robô é definida como a especificação paramétrica de uma lei de
-controle elementar, i.e., a ativação de um esquema de controle invariante ao
-longo de uma tarefa, e um comportamento lógico associado com um conjunto de
-sinais (eventos) que podem ocorrer antes, durante ou após a execução da tarefa.
-A RT é composta por funções, modelos e parâmetros que aparecem em uma expressão
-analítica, em tempo contínuo, que será aplicada aos atuadores do robô para a
-execução de determinada ação física, e o comportamento lógico associado aos
-eventos, os quais podem ser:
 
-\begin{itemize}
-  \item Pré-condições: ocorrência necessária para a tarefa começar, como
-  condições de sincronização ou medida de sensores.
-  \item Exceções: executadas durante a execução da tarefa e pode indicar falha.
-  A ação tomada pode ser alteração de algum parâmetro, acionar outra RT
-  (matando a atual) ou fatal, levando o robô a uma área segura.
-  \item Pós-condição: normalmente associadas ao ambiente (final do curso do
-  robô). 
-\end{itemize}
-
-O Processo do Robô especifica de forma estruturada um arranjo lógico e temporal
-de RTs de forma que um determinado objetivo seja alcançado.
-
-O sistema ORCCAD foi utilizado no robô submarino Vortex, em conjunto com o
-IFREMER \emph{Subsea Robotics Laboratory}.
+\subsection{Análise crítica} 
 
 Em 1996, Healey, A. J. [8] (Autonomous Underwater Vehicle Laboratory,
 California), aplica técnicas de controle híbrido em seu trabalho de
-desenvolvimento do AUV Phoenix.  É a partir de Healey
-que são criados formalismo e terminologia apropriados nesse campo. O
-controle híbrido será responsável tanto pela movimentação do veículo, contínuo
-e síncrono, quanto pela sequência lógica das fases das missões, eventos
-discreto com transições assíncronas.  
+desenvolvimento do AUV Phoenix.  O controle híbrido será responsável tanto pela
+movimentação do veículo, contínuo e síncrono, quanto pela sequência lógica das
+fases das missões, eventos discreto com transições assíncronas.  
 
 Haley propõe uma arquitetura de software híbrida com três níveis organizacionais
 e hierárquicos, figura~\ref{HEALEY_1}: 
@@ -908,107 +874,14 @@ e hierárquicos, figura~\ref{HEALEY_1}:
 \label{HEALEY_1}
 \end{figure}
 
-A terminologia de Healey, essencial para os trabalhos futuros em controle de
-missão, é apresentada a seguir. Assumindo o conjunto de todos os atuadores
-disponíveis no veículo como $A$, o conjunto de sensores como $S$ e o conjunto de estados
-contínuos como $X$:
-
-\textbf{Definição}: Uma Função de Controle (CF) é o uso de um subconjunto
-específico de atuadores $a_i \subset A$ com um subconjunto particular de
-sensores $s_i \subset S$ para estimar um subconjunto de estados contínuos $x_i
-\subset X$ e levar um certo subconjunto de erros $e_i$ para zero. Onde erro é
-definido como a diferença entre um valor de comando (\emph{Set Point}) e um
-estado atual estimado. A definição é análoga com a definição de Tarefa do Robô
-(\emph{Robot Task}), em Espiau, B. [9] (INRIA, França).
-
-\textbf{Definição}: Primitiva de Veículo é uma \emph{string} na linguagem de
-programação, associada a uma Função de Controle. Por exemplo,
-$Forward_Speed_Control$, controle de velocidade do veículo.
-
-\textbf{Definição}: O Término de uma função de controle ocorre nas seguintes
-condições:
-\begin{itemize}
-  \item Em um tempo especificado;
-  \item Quando a função positiva definida do erro, $P(\cdot)$, assume valores
-  limites especificados. Quando $b$ é um limite positivo e $F(\cdot)$ é um
-  filtro passa-baixa, a Terminação ocorre se
-  $$F(P(e)) < b$$
-\end{itemize}  
-\textbf{Definição}: Um Comportamento (B) é descrito como a execução de uma
-sequência particular de CFs, cada uma com sua terminação. O estado de realizar
-uma certa CF é um estado discreto do sistema. Um Comportamento pode ser
-representado como uma rede de Petri, por exemplo.
-
-\textbf{Definição}: Um Sistema de Controle Híbrido é um sistema de controle de
-elementos de hardware e software capaz de conduzir o veículo por um conjunto de
-Comportamentos.
-
-\textbf{Definição}: Um Plano de Missão é a sequência de Comportamentos
-conduzidos durante cada fase da missão, com tratamento de falhas.
-
-Healey define diversas Primitivas de Veículo para AUVs, mas serão estudadas as
-Primitivas do Robô MARIUS, de Silva, V., que é semelhante ao robô DORIS,
-objeto de estudo desta dissertação.
-
 Em 1996, Silva, V. et al [6] (Institute for Systems and Robotics, Lisboa),
 projetaram, desenvolveram e testaram um sistema de controle de missão para o
-MARIUS, robô autônomo submarino. \emph{A Mission Control System} (MCS), o
-conceito, aparece pela primeira vez na nomenclatura como um sistema que:
-\emph{i)} habilita o operador a definir uma missão ao veículo em uma linguagem
-de alto nível, que será traduzida em um plano de missão; \emph{ii)} provê
-ferramentas adequadas para converter um plano de missão em um programa de
-missão que pode ser verificado e executado em tempo real; \emph{iii)} fornece
-ao operador a capacidade de seguir o progresso do programa de missão enquanto
-ele é executado, e modificá-lo se necessário;
-
-O trabalho de Silva, V. [6], introduz novos e importantes conceitos chave para o
-MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do
+MARIUS, robô autônomo submarino. O trabalho de Silva, V. [6], introduz novos e
+importantes conceitos chave para o MCS: Tarefa do Sistema (\emph{System Task}), Primitiva do
 Veículo (\emph{Vechicle Primitive}), Procedimento de Missão (\emph{Mission Procedure})
 e Programa de Missão (\emph{Mission Program}). Além disso, a arquitetura do
 veículo, por ser um AUV, possui sistemas e interconexões
 semelhantes ao robô DORIS, estudo desta dissertação.
-
-A arquitetura do veículo DORIS teve grande influência da organização do veículo
-MARIUS descrita abaixo, figura~\ref{SILVA_1}:
-\begin{itemize}
-  \item \emph{Vehicle Support System} (VSS) - Controla a distribuição de energia
-  aos hardwares instalados no veículo, monitora consumo de energia e detecta
-  falhas de hardware, podendo enviar comandos de emergência.
-  \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotação
-  dos propulsores e posição dos ailerions e lemes. Os \emph{Set Points} dos
-  atuadores são dados pelo \emph{Vehicle Guidance and Control System} (VGCS) e
-  os dados dos atuadores são transmitidos para o \emph{Mission Control System}.
-  \item \emph{Navigation System} (NS) - Estima posição linear e velocidade do
-  veículo, orientação e velocidade angular. O sistema funde informações do
-  \emph{Positioning System} (\emph{Long Baseline unit}) e \emph{Motion Sensor
-  Integration System}, o qual inclui diversos sensores. As saídas do NS são
-  entradas do VGCS, e enviadas ao MCS.
-  \item \emph{Vehicle Guidance and Control System} (VGCS) - Recebe como entrada
-  as trajetórias de referência pelo MCS, e os dados de navegação do NS. Suas
-  saídas são \emph{Set Points} para velocidade de rotação e outros atuadores do
-  ACS, tal que o veículo siga a trajetória desejada mesmo com incertezas e
-  distúrbios.
-  \item \emph{Communication System} (COMS) - Controla o link bidirecional usado
-  pelo operador para passar missões ao MCS, e pelo veículo para passar status de
-  missão ou estados do veículo.
-  \item \emph{Environmental Inspection System} (EIS) - Coleta dados do ambiente
-  com diversos sensores (inclusive câmeras), como temperatura, pressão, pH. É
-  controlado pelo MCS.
-  \item \emph{Data Logging System} (DLS) - Adquiri e armazena dados do veículo.
-  \item \emph{Mission Control System} (MCS) - Sequencia e sincroniza a execução
-  das tarefas básicas do veículo para uma determinada missão e provê a
-  recuperação em caso de falhas.
-\end{itemize}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1\columnwidth]{figs/SILVA_1.pdf}
-\caption{Arquitetura do Veículo MARIUS}
-\label{SILVA_1}
-\end{figure}
-
-A seguir, serão apresentados os conceitos chave de Silva, inpirados nos
-trabalhos de Espiau e Healey:\\
 
 \textbf{Tarefa do Sistema} (ST): é a especificação paramétrica de uma classe
 de algoritmos ou processos que implementam uma funcionalidade básica em um robô.
@@ -1079,116 +952,44 @@ em maior alto nível. O cabeçalho é: $MPname(Din_{mp},P_m)$, onde
 $Din_{mp}$ é o conjunto de dados numéricos que são entrada do MP e $P_m$ é
 similar à VP.
 
-As VPs e MPs apresentadas por Silva, em [6], serão abordadas ao longo desta
-dissertação de metrado, por ter grande semelhança às características do robô
-DORIS, apesar de ter como enfoque AUVs. A fim de exemplificar todo o formalismo
-apresentado, a modelagem da VP
-$KeepHeading(\psi,p_{\textrm{Exit}},p_{\textrm{End}})$ será avaliada. A
-VP é responsável por levar o robô a um determinado \emph{Set-Point} ($\psi$),
-$p_{\textrm{Exit}}$ é um lugar na rede de Petri que deve ser marcado como parada
-da execução da VP e $p_{\textrm{End}}$ é um lugar que tem a informação de
-término da execução da VP. A única pré-condição para a execução da VP é a
-inicialização de todas as ST: comando
-$Init(p_{\textrm{End}},p_{\textrm{Abort}})$. Não há pós-condições e o recurso
-alocado para a VP é o leme: $P_{\textrm{pre}}=\{p_{\textrm{Init}}\}$, e
-$P_{res}=\{p_{\textrm{Rudder}}\}$.
-A rede de Petri da VP pode ser vista na figura~\ref{SILVA_3}.
+A arquitetura do veículo DORIS teve grande influência da organização do veículo
+MARIUS descrita abaixo, figura~\ref{SILVA_1}:
+\begin{itemize}
+  \item \emph{Vehicle Support System} (VSS) - Controla a distribuição de energia
+  aos hardwares instalados no veículo, monitora consumo de energia e detecta
+  falhas de hardware, podendo enviar comandos de emergência.
+  \item \emph{Actuator Control System} (ACS) - Controla a velocidade de rotação
+  dos propulsores e posição dos ailerions e lemes. Os \emph{Set Points} dos
+  atuadores são dados pelo \emph{Vehicle Guidance and Control System} (VGCS) e
+  os dados dos atuadores são transmitidos para o \emph{Mission Control System}.
+  \item \emph{Navigation System} (NS) - Estima posição linear e velocidade do
+  veículo, orientação e velocidade angular. O sistema funde informações do
+  \emph{Positioning System} (\emph{Long Baseline unit}) e \emph{Motion Sensor
+  Integration System}, o qual inclui diversos sensores. As saídas do NS são
+  entradas do VGCS, e enviadas ao MCS.
+  \item \emph{Vehicle Guidance and Control System} (VGCS) - Recebe como entrada
+  as trajetórias de referência pelo MCS, e os dados de navegação do NS. Suas
+  saídas são \emph{Set Points} para velocidade de rotação e outros atuadores do
+  ACS, tal que o veículo siga a trajetória desejada mesmo com incertezas e
+  distúrbios.
+  \item \emph{Communication System} (COMS) - Controla o link bidirecional usado
+  pelo operador para passar missões ao MCS, e pelo veículo para passar status de
+  missão ou estados do veículo.
+  \item \emph{Environmental Inspection System} (EIS) - Coleta dados do ambiente
+  com diversos sensores (inclusive câmeras), como temperatura, pressão, pH. É
+  controlado pelo MCS.
+  \item \emph{Data Logging System} (DLS) - Adquiri e armazena dados do veículo.
+  \item \emph{Mission Control System} (MCS) - Sequencia e sincroniza a execução
+  das tarefas básicas do veículo para uma determinada missão e provê a
+  recuperação em caso de falhas.
+\end{itemize}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.87\columnwidth]{figs/SILVA_3.png}
-\caption{Rede de Petri da Primitiva de Veículo KeepHeading do robô MARIUS}
-\label{SILVA_3}
+\includegraphics[width=1\columnwidth]{figs/SILVA_1.pdf}
+\caption{Arquitetura do Veículo MARIUS}
+\label{SILVA_1}
 \end{figure}
-
-O estado inicial da rede de Petri é: $$M
-=\{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$, cujos lugares
-são:
-$$M
-=\{P_{\textrm{KeepHeading}},P_{\textrm{Rudder}},P_{\textrm{Init}},P_0,P_1,P_{\textrm{cmmd\_on}},P_2,P_3,P_{\textrm{yaw\_auto}},P_4,P_5,P_{\textrm{auto\_on}},\ldots$$
-$$P_6,P_{\textrm{yaw\_on}},P_{\textrm{Exit}},P_7,P_8,P_{\textrm{yaw\_off}},P_9,P{10},P_{\textrm{yaw\_manual}},P_{11},P_{12},P_{\textrm{manual\_on}},\ldots$$
-$$P_{13},P_{\textrm{cmmd\_off}},P_{\textrm{success}},P_{\textrm{Rudder}},P_{\textrm{End}}\}$$
-
-As suas transições são:
-\begin{enumerate}
-  \item A transição $T0$ só pode ser disparada quando o recurso leme fica
-  disponível e as ST são inicializadas:
- $$M
-=\{1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-Após a transição $T0$:
-  $$M
-=\{0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$  
-  \item A transição $VCT(RUDDER\_CMMD,ON,P_{\textrm{cmmd\_on}})$
-  (\emph{Vehicle Communications Task}) é ST para desabilitar comandos diretos ao
-  leme do console (operador).
-$$M
-=\{0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$ 
-  \item A transição $T1$ é habilitada após a alteração da ST VCT for concluída
-  e $P_{\textrm{cmmd\_on}}$ for marcada (token). $$M
-=\{0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-Após a transição $T1$:
-$$M
-=\{0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item As transições $ACT(AUTO\_RUDDER,P_{\textrm{auto\_on}})$
-  (\emph{Actuator Control Task}) e $GCT(YAW\_AUTO,\Psi,P_{\textrm{yaw\_auto}})$
-  (\emph{Guidance and Control Task}) são ativadas paralelamente. A primeira está
-  associada à ST para habilitar o leme a receber comandos diretamente do
-  controlador. A ST GCT é requisitada para ativar o controle de guinada
-  (\emph{Yaw}) e recebe como argumento o \emph{set-point} $\psi$.
-$$M
-=\{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transição $MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$ (\emph{Motion
-  Sensor Task}) é habilitada após as alterações das STs ACT e GCT serem
-  concluídas.
-  $P_{\textrm{yaw\_auto}}$ e $P_{\textrm{autoon}}$ são marcados (tokens):
-  $$M
-=\{0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-A ST MST é chamada para enviar dados dos sensores de ângulo de guinada
-periodicamente para a ST GCT.
-Após a transição
-$MST(CNTR\_YAW\_ON,P_{\textrm{yaw\_on}})$:
-  $$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item A transição $T2$ só é habilitada quando a alteração da ST MST for
-  concluída e, assim, $P_{\textrm{yaw\_on}}$ adquire um token:
-    $$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-Após transição de $T2$:
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item Em $P_7$, o robô permanece em sistema de controle em malha fechada da VP
-  KeepHeading até que o lugar $P_{\textrm{Exit}}$ seja marcado:
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-A transição $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$ é, então, habilitada. A
-ST MST é, novamente, chamada para desabilitar o envio de mensagens à GCT. Após a
-transição da $MST(CNTR\_YAW\_OFF,P_{\textrm{yaw\_off}})$:
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0\}$$
-  \item As transições $T3$, $GCT(YAW\_MANUAL,P_{\textrm{yaw\_manual}})$,
-  $ACT(MANUAL\_RUDDER,P_{\textrm{manual\_on}})$ e
-  $VCT(RUDDER\_CMMD,OFF,P_{\textrm{cmmd\_off}})$ alteram as STs GCT, ACT e VCT
-  para levarem ao estados manual, como era inicialmente. Os estados para isso
-  são:
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0\}$$
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0\}$$  
-  \item A última transição $T5$ libera o recurso $P_{\textrm{Rudder}}$ e
-  finaliza a VP no lugar $P_{\textrm{End}}$:
-$$M
-=\{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1\}$$
-\end{enumerate} 
 
 Silva desenvolveu os softwares CORAL e ATOL para implementação das VPs e STs em
 redes de Petri de forma que um usuário final, como um operador, pudesse
